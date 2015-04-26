@@ -30,6 +30,6 @@
 		<div class="footer">
 			<jsp:include page="../../pages/common/footer.jsp"/>
 		</div>
-	<!-- 底部版权栏结束 -->
+		<!-- 底部版权栏结束 -->
 	</body>
 </html>

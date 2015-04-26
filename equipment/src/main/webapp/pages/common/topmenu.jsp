@@ -5,33 +5,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title></title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta content="width=device-width, initial-scale=1" name="viewport"/>
-	<meta content="" name="description"/>
-	<meta content="" name="author"/>
-	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/layout.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-	
-	<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-	<script src="assets/scripts/metronic.js" type="text/javascript"></script>
-	<script src="assets/scripts/layout.js" type="text/javascript"></script>
-	<script>
-		jQuery(document).ready(function() {    
-		   Metronic.init(); // init metronic core componets
-		   Layout.init(); // init layout
-		});
-	</script>
 </head>
 <body>
 	<!-- BEGIN HEADER INNER -->
@@ -39,7 +12,7 @@
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="index.html">
-				<img src="assets/img/logo.png" alt="logo" class="logo-default"/>
+				<img src="/equipment/assets/img/logo.png" alt="logo" class="logo-default"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler hide"></div>
 		</div>
@@ -54,7 +27,7 @@
 			<ul class="nav navbar-nav pull-right">						
 				<li class="dropdown-user">
 					<a href="javascript:;" class="dropdown-toggle">
-						<img alt="" class="img-circle" src="assets/img/avatar3_small.jpg"/>
+						<img alt="" class="img-circle" src="/equipment/assets/img/avatar3_small.jpg"/>
 						<span class="username username-hide-on-mobile"></span>
 					</a>
 				</li>
