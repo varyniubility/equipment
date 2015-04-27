@@ -17,10 +17,10 @@
 					<div class="sidebar-toggler"></div>
 				</li>
 				<li class="start active ">
-					<a href="main.jsp">
+					<a href="/equipment/pages/main/engineerMain.jsp">
 						<i class="fa fa-home"></i>
 						<span class="title">
-							主界面
+							工程师主界面
 						</span>
 						<span class="selected">
 						</span>

@@ -17,11 +17,9 @@ public class LoginController {
 	public LoginService loginService;
 	
 	@RequestMapping(value="/login")
-	public ModelAndView login(@RequestParam(value="username",required=false)String username,
+	public String login(@RequestParam(value="username",required=false)String username,
 			@RequestParam(value="password",required=false)String password){
-		String result = loginService.login(username);
-		ModelAndView mv = new ModelAndView(result);
-		System.out.println(mv);
-		return mv;
+		String result = loginService.login(username,password);
+		return result;
 	}
 }

@@ -4,6 +4,7 @@ Login page
 /* bg color */
 .login {
   background-color: #364150 !important;
+  font-family:"Î¢ÈíÑÅºÚ";
 }
 
 .login .logo {
@@ -28,34 +29,23 @@ Login page
   position: relative;
 }
 
-.login .content h3 {
-  color: #4db3a5;
-  text-align: center;
-  font-size: 28px;
-  font-weight: 400 !important;
-}
-
-.login .content h4 {
-  color: #555;
-}
-
 .login .content .hint {
   color: #999;
   padding: 0;
   margin: 15px 0 7px 0;
 }
 
-.login .content .login-form,
-.login .content .forget-form {
+.login .content .login-form {
   padding: 0px;
-  margin: 0px;
+  margin-top: 5%;
+  font-family:"Î¢ÈíÑÅºÚ";
 }
 
 .login .content .form-control {
   border: none;
-  background-color: #dde3ec;
   height: 43px;
   color: #8290a3;
+  font-family:"Î¢ÈíÑÅºÚ";
   border: 1px solid #dde3ec;
 }
 .login .content .form-control:focus, .login .content .form-control:active {
@@ -72,23 +62,6 @@ Login page
   color: #8290a3;
 }
 
-.login .content select.form-control {
-  padding-left: 9px;
-  padding-right: 9px;
-}
-
-.login .content .forget-form {
-  display: none;
-}
-
-.login .content .register-form {
-  display: none;
-}
-
-.login .content .form-title {
-  font-weight: 300;
-  margin-bottom: 25px;
-}
 
 .login .content .form-actions {
   clear: both;
@@ -209,34 +182,3 @@ Login page
   font-size: 13px;
 }
 
-@media (max-width: 440px) {
-  /***
-  Login page
-  ***/
-  .login .logo {
-    margin-top: 10px;
-  }
-
-  .login .content {
-    width: 280px;
-    margin-top: 10px;
-  }
-
-  .login .content h3 {
-    font-size: 22px;
-  }
-
-  .forget-password {
-    display: inline-block;
-    margin-top: 20px;
-  }
-
-  .login-options .social-icons {
-    float: left;
-    padding-top: 3px;
-  }
-
-  .login .checkbox {
-    font-size: 13px;
-  }
-}

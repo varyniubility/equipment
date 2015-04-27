@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<title>设备售后服务系统</title>
+		<title>设备售后服务系统--工程师</title>
 	</head>
 	<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
 		<!-- 页面头开始 -->
@@ -15,7 +15,7 @@
 
 		<!-- 页面容器开始 -->
 		<div class="page-container">
-			<jsp:include page="../../pages/common/sidebar.jsp" />
+			<jsp:include page="../../pages/common/engineerSidebar.jsp" />
 			<!-- 页面内容开始 -->
 			<div class="page-content-wrapper">
 				<div class="page-content">

@@ -14,7 +14,6 @@
 	<link href="/equipment/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 	<link href="/equipment/assets/css/layout.css" rel="stylesheet" type="text/css"/>
 	<link href="/equipment/assets/css/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<link href="/equipment/assets/css/custom.css" rel="stylesheet" type="text/css"/>
 	
 	<script src="/equipment/assets/plugins/jquery.min.js" type="text/javascript"></script>
 	<script src="/equipment/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
