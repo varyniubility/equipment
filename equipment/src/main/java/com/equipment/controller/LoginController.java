@@ -24,14 +24,14 @@ public class LoginController {
 	@Autowired
 	HttpSession session;
 	
-	@RequestMapping(value="/login")
+	@RequestMapping(value={"/login","/pages/login/login"})
 	public String login(@RequestParam(value="username",required=false)String username,
 			@RequestParam(value="password",required=false)String password){
 		String result = loginService.login(username,password);
 		return result;
 	}
 	
-	@RequestMapping(value="/custom")
+	@RequestMapping(value={"/custom","/pages/login/custom"})
 	public String customlogin(@RequestParam(value="number",required=false)String number,Model model){
 		Sbjbxx result=loginService.customlogin(number);
 		session.setAttribute("sbxlh", number);
@@ -48,7 +48,7 @@ public class LoginController {
 			session.setAttribute("sblx",result.getSblx());
 			return "pages/main/customerMain";
 		}else{
-			return "page/login/customerlogin";
+			return "pages/login/customerlogin";
 		}
 		
 	}

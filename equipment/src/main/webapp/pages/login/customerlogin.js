@@ -4,9 +4,11 @@
 		alert("序列号必填");
 	}
 }*/
+ function customerlogin(){
+	alert("1111");
+}
 
-
-var Login = function() {
+/*var Login = function() {
 
     var handleLogin = function() {
     	alert(1111);
@@ -49,4 +51,4 @@ var Login = function() {
             }
         });
     }
-}();
+}();*/

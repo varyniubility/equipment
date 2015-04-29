@@ -6,7 +6,7 @@
 		<meta charset="utf-8"/>
 		<link href="/equipment/assets/css/custom.css" rel="stylesheet" type="text/css"/>
 		
-		<script src="/equipment/pages/login/customerlogin.js" type="text/javascript"></script>
+		<script src="customerlogin.js" type="text/javascript"></script>
 		<style type="text/css">
 			body{font-size:14px;font-family:"微软雅黑";}
 		</style>
@@ -35,7 +35,7 @@
 				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="S/N" id="number" name="number"/>
 			</div>
 			<div class="form-actions">
-				<button type="submit" class="btn btn-primary btn-default">登录</button>
+				<button type="submit" onclick="customerlogin();" class="btn btn-primary btn-default">登录</button>
 			</div>
 		</form>
 	</div>
