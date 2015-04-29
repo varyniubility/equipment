@@ -27,7 +27,7 @@
 					</a>
 				</li>
 				<li class="start">
-					<a href="/equipment/sbjbxx?sbxlh=0">
+					<a href="/equipment/sbcjwt?sblx=手机">
 						<i class="fa fa-file-word-o"></i>
 						<span class="title">
 							设备常见问题

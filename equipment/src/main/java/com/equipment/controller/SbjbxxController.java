@@ -12,7 +12,7 @@ import com.equipment.pojo.yhxt.Sbjbxx;
 import com.equipment.service.yhxt.sbjbxx.SbjbxxService;
 
 @Controller
-public class YhxtInfoController {
+public class SbjbxxController {
 	@Autowired
 	@Qualifier("SbjbxxService")
 	private SbjbxxService sbjbxxservice;
@@ -25,7 +25,7 @@ public class YhxtInfoController {
 		if (sbxlh.equals("0")) {
 			//sbxlh = request.getAttribute("sbxlh").toString();
 			sbxlh = session.getAttribute("sbxlh").toString();
-			System.out.println(sbxlh);
+//			System.out.println(sbxlh);
 		}
 		Sbjbxx sbjbxx = sbjbxxservice.getsbjbxx(sbxlh);
 		if (sbjbxx != null) {
@@ -35,15 +35,13 @@ public class YhxtInfoController {
 			model.addAttribute("sbxh", sbjbxx.getSbxh());
 			model.addAttribute("sbys", sbjbxx.getSbys());
 			model.addAttribute("sjsj", sbjbxx.getSjsj());
+			model.addAttribute("sblx", sbjbxx.getSblx());
 		}
 		// model.addAllAttributes(sbjbxx);
 
 		// String vie = "/equipment/pages/yhxt/sbjbxx/sbjbxx.jsp";
 		// return new ModelAndView(new RedirectView(vie),(Map<String, ?>)
 		// model);
-		System.out.println(model);
-		System.out.println("获取成功，返回sbjbxx");
 		return "pages/yhxt/sbjbxx/sbjbxx";
-//		return "pages/main/customerMain";
 	}
 }

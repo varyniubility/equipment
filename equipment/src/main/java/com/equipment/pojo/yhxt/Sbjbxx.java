@@ -7,9 +7,18 @@ public class Sbjbxx {
 	private String sbys;
 	private String sbmz;
 	private String sjsj;
+	private String sblx;
+
+	public void setSblx(String sblx) {
+		this.sblx = sblx;
+	}
 
 	public String getSbxlh() {
 		return sbxlh;
+	}
+
+	public String getSblx() {
+		return sblx;
 	}
 
 	public void setSbxlh(String sbxlh) {
@@ -59,6 +68,8 @@ public class Sbjbxx {
 	@Override
 	public String toString() {
 		return "Sbjbxx [sbxlh=" + sbxlh + ", sbmc=" + sbmc + ", sbxh=" + sbxh
-				+ ", sbys=" + sbys + ", sbmz=" + sbmz + ", sjsj=" + sjsj + "]";
+				+ ", sbys=" + sbys + ", sbmz=" + sbmz + ", sjsj=" + sjsj
+				+ ", sblx=" + sblx + "]";
 	}
+
 }

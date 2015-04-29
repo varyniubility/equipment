@@ -4,7 +4,7 @@
 <mapper namespace="com.equipment.dao.yhxt.sbjbxx.ISbjbxxDao">
 	<select id="getsbjbxx" parameterType="String"
 		resultType="com.equipment.pojo.yhxt.Sbjbxx">
-		SELECT sbxlh,sbmc,sbxh,sbys,sbmz,DATE_FORMAT(t.sjsj,'%Y-%c-%d
+		SELECT sbxlh,sbmc,sbxh,sbys,sbmz,sblx,DATE_FORMAT(t.sjsj,'%Y-%c-%d
 		%h:%i:%s') sjsj 
 		FROM sbjbxx t WHERE t.sbxlh=#{sbxlh}
 

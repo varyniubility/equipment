@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List"%>
+<%@ page import="javax.servlet.http.HttpServletRequest"%>
+<%@ page import="com.equipment.pojo.yhxt.Sbcjwt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,36 +40,23 @@
 		<!-- 页面内容开始 -->
 		<div class="page-content-wrapper">
 			<div class="page-content">
-				<table width="600" border="2" align="center" cellpadding="2" cellspacing="2">
-					<tr class="fon" align="center">
-						<td width="40%"><span>设备序列号</span></td>
-						<td width="60%">${sbxlh }</td>
-					</tr>
-					<tr class="fon" align="center">
-						<td width="40%"><span>设备型号</span></td>
-						<td width="60%">${sbxh }</td>
-					</tr>
-					<tr class="fon" align="center">
-						<td width="40%"><span>设备类型</span></td>
-						<td width="60%">${sblx }</td>
-					</tr>
-					<tr class="fon" align="center">
-						<td width="40%"><span>设备序毛重</span></td>
-						<td width="60%">${sbmz }</td>
-					</tr>
-					<tr class="fon" align="center">
-						<td width="40%"><span>设备名称</span></td>
-						<td width="60%">${sbmc }</td>
-					</tr>
-					<tr class="fon" align="center">
-						<td width="40%"><span>设备颜色</span></td>
-						<td width="60%">${sbys }</td>
-					</tr>
-					<tr class="fon" align="center">
-						<td width="40%"><span>设备上架时间</span></td>
-						<td width="60%">${sjsj }</td>
-					</tr>
-				</table>
+				<%-- <span>${sbcjwtlist }</span>
+				<c.forEach items="${sbcjwtlist}" var="test">
+				${test}
+				<li><span>${test.cjwt}</span></li>
+				<li><span>${test.cjwtjd}</span></li> 
+				</c.forEach> --%>
+				<%
+					List<Sbcjwt> list = (List<Sbcjwt>) request.getAttribute("wtlist");
+					for (int i = 0; i < list.size(); i++) {
+				%>
+				<div>
+				<li><span style="font-family:华文中宋; color:red;font-size:20px;"><p><%=list.get(i).getCjwt()%></p></span></li>
+				<li><span><p>答：<%=list.get(i).getCjwtjd()%></p></span></li>
+				</div>
+				<%
+					}
+				%>
 			</div>
 		</div>
 		<!-- 页面内容结束 -->

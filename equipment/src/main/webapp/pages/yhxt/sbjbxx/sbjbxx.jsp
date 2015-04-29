@@ -45,6 +45,10 @@
 						<td width="60%">${sbxh }</td>
 					</tr>
 					<tr class="fon" align="center">
+						<td width="40%"><span>设备类型</span></td>
+						<td width="60%">${sblx }</td>
+					</tr>
+					<tr class="fon" align="center">
 						<td width="40%"><span>设备序毛重</span></td>
 						<td width="60%">${sbmz }</td>
 					</tr>
