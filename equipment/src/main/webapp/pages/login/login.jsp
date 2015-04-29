@@ -46,7 +46,7 @@
 	
 	<!-- BEGIN LOGO -->
 	<div class="logo">
-		<a href="index.html">
+		<a href="/equipment/customer.jsp">
 			<img src="/equipment/assets/img/logo-big-white.png" style="height: 17px;" alt=""/>
 		</a>
 	</div>

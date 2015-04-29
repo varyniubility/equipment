@@ -10,4 +10,11 @@
 		SELECT yhmm,yhlb FROM users
 		WHERE yhm = #{username}
 	</select> 
+	<select id="customlogin" parameterType="String"
+		resultType="com.equipment.pojo.yhxt.Sbjbxx">
+		SELECT sbxlh,sbmc,sbxh,sbys,sbmz,DATE_FORMAT(t.sjsj,'%Y-%c-%d
+		%h:%i:%s') sjsj 
+		FROM sbjbxx t WHERE t.sbxlh=#{sbxlh}
+
+	</select>
 </mapper> 
