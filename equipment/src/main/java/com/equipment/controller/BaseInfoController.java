@@ -10,6 +10,16 @@ import com.equipment.pojo.QueryParams;
 @Controller
 public class BaseInfoController {
 
+	@RequestMapping(value="baseinfo/modifyinfo")
+	public String initModifyInfo(){
+		return "/pages/engineer/modifyinfo";
+	}
+	
+	@RequestMapping(value="baseinfo/modifypassword")
+	public String initmodifypassword(){
+		return "/pages/engineer/modifypwd";
+	}
+	
 	@RequestMapping(value="/query")
 	public BaseInfo queryBaseInfo(@ModelAttribute QueryParams queryParams){
 		System.out.println(queryParams);

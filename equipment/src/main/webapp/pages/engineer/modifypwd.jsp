@@ -32,6 +32,6 @@
 			<jsp:include page="../../pages/common/footer.jsp"/>
 		</div>
 		<!-- 底部版权栏结束 -->
-		<script src="/equipment/pages/main/engineerMain.js" type="text/javascript"></script>
+		<script src="/equipment/pages/engineer/modifypwd.js" type="text/javascript"></script>
 	</body>
 </html>

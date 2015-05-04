@@ -3,6 +3,7 @@ encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
 encoding//src/main/webapp/pages/common/adminSidebar.jsp=UTF-8
+encoding//src/main/webapp/pages/common/engineerSidebar.jsp=UTF-8
 encoding//src/main/webapp/pages/common/topmenu.jsp=UTF-8
 encoding//src/main/webapp/pages/login/login.jsp=UTF-8
 encoding/<project>=UTF-8

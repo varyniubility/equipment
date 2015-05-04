@@ -57,13 +57,6 @@
 		<!-- BEGIN LOGIN FORM -->
 		<form class="login-form" action="login" method="post">
 			<div class="form-group" style="font-size:16px;font-family:'微软雅黑'">
-				<label class="control-label visible-ie8 visible-ie9">登录角色</label>
-				<select name="role" id = "role" class="form-control" >
-					<option value="0">管理人员</option>
-					<option value="1">工程师</option>       
-				</select>
-			</div>
-			<div class="form-group" style="font-size:16px;font-family:'微软雅黑'">
 				<label class="control-label visible-ie8 visible-ie9">用户名</label>
 				<input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" id="username" name="username"/>
 			</div>

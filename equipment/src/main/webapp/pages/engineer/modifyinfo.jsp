@@ -5,9 +5,10 @@
 	<head>
 		<meta charset="utf-8"/>
 		<jsp:include page="../../pages/common/import.jsp"/>
+		<script src="/equipment/pages/engineer/modifyinfo.js" type="text/javascript"></script>
 		<title>设备售后服务系统--工程师</title>
 	</head>
-	<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
+	<body class="page-header-fixed page-sidebar-closed-hide-logo">
 		<!-- 页面头开始 -->
 		<div class="page-header -i navbar navbar-fixed-top">
 			<jsp:include page="../../pages/common/topmenu.jsp"/>
@@ -20,7 +21,8 @@
 			<!-- 页面内容开始 -->
 			<div class="page-content-wrapper">
 				<div class="page-content">
-		
+					<div class="portlet box green">
+					</div>
 				</div>
 			</div>
 			<!-- 页面内容结束 -->
@@ -32,6 +34,5 @@
 			<jsp:include page="../../pages/common/footer.jsp"/>
 		</div>
 		<!-- 底部版权栏结束 -->
-		<script src="/equipment/pages/main/engineerMain.js" type="text/javascript"></script>
 	</body>
 </html>

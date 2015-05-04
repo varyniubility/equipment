@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AnswerController {
+public class MainController {
 
-	@RequestMapping(value="answer/init")
-	public String initBaseInfo(){
-		return "/pages/engineer/answer";
+	@RequestMapping(value="main/init")
+	public String initRepair(){
+		return "/pages/main/engineerMain";	
 	}
 }
