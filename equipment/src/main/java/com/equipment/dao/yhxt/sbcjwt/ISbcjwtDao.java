@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.equipment.pojo.yhxt.Sbcjwt;
+import com.equipment.pojo.Sbcjwt;
 import com.equipment.utils.MyBatisRepository;
 
 @Component

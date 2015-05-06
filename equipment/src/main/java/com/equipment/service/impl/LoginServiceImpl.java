@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.equipment.dao.ILoginDao;
 import com.equipment.pojo.Login;
-import com.equipment.pojo.yhxt.Sbjbxx;
+import com.equipment.pojo.Sbjbxx;
 import com.equipment.service.LoginService;
 import com.equipment.utils.MD5;
 

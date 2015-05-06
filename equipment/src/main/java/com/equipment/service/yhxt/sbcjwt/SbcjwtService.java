@@ -2,7 +2,7 @@ package com.equipment.service.yhxt.sbcjwt;
 
 import java.util.List;
 
-import com.equipment.pojo.yhxt.Sbcjwt;
+import com.equipment.pojo.Sbcjwt;
 
 
 public interface SbcjwtService {

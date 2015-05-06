@@ -1,10 +1,9 @@
 package com.equipment.controller;
 
-
-
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.equipment.pojo.yhxt.Sbjbxx;
+import com.equipment.pojo.Sbjbxx;
 import com.equipment.service.LoginService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,6 +25,9 @@ public class LoginController {
 	@Autowired
     @Qualifier("login")
 	public LoginService loginService;
+	
+	@Autowired
+	HttpServletRequest request;
 	
 	@Autowired
 	HttpSession session;
@@ -54,7 +56,10 @@ public class LoginController {
 			model.addAttribute("sbxh",result.getSbxh());
 			model.addAttribute("sbys",result.getSbys());
 			model.addAttribute("sjsj",result.getSjsj());
+			model.addAttribute("sblx", result.getSblx());
+//			System.out.println(model.toString());
 			session.setAttribute("sblx",result.getSblx());
+			request.setAttribute("style", "1");
 			return "pages/main/customerMain";
 		}else{
 			return "pages/login/customerlogin";
