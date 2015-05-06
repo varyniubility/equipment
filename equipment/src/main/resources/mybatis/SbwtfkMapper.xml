@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.equipment.dao.yhxt.sbwtfk.ISbwtfkDao">
+	<select id="getzsly" resultType="com.equipment.pojo.DmZsly">
+		SELECT * FROM dm_zsly
+	</select>
+
+	<select id="getsbwtfk" parameterType="String" resultType="com.equipment.pojo.Sbwtfk">
+		SELECT
+		wtbh,
+		sbxlh,t.jddm jddm,jdmc,yhpj,sbwt,sbwtjd FROM sbwtfk t,dm_fwjd t1
+		WHERE
+		t.jddm=t1.jddm AND sbxlh=#{sbxlh}
+	</select>
+
+	<insert id="insertzsly" parameterType="com.equipment.pojo.Sbwtfk">
+		INSERT INTO
+		sbwtfk(wtbh,sbxlh,zslydm1,zslydm2,zslydm3,jddm,sbwt) VALUES(#{wtbh},
+		#{sbxlh},
+		#{zslydm1},
+		#{zslydm2},
+		#{zslydm3},
+		#{jddm},
+		#{sbwt}
+		)
+	</insert>
+
+	<update id="updatewtpj" parameterType="com.equipment.pojo.Sbwtfk">
+		UPDATE sbwtfk SET
+		yhpj=#{yhpj} where wtbh=#{wtbh}
+	</update>
+
+</mapper>

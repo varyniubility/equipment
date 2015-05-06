@@ -1,4 +1,4 @@
-package com.equipment.pojo.yhxt;
+package com.equipment.pojo;
 
 public class Sbcjwt {
 	private String sblx;

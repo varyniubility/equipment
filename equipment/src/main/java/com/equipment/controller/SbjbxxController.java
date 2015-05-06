@@ -1,5 +1,6 @@
 package com.equipment.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.equipment.pojo.yhxt.Sbjbxx;
+import com.equipment.pojo.Sbjbxx;
 import com.equipment.service.yhxt.sbjbxx.SbjbxxService;
 
 @Controller
@@ -17,6 +18,9 @@ public class SbjbxxController {
 	@Qualifier("SbjbxxService")
 	private SbjbxxService sbjbxxservice;
 
+	@Autowired
+	HttpServletRequest request;
+	
 	@Autowired
 	HttpSession session;
 	@RequestMapping(value ="/sbjbxx")
@@ -42,6 +46,7 @@ public class SbjbxxController {
 		// String vie = "/equipment/pages/yhxt/sbjbxx/sbjbxx.jsp";
 		// return new ModelAndView(new RedirectView(vie),(Map<String, ?>)
 		// model);
+		request.setAttribute("style","1");
 		return "pages/yhxt/sbjbxx/sbjbxx";
 	}
 }

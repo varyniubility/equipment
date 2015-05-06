@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.equipment.pojo.yhxt.Sbcjwt;
+import com.equipment.pojo.Sbcjwt;
 import com.equipment.service.yhxt.sbcjwt.SbcjwtService;
 
 @Controller
@@ -46,6 +46,7 @@ public class SbcjwtController {
 		request.setAttribute("wtlist", sbcjwtlist);
 //		sbcjwtlist = (List<Sbcjwt>) model.asMap().get("sbcjwlist");
 //		System.out.println(modellist);
+		request.setAttribute("style", "2");
 		return "pages/yhxt/sbcjwt/sbcjwt";
 	}
 }
