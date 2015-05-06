@@ -5,14 +5,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.equipment.service.RepairService;
+//import com.equipment.service.RepairService;
 
 @Controller
 public class RepairController {
 
 	@Autowired
 	@Qualifier("repair")
-	public RepairService repairService;
+	//public RepairService repairService;
 	
 	@RequestMapping(value="repair/init")
 	public String initRepair(){
