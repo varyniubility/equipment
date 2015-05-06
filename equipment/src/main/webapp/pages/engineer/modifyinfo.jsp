@@ -60,7 +60,7 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="sex" class="col-md-2 control-label">：</label>
+													<label for="sex" class="col-md-2 control-label">性别：</label>
 													<div class="col-md-10">
 														<input type="text" class="form-control" placeholder="姓名">
 													</div>
@@ -70,7 +70,7 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="age" class="col-md-2 control-label">年龄：</label>
+													<label for="age" class="col-md-2 control-label">电话：</label>
 													<div class="col-md-10">
 														<input type="text" class="form-control" placeholder="姓名">
 													</div>
@@ -80,7 +80,7 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="name" class="col-md-2 control-label">姓名：</label>
+													<label for="name" class="col-md-2 control-label">省：</label>
 													<div class="col-md-10">
 														<input type="text" class="form-control" placeholder="姓名">
 													</div>
@@ -90,7 +90,7 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="name" class="col-md-2 control-label">姓名：</label>
+													<label for="name" class="col-md-2 control-label">市：</label>
 													<div class="col-md-10">
 														<input type="text" class="form-control" placeholder="姓名">
 													</div>
@@ -100,7 +100,7 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="name" class="col-md-2 control-label">姓名：</label>
+													<label for="name" class="col-md-2 control-label">县：</label>
 													<div class="col-md-10">
 														<input type="text" class="form-control" placeholder="姓名">
 													</div>
@@ -110,7 +110,7 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="name" class="col-md-2 control-label">姓名：</label>
+													<label for="name" class="col-md-2 control-label">详细地址：</label>
 													<div class="col-md-10">
 														<input type="text" class="form-control" placeholder="姓名">
 													</div>
@@ -118,54 +118,12 @@
 												<div class="col-md-4"></div>
 											</div>
 											<div class="form-group">
-												<div class="col-md-2"></div>
-												<div class="col-md-6">
-													<label for="name" class="col-md-2 control-label">姓名：</label>
-													<div class="col-md-10">
-														<input type="text" class="form-control" placeholder="姓名">
-													</div>
-												</div>
 												<div class="col-md-4"></div>
-											</div>
-											<div class="form-group">
-												<div class="col-md-2"></div>
-												<div class="col-md-6">
-													<label for="name" class="col-md-2 control-label">姓名：</label>
-													<div class="col-md-10">
-														<input type="text" class="form-control" placeholder="姓名">
-													</div>
-												</div>
 												<div class="col-md-4"></div>
-											</div>
-											<div class="form-group">
-												<div class="col-md-2"></div>
-												<div class="col-md-6">
-													<label for="name" class="col-md-2 control-label">姓名：</label>
-													<div class="col-md-10">
-														<input type="text" class="form-control" placeholder="姓名">
-													</div>
+												<div class="col-md-4">
+													<button type="button" id="submitbtn" class="btn btn-success">确认</button>
+													<button type="button" id="cancel" class="btn btn-success">取消</button>
 												</div>
-												<div class="col-md-4"></div>
-											</div>
-											<div class="form-group">
-												<div class="col-md-2"></div>
-												<div class="col-md-6">
-													<label for="name" class="col-md-2 control-label">姓名：</label>
-													<div class="col-md-10">
-														<input type="text" class="form-control" placeholder="姓名">
-													</div>
-												</div>
-												<div class="col-md-4"></div>
-											</div>
-											<div class="form-group">
-												<div class="col-md-2"></div>
-												<div class="col-md-6">
-													<label for="name" class="col-md-2 control-label">姓名：</label>
-													<div class="col-md-10">
-														<input type="text" class="form-control" placeholder="姓名">
-													</div>
-												</div>
-												<div class="col-md-4"></div>
 											</div>
 										</div>
 									</form>

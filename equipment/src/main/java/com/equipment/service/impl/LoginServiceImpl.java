@@ -1,6 +1,8 @@
 package com.equipment.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,26 +22,31 @@ public class LoginServiceImpl implements LoginService {
 	public ILoginDao loginDao;
 
 	@Override
-	public String login(String username, String password) {
+	public Map<String,String> login(String username, String password) {
 		List<Login> pwdList = loginDao.login(username);
+		Map<String,String> userMap = new HashMap<>();
 		MD5 md5 = new MD5();
 		String md5Password = md5.GetMD5Code(password);
 		String resultStr = "pages/login/login";
 		for (Login login : pwdList) {
 			if (md5Password.equals(login.getYhmm()) && login.getYhmm() != null) {
 				if (login.getYhlb().equals("0") && login.getYhlb() != null) {
-					resultStr = "pages/main/adminMain";
+					userMap.put("userid", login.getYhdm());
+					userMap.put("view", "pages/main/adminMain");
 				} else if (login.getYhlb().equals("1")
 						&& login.getYhlb() != null) {
-					resultStr = "pages/main/engineerMain";
+					userMap.put("userid", login.getYhdm());
+					userMap.put("view", "pages/main/engineerMain");
 				} else {
-					resultStr = "pages/login/login";
+					userMap.put("userid", "");
+					userMap.put("view", "pages/login/login");
 				}
 			} else {
-				resultStr = "pages/login/login";
+				userMap.put("userid", "");
+				userMap.put("view", "pages/login/login");
 			}
 		}
-		return resultStr;
+		return userMap;
 	}
 
 	@Override

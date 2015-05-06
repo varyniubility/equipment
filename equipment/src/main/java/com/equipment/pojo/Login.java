@@ -2,6 +2,7 @@ package com.equipment.pojo;
 
 public class Login {
 
+	private String yhdm;
 	private String yhmm;
 	private String yhlb;
 	public String getYhmm() {
@@ -15,6 +16,13 @@ public class Login {
 	}
 	public void setYhlb(String yhlb) {
 		this.yhlb = yhlb;
+	}
+	
+	public String getYhdm() {
+		return yhdm;
+	}
+	public void setYhdm(String yhdm) {
+		this.yhdm = yhdm;
 	}
 	@Override
 	public String toString() {

@@ -20,7 +20,7 @@
 			<li class="dropdown-user">
 				<a href="javascript:;" class="dropdown-toggle">
 					<img alt="" class="img-circle" src="/equipment/assets/img/avatar3_small.jpg"/>
-					<span class="username username-hide-on-mobile"></span>
+					<span class="username username-hide-on-mobile">${userid}</span>
 				</a>
 			</li>
 			<li class="dropdown-user">

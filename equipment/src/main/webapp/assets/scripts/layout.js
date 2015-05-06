@@ -219,6 +219,7 @@ var Layout = function () {
                 url: url,
                 dataType: "html",
                 success: function (res) {
+                	console.log(res);
                     if (the.parents('li.open').size() === 0) {
                         $('.page-sidebar-menu > li.open > a').click();
                     }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.equipment.dao.IBaseInfoDao">
+	<update id="modifyPassword" parameterType="String">
+		UPDATE users SET yhmm=#{0}
+		WHERE yhdm=#{1}
+	</update>
+	<select id="queryPassword" resultType="String" parameterType="String">
+		SELECT yhmm FROM users WHERE yhdm=#{userid}
+	</select>
+</mapper> 
