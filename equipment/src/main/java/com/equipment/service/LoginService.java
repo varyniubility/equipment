@@ -2,7 +2,6 @@ package com.equipment.service;
 
 import java.util.Map;
 
-import com.equipment.pojo.yhxt.Sbjbxx;
 import com.equipment.pojo.Sbjbxx;
 
 public interface LoginService {

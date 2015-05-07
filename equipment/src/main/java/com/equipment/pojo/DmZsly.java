@@ -1,5 +1,10 @@
 package com.equipment.pojo;
 
+/**
+ * 知识领域
+ * @author chenxiushen
+ *
+ */
 public class DmZsly {
 	String zslydm;
 	String zslymc;

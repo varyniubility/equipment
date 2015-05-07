@@ -3,7 +3,6 @@ package com.equipment.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.equipment.pojo.BaseInfo;
 import com.equipment.pojo.ModifyPassword;
-import com.equipment.pojo.QueryParams;
 import com.equipment.service.BaseInfoService;
 
 @Controller
