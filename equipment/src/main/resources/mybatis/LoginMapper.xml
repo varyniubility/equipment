@@ -7,7 +7,7 @@
 		获取用户: 输出直接映射到对象, login_name列要"as loginName"以方便映射 ,team_id as "team.id"创建team对象并赋值
 	-->
 	<select id="login" resultType="Login" parameterType="String">  
-		SELECT yhmm,yhlb FROM users
+		SELECT yhdm,yhmm,yhlb FROM users
 		WHERE yhm = #{username}
 	</select> 
 	<select id="customlogin" parameterType="String"

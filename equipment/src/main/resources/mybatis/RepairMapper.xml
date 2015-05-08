@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.equipment.dao.IRepairDao">
+	<!--
+		获取用户: 输出直接映射到对象, login_name列要"as loginName"以方便映射 ,team_id as "team.id"创建team对象并赋值
+	-->
+	<select id="queryService" resultType="ServiceForm">  
+		SELECT sqdbh,fs.sbxlh AS sbxlh,fwlx,sj.sbmc AS sbmc,sj.sbys AS sbys,sj.sblx AS sblx,sj.sbxh AS sbxh,khsfid,khsid,khqid,khxxdz,sbwtms,dz1.zslymc AS zslymc1,dz2.zslymc
+				AS zslymc2,dz3.zslymc AS zslymc3,gcui.yhxm AS gcsdm,adui.yhxm AS glydm,df.jdmc AS jdmc
+		FROM fwsqd fs
+		LEFT JOIN dm_fwjd df ON df.jddm=fs.jddm
+		LEFT JOIN sbjbxx sj ON sj.sbxlh=fs.sbxlh
+		LEFT JOIN dm_zsly dz1 ON dz1.zslydm=fs.zslydm1
+		LEFT JOIN dm_zsly dz2 ON dz2.zslydm=fs.zslydm2
+		LEFT JOIN dm_zsly dz3 ON dz3.zslydm=fs.zslydm3
+		LEFT JOIN userinfo gcui ON gcui.yhdm = fs.gcsdm
+		LEFT JOIN userinfo adui ON adui.yhdm = fs.glydm
+		WHERE fs.jddm IN ("1","2","3")
+	</select> 
+</mapper> 
