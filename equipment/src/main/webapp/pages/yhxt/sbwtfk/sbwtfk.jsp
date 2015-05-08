@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="../../../pages/common/import.jsp" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List"%>
 <%@ page import="javax.servlet.http.HttpServletRequest"%>
@@ -11,20 +10,8 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<link
-	href="/equipment/assets/plugins/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="/equipment/assets/plugins/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="/equipment/assets/plugins/uniform/css/uniform.default.css"
-	rel="stylesheet" type="text/css" />
-<link href="/equipment/assets/css/layout.css" rel="stylesheet"
-	type="text/css" />
-<link href="/equipment/assets/css/darkblue.css" rel="stylesheet"
-	type="text/css" id="style_color" />
-<link href="/equipment/assets/css/custom.css" rel="stylesheet"
-	type="text/css" id="style_color" />
-
+<jsp:include page="../../../pages/common/import.jsp" />
+<link href="/equipment/assets/css/custom.css" rel="stylesheet"type="text/css" id="style_color" />
 <script src="/equipment/pages/yhxt/sbwtfk/sbwtfk.js"
 	type="text/javascript"></script>
 <title>设备常见问题反馈</title>
@@ -43,13 +30,32 @@
 		<!-- 页面内容开始 -->
 		<div class="page-content-wrapper">
 			<div class="page-content">
-				<%-- <span>${sbcjwtlist }</span>
-				<c.forEach items="${sbcjwtlist}" var="test">
-				${test}
-				<li><span>${test.cjwt}</span></li>
-				<li><span>${test.cjwtjd}</span></li> 
-				</c.forEach> --%>
-				<!-- onsubmit="javascript:if(submitok()==1)return true;else return false;"  -->
+				
+				
+				<!-- <div class="row">
+					<div class="col-md-12">
+						<div class="portlet box yellow-saffron">
+							<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-gift"></i>选择分类
+									</div>
+									<div class="tools">
+										<a href="" class="collapse">
+										</a>
+										<a href="#portlet-config" data-toggle="modal" class="config">
+										</a>
+										<a href="" class="reload">
+										</a>
+										<a href="" class="remove">
+										</a>
+									</div>
+							</div>
+							<div class="portlet-body">
+							</div>
+						</div>
+					</div>
+				</div> -->
+				
 
 				<form action="addsbwt"
 					onsubmit="javascript:if(submitok()==1)return true;else return false;"
@@ -58,16 +64,33 @@
 						type="hidden" name="zslydm2" id="zslydm2" value="" /> <input
 						type="hidden" name="zslydm3" id="zslydm3" value="" />
 					<!-- <span style="font-family: 华文中宋; font-size: 20px;">设备问题反馈</span><br> -->
-					<a href="javascript:void(0);" onclick="zslyxz();">分类选择</a>
-					<div id="zslyxz" style="display: none">
-						<div>
+					
+					
+					<div class="row">
+					<div class="col-md-12">
+						<div class="portlet box yellow-saffron">
+							<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-gift"></i>选择问题分类
+									</div>
+									<div class="tools">
+										<a href="" class="collapse">
+										</a>
+										<a href="" class="reload">
+										</a>
+										<a href="" class="remove">
+										</a>
+									</div>
+							</div>
+							<div class="portlet-body">
+								<div>
 							<span class="spanzs">请最多选择三个</span>
 						</div>
-						<table width="800">
+						<div>
+						<table width="800" align="center" >
 
 							<%
-								List<DmZsly> zslylist = (List<DmZsly>) request
-										.getAttribute("zslylist");
+								List<DmZsly> zslylist = (List<DmZsly>) request.getAttribute("zslylist");
 								if (zslylist != null) {
 									for (int i = 0; i < zslylist.size(); i++) {
 										if (i % 4 == 0) {
@@ -90,24 +113,46 @@
 							%>
 
 						</table>
+						</div>
+							</div>
+						</div>
 					</div>
-					<div>
-						<span class="spanzs">请填写您的设备问题:</span><br>
-						<textarea id="sbwt" name="sbwt" rows="5" cols="110" class="textareasty"
+				</div>
+					
+					
+					<div class="row">
+					<div class="col-md-12">
+						<div class="portlet box yellow-saffron">
+							<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-gift"></i>设备问题描述
+									</div>
+									<div class="tools">
+										<a href="" class="collapse">
+										</a>
+										<a href="" class="reload">
+										</a>
+										<a href="" class="remove">
+										</a>
+									</div>
+							</div>
+							<div class="portlet-body">
+								<div>
+						<textarea id="sbwt" name="sbwt" rows="5" cols="150" class="textareasty"
 							placeholder="设备问题描述" maxlength="200"></textarea>
+						<input type="submit" id="form_submit" value="提交" />
 
-						<table width="800">
-							<tr>
-								<td width="220"></td>
-								<td width="220"></td>
-								<td width="200"></td>
-								<td><input type="submit" id="form_submit" value="提交" /></td>
-							</tr>
-						</table>
-
+					</div>
+					</div>
+					</div>
+						</div>
 					</div>
 				</form>
 				<!-- 表单结束 -->
+							
+					
+					
+					
 
 
 				<%
@@ -116,7 +161,27 @@
 				%>
 				<!-- 表单开始 -->
 				<!--onsubmit="javascript:if(addpj()==1)return true;else return false;"  -->
-				<form action="updatewtpj" method="post" id="form_update">
+				
+				
+				<div class="row">
+					<div class="col-md-12">
+						<div class="portlet box yellow-saffron">
+							<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-gift"></i>已经提问过问题
+									</div>
+									<div class="tools">
+										<a href="" class="collapse">
+										</a>
+										<a href="" class="reload">
+										</a>
+										<a href="" class="remove">
+										</a>
+									</div>
+							</div>
+							<div class="portlet-body">
+								<div class="">
+									<form action="updatewtpj" method="post" id="form_update">
 					<input type="hidden" id="wtbh" name="wtbh" value="" /> <input
 						type="hidden" id="yhpj" name="yhpj" value="" />
 					<%
@@ -124,13 +189,6 @@
 					%>
 					<div>
 						<span class="spanzs""> 您未提交过问题。 </span>
-					</div>
-					<%
-						} else {
-					%>
-					<div>
-						<!--<span style="font-family: 华文中宋; color: red; font-size: 10px;">
-						您提交过的问题如下：： </span>  -->
 					</div>
 					<%
 						}
@@ -144,9 +202,9 @@
 					<div>
 						<table width="1000">
 							<tr>
-								<td width="80%"><span class="spanwt">●<%=list.get(i).getSbwt()%></span>
+								<td width="85%"><span class="spanwt">●<%=list.get(i).getSbwt()%></span>
 								</td>
-								<td width="20%"><span class="spanwtjd">问题进度:<span
+								<td width="15%"><span class="spanwtjd">问题进度:<span
 										class="spanzs"><%=list.get(i).getJdmc()%></span></span></td>
 							</tr>
 							<%
@@ -162,13 +220,13 @@
 									if (list.get(i).getYhpj() == null) {
 								%>
 								<td width="75%"><textarea id="yhpj<%=i%>" class="textareasty"
-										name="yhpj<%=i%>" rows="5" cols="100" placeholder="请输入评价"
+										name="yhpj<%=i%>" rows="5" cols="150" placeholder="请输入评价"
 										maxlength="200"></textarea></td>
 								<%
 									} else {
 								%>
 								<td width="80%"><textarea id="yhpj<%=i%>" class="textareasty"
-										name="yhpj<%=i%>" rows="5" cols="100" placeholder="请输入评价"
+										name="yhpj<%=i%>" rows="5" cols="150" placeholder="请输入评价"
 										maxlength="200"><%=list.get(i).getYhpj()%></textarea></td>
 								<%
 									}
@@ -187,11 +245,15 @@
 						}
 					%>
 				</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				
 				<!--表单结束  -->
-			</div>
-		</div>
 		<!-- 页面内容结束 -->
-	</div>
 	<!-- 页面容器结束 -->
 
 	<!-- 底部版权栏开始 -->

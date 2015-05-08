@@ -36,36 +36,59 @@
 		<!-- 页面内容开始 -->
 		<div class="page-content-wrapper">
 			<div class="page-content">
+			<div class="row">
+				<div class="col-md-12" >
+				<div class="portlet box yellow-saffron">
+				<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-gift"></i>设备基本信息
+									</div>
+									<div class="tools">
+										<a href="" class="collapse">
+										</a>
+										<!-- <a href="#portlet-config" data-toggle="modal" class="config">
+										</a>
+										<a href="" class="reload">
+										</a>
+										<a href="" class="remove">
+										</a> -->
+									</div>
+				</div>
+				<div class="portlet-body table_fon">
 				<table width="600" border="2" align="center" cellpadding="2" cellspacing="2">
-					<tr class="fon" align="center">
+					<tr align="center">
 						<td width="40%"><span>设备序列号</span></td>
 						<td width="60%">${sbxlh }</td>
 					</tr>
-					<tr class="fon" align="center">
+					<tr align="center">
 						<td width="40%"><span>设备型号</span></td>
 						<td width="60%">${sbxh }</td>
 					</tr>
-					<tr class="fon" align="center">
+					<tr align="center">
 						<td width="40%"><span>设备类型</span></td>
 						<td width="60%">${sblx }</td>
 					</tr>
-					<tr class="fon" align="center">
+					<tr align="center">
 						<td width="40%"><span>设备序毛重</span></td>
 						<td width="60%">${sbmz }</td>
 					</tr>
-					<tr class="fon" align="center">
+					<tr  align="center">
 						<td width="40%"><span>设备名称</span></td>
 						<td width="60%">${sbmc }</td>
 					</tr>
-					<tr class="fon" align="center">
+					<tr  align="center">
 						<td width="40%"><span>设备颜色</span></td>
 						<td width="60%">${sbys }</td>
 					</tr>
-					<tr class="fon" align="center">
-						<td width="40%"><span>设备上架时间</span></td>
+					<tr  align="center">
+						<td width="40%"><span >设备上架时间</span></td>
 						<td width="60%">${sjsj }</td>
 					</tr>
 				</table>
+				</div>
+				</div>
+				</div>
+				</div>
 			</div>
 		</div>
 		<!-- 页面内容结束 -->
