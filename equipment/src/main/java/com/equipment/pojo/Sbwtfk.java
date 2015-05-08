@@ -1,16 +1,16 @@
 package com.equipment.pojo;
 
 public class Sbwtfk {
-	String wtbh;
-	String sbxlh;
-	String zslydm1;
-	String zslydm2;
-	String zslydm3;
-	String jddm;
-	String yhpj;
-	String sbwt;
-	String sbwtjd;
-	String jdmc;
+	private String wtbh;
+	private String sbxlh;
+	private String zslydm1;
+	private String zslydm2;
+	private String zslydm3;
+	private String jddm;
+	private String yhpj;
+	private String sbwt;
+	private String sbwtjd;
+	private String jdmc;
 
 	public String getJdmc() {
 		return jdmc;

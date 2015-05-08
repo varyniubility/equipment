@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.equipment.dao.yhxt.sbfw.ISbfwDao">
+	<select id="getAllPro" resultType="com.equipment.pojo.Province">
+		SELECT provinceid,provincename FROM s_province ORDER BY provinceid ASC
+	</select>
+	
+	<select id="getCityByProId" parameterType="String" resultType="com.equipment.pojo.City">
+		SELECT cityid,cityname,provinceid FROM s_city WHERE provinceid = #{proid} ORDER BY cityid ASC
+	</select>
+	
+	<select id="getDistinctByCityId" parameterType="String" resultType="com.equipment.pojo.District">
+		SELECT districtid,districtname,cityid FROM s_district WHERE cityid=#{cityid} ORDER BY districtid ASC
+	</select>
+
+</mapper>

@@ -1,3 +1,11 @@
+$(document).ready(function(){
+	$("#sbcjwtMain").attr("class","start");
+	$("#sbjbxxMain").attr("class","start");
+	$("#sbwtfkMain").attr("class","start active");
+	
+})
+
+
 function zslyxz() {
 	var sty = document.getElementById('zslyxz').style.display;
 	if (sty == 'none') {

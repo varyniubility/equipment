@@ -2,6 +2,41 @@
 custom page
 ***/
 /* bg color */
+
+.select_css{
+	width:160px;
+	height: 25px;
+	font-family:华文中宋;
+	font-size: 15px;
+}
+
+.spanwt{
+	font-family:华文中宋;
+	color:red;
+	font-size:18px;
+}
+.spanwtjd{
+	font-family:华文中宋;
+	font-size:13px;
+}
+.spanzs{
+	font-family:华文中宋;
+	color:red;
+	font-size:11px;
+}
+.spanzsly{
+	font-family:华文中宋;
+	font-size:16px;
+}
+
+.textareasty{
+	width:700px;
+	higth:250px;
+	background-color: white;
+	font-family: 华文中宋;
+	font-size: 12;
+}
+
 .custom {
   background-color: #364150 !important;
 }

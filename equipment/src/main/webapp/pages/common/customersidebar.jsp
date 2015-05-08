@@ -7,35 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 </head>
-<%
-	String style=request.getAttribute("style").toString();
-	String s1=new String();
-	String s2=new String();
-	String s3=new String();
-	String s4=new String();
-	String s5=new String();
-	String s6=new String();
-	switch(style){
-	case "1":
-		s1="active";
-		break;
-	case "2":
-		s2="active";
-		break;
-	case "3":
-		s3="active";
-		break;
-	case "4":
-		s4="active";
-		break;
-	case "5":
-		s5="active";
-		break;
-	case "6":
-		s6="active";
-		break;
-	}
-%>
 <body>
 
 	<!-- 侧边栏开始 -->
@@ -47,7 +18,7 @@
 					<!-- 侧边栏收缩按钮 -->
 					<div class="sidebar-toggler"></div>
 				</li>
-				<li class="start <%=s1%> ">
+				<li id="sbjbxxMain" class="start active">
 					<a href="/equipment/sbjbxx?sbxlh=0">
 						<i class="fa fa-home"></i>
 						<span class="title">
@@ -57,7 +28,7 @@
 						</span>
 					</a>
 				</li>
-				<li class="start <%=s2%>">
+				<li id="sbcjwtMain" class="start">
 					<a href="/equipment/sbcjwt?sblx=0">
 						<i class="fa fa-file-word-o"></i>
 						<span class="title">
@@ -67,7 +38,7 @@
 						</span>
 					</a>
 				</li>
-				<li class="start <%=s3%>">
+				<li id="sbwtfkMain" class="start">
 					<a href="/equipment/sbwtfk?sbxlh=0">
 						<i class="fa fa-home"></i>
 						<span class="title">
@@ -78,7 +49,7 @@
 					</a>
 				</li>
 				
-				<li class="start">
+				<li id="sbfwMain" class="start">
 					<a href="javascript:; ">
 						<i class="fa fa-cog"></i>
 						<span class="title">设备服务</span>
@@ -86,17 +57,17 @@
 						<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-						<li>
-							<a href="ecommerce_index.html">
+						<li id="sbwxzdcxMain">
+							<a href="/equipment/sbfw/init">
 							<i class="icon-home"></i>
 							维修站点查询</a>
 						</li>
-						<li>
+						<li id="sbkdwxsqMain">
 							<a href="ecommerce_index.html">
 							<i class="icon-home"></i>
 							快递维修申请</a>
 						</li>
-						<li>
+						<li id="sbsmwxsqMain">
 							<a href="ecommerce_index.html">
 							<i class="icon-home"></i>
 							上门维修申请</a>

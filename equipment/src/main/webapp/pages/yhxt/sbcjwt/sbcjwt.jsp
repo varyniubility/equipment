@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<jsp:include page="../../../pages/common/import.jsp"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List"%>
 <%@ page import="javax.servlet.http.HttpServletRequest"%>
@@ -20,11 +21,11 @@
 	type="text/css" />
 <link href="/equipment/assets/css/darkblue.css" rel="stylesheet"
 	type="text/css" id="style_color" />
-<link href="/equipment/assets/css/yhxt.css" rel="stylesheet"
+<link href="/equipment/assets/css/custom.css" rel="stylesheet"
 	type="text/css" id="style_color" />
 
-<script src="sbjbxx.js" type="text/javascript"></script>
-<title>设备基本信息</title>
+<script src="/equipment/pages/yhxt/sbcjwt/sbcjwt.js" type="text/javascript"></script>
+<title>设备常见问题</title>
 </head>
 <body
 	class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
@@ -50,10 +51,10 @@
 					List<Sbcjwt> list = (List<Sbcjwt>) request.getAttribute("wtlist");
 					for (int i = 0; i < list.size(); i++) {
 				%>
-				<div>
-				<li><span style="font-family:华文中宋; color:red;font-size:20px;"><p><%=list.get(i).getCjwt()%></p></span></li>
-				<li><span><p>答：<%=list.get(i).getCjwtjd()%></p></span></li>
-				</div>
+				
+				<span class="spanwt"><p>●<%=list.get(i).getCjwt()%></p></span>
+				<span class="spanwtjd"><p>●&nbsp&nbsp答：<%=list.get(i).getCjwtjd()%></p></span>
+				
 				<%
 					}
 				%>
