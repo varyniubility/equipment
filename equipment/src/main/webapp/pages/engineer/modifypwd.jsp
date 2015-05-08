@@ -45,8 +45,8 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="oldpassword" class="col-md-2 control-label">原始密码：</label>
-													<div class="col-md-10">
+													<label for="oldpassword" class="col-md-5 control-label">原始密码：</label>
+													<div class="col-md-7">
 														<input type="password" class="form-control" placeholder="原始密码" id="oldpassword" name="oldpassword">
 													</div>
 												</div>
@@ -55,8 +55,8 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="newpassword" class="col-md-2 control-label">新密码：</label>
-													<div class="col-md-10">
+													<label for="newpassword" class="col-md-5 control-label">新密码：</label>
+													<div class="col-md-7">
 														<input type="password" class="form-control" placeholder="新密码" id="newpassword" name="newpassword">
 													</div>
 												</div>
@@ -65,8 +65,8 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="confirmpwd" class="col-md-2 control-label">确认新密码：</label>
-													<div class="col-md-10">
+													<label for="confirmpwd" class="col-md-5 control-label">确认新密码：</label>
+													<div class="col-md-7">
 														<input type="password" class="form-control" placeholder="确认新密码" id="confirmpwd" name="confirmpwd">
 													</div>
 												</div>

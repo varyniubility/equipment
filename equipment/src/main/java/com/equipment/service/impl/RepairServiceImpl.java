@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.equipment.pojo.DropDownJd;
 import com.equipment.dao.IRepairDao;
 import com.equipment.pojo.DatatableParams;
+import com.equipment.pojo.ModifyJd;
 import com.equipment.pojo.ResultPojo;
 import com.equipment.pojo.ServiceForm;
 import com.equipment.service.RepairService;
@@ -31,7 +33,7 @@ public class RepairServiceImpl implements RepairService {
 		List<ServiceForm> resultList = repairDao.queryService();
 		List<ServiceForm> subList = getSubList(resultList,iDisplayStart,iDisplayLength);
 		
-		String obj1[][] = new String[subList.size()][6];
+		String obj1[][] = new String[subList.size()][8];
 	    for(ServiceForm w:subList){
 	    	obj1[count][0] = w.getSbmc();
 	    	obj1[count][1] = w.getSbxh();
@@ -39,6 +41,8 @@ public class RepairServiceImpl implements RepairService {
 	    	obj1[count][3] = w.getSblx();
 	    	obj1[count][4] = w.getFwlx();
 	    	obj1[count][5] = w.getJdmc();
+	    	obj1[count][6] = w.getJddm();
+	    	obj1[count][7] = w.getSqdbh();
 			count++;
 	    }
 		ResultPojo res = new ResultPojo();
@@ -88,5 +92,20 @@ public class RepairServiceImpl implements RepairService {
         	subList = list.subList(startNum, endNum);
         }
 		return subList;
+	}
+
+
+	@Override
+	public List<DropDownJd> queryjd(String jddm) {
+		// TODO Auto-generated method stub
+		List<DropDownJd> result = repairDao.queryjd(jddm);
+		return result;
+	}
+
+
+	@Override
+	public String modifyjd(ModifyJd modifyjd) {
+		Integer num = repairDao.modifyjd(modifyjd);
+		return null;
 	}
 }
