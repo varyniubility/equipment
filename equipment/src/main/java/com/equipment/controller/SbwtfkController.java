@@ -41,7 +41,6 @@ public class SbwtfkController {
 		
 		
 		
-		request.setAttribute("style","3");
 		return "pages/yhxt/sbwtfk/sbwtfk";
 	}
 	
@@ -64,7 +63,6 @@ public class SbwtfkController {
 		request.setAttribute("zslylist", zslylist);
 		request.setAttribute("sbwtlist", sbwtlist);
 		
-		request.setAttribute("style","3");
 		return "pages/yhxt/sbwtfk/sbwtfk";
 	}
 	
@@ -79,7 +77,6 @@ public class SbwtfkController {
 		request.setAttribute("zslylist", zslylist);
 		request.setAttribute("sbwtlist", sbwtlist);
 		
-		request.setAttribute("style","3");
 		return "pages/yhxt/sbwtfk/sbwtfk";
 	}
 }

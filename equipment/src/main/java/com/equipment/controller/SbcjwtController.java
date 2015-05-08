@@ -46,7 +46,6 @@ public class SbcjwtController {
 		request.setAttribute("wtlist", sbcjwtlist);
 //		sbcjwtlist = (List<Sbcjwt>) model.asMap().get("sbcjwlist");
 //		System.out.println(modellist);
-		request.setAttribute("style", "2");
 		return "pages/yhxt/sbcjwt/sbcjwt";
 	}
 }

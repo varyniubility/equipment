@@ -46,7 +46,6 @@ public class SbjbxxController {
 		// String vie = "/equipment/pages/yhxt/sbjbxx/sbjbxx.jsp";
 		// return new ModelAndView(new RedirectView(vie),(Map<String, ?>)
 		// model);
-		request.setAttribute("style","1");
 		return "pages/yhxt/sbjbxx/sbjbxx";
 	}
 }

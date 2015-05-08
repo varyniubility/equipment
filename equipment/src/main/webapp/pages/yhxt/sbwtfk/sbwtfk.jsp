@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:include page="../../../pages/common/import.jsp" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List"%>
 <%@ page import="javax.servlet.http.HttpServletRequest"%>
@@ -21,12 +22,12 @@
 	type="text/css" />
 <link href="/equipment/assets/css/darkblue.css" rel="stylesheet"
 	type="text/css" id="style_color" />
-<link href="/equipment/assets/css/yhxt.css" rel="stylesheet"
+<link href="/equipment/assets/css/custom.css" rel="stylesheet"
 	type="text/css" id="style_color" />
 
 <script src="/equipment/pages/yhxt/sbwtfk/sbwtfk.js"
 	type="text/javascript"></script>
-<title>设备基本信息</title>
+<title>设备常见问题反馈</title>
 </head>
 <body
 	class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
@@ -60,7 +61,7 @@
 					<a href="javascript:void(0);" onclick="zslyxz();">分类选择</a>
 					<div id="zslyxz" style="display: none">
 						<div>
-							<span style="font-family: 华文中宋; color: red; font-size: 10px;">请最多选择三个</span>
+							<span class="spanzs">请最多选择三个</span>
 						</div>
 						<table width="800">
 
@@ -77,8 +78,7 @@
 								%>
 								<td><input type="checkbox" name="zsly"
 									value="<%=zslylist.get(i).getZslydm()%>"><span
-									style="font-family: 华文中宋; font-size: 16px;"><%=zslylist.get(i).getZslymc()%></span>
-								</td>
+									class="spanzsly"><%=zslylist.get(i).getZslymc()%></span></td>
 								<%
 									if (i % 4 == 3) {
 								%>
@@ -92,8 +92,8 @@
 						</table>
 					</div>
 					<div>
-						<span style="font-family: 华文中宋; color: red; font-size: 10px;">请填写您的设备问题:</span><br>
-						<textarea id="sbwt" name="sbwt" rows="5" cols="110"
+						<span class="spanzs">请填写您的设备问题:</span><br>
+						<textarea id="sbwt" name="sbwt" rows="5" cols="110" class="textareasty"
 							placeholder="设备问题描述" maxlength="200"></textarea>
 
 						<table width="800">
@@ -117,14 +117,13 @@
 				<!-- 表单开始 -->
 				<!--onsubmit="javascript:if(addpj()==1)return true;else return false;"  -->
 				<form action="updatewtpj" method="post" id="form_update">
-				<input type="hidden" id="wtbh" name="wtbh" value=""/>
-				<input type="hidden" id="yhpj" name="yhpj" value=""/>
+					<input type="hidden" id="wtbh" name="wtbh" value="" /> <input
+						type="hidden" id="yhpj" name="yhpj" value="" />
 					<%
 						if (list.size() == 0) {
 					%>
 					<div>
-						<span style="font-family: 华文中宋; color: red; font-size: 10px;">
-							您未提交过问题。 </span>
+						<span class="spanzs""> 您未提交过问题。 </span>
 					</div>
 					<%
 						} else {
@@ -145,36 +144,37 @@
 					<div>
 						<table width="1000">
 							<tr>
-								<td width="80%"><span
-									style="font-family: 华文中宋; color: red; font-size: 15px;">●<%=list.get(i).getSbwt()%></span>
+								<td width="80%"><span class="spanwt">●<%=list.get(i).getSbwt()%></span>
 								</td>
-								<td width="20%"><span style="font-family: 华文中宋; font-size: 10px;">问题进度:<span style="font-family: 华文中宋;color:red; font-size: 10px;"><%=list.get(i).getJdmc()%></span></span>
-								</td>
+								<td width="20%"><span class="spanwtjd">问题进度:<span
+										class="spanzs"><%=list.get(i).getJdmc()%></span></span></td>
 							</tr>
 							<%
 								if (list.get(i).getSbwtjd() != null) {
 							%>
 							<tr>
-								<td width="80%"><span style="font-family: 华文中宋; font-size: 13px;">&nbsp&nbsp&nbsp&nbsp答：<%=list.get(i).getSbwtjd()%></span></td>
-								<td width="20%"><a style="font-size:13px"
-										href="javascript:void(0);" onclick="showpj(<%=i %>)">评价</a></td>
+								<td width="80%"><span class="spanwtjd">&nbsp&nbsp&nbsp&nbsp答：<%=list.get(i).getSbwtjd()%></span></td>
+								<td width="20%"><a style="font-size: 13px"
+									href="javascript:void(0);" onclick="showpj(<%=i%>)">评价</a></td>
 							</tr>
-							<tr id="pjdrv<%=i %>" style="display: none">
-							<%
-								if(list.get(i).getYhpj()==null){
-									%>
-									<td width="75%"><textarea id="yhpj<%=i %>" name="yhpj<%=i %>" rows="5"
-										cols="100" placeholder="请输入评价" maxlength="200"></textarea></td>
-									<%
-								}else{
-									%>
-									<td width="75%"><textarea id="yhpj<%=i %>" name="yhpj<%=i %>" rows="5"
-										cols="100" placeholder="请输入评价" maxlength="200"><%=list.get(i).getYhpj() %></textarea></td>
-									<%
-								}
-							%>
-								<td width="20%"><input type="button"
-									value="提交" onclick="addpj(<%=i %>,<%=list.get(i).getWtbh() %>);" /></td>
+							<tr id="pjdrv<%=i%>" style="display: none">
+								<%
+									if (list.get(i).getYhpj() == null) {
+								%>
+								<td width="75%"><textarea id="yhpj<%=i%>" class="textareasty"
+										name="yhpj<%=i%>" rows="5" cols="100" placeholder="请输入评价"
+										maxlength="200"></textarea></td>
+								<%
+									} else {
+								%>
+								<td width="80%"><textarea id="yhpj<%=i%>" class="textareasty"
+										name="yhpj<%=i%>" rows="5" cols="100" placeholder="请输入评价"
+										maxlength="200"><%=list.get(i).getYhpj()%></textarea></td>
+								<%
+									}
+								%>
+								<td width="20%"><input type="button" value="提交"
+									onclick="addpj(<%=i%>,<%=list.get(i).getWtbh()%>);" /></td>
 							</tr>
 
 							<%

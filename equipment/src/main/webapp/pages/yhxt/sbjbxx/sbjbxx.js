@@ -1,3 +1,11 @@
+
+$(document).ready(function(){
+	$("#sbcjwtMain").attr("class","start");
+	$("#sbjbxxMain").attr("class","start active");
+	$("#sbwtfkMain").attr("class","start");
+	
+})
+
 function getsbjbxx(sbxlh){
 	alert(sbxlh);
 	/*var xmlhttp;
