@@ -20,6 +20,14 @@ public class ServiceForm {
 	String gcsdm;
 	String glydm;
 	String jdmc;
+	String jddm;
+	
+	public String getJddm() {
+		return jddm;
+	}
+	public void setJddm(String jddm) {
+		this.jddm = jddm;
+	}
 	public String getSqdbh() {
 		return sqdbh;
 	}
