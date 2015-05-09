@@ -3,7 +3,7 @@ $(document).ready( function () {
 	$("#answer").attr("class","start");
 	$("#engineerMain").attr("class","start");
 	$("#repair").attr("class","start active");
-	$("#baseinfo").attr("class","active");
+	$("#baseinfo").attr("class","");
 	createTable();
 })
 
