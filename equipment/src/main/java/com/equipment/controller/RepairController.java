@@ -40,7 +40,7 @@ public class RepairController {
 		Map<String,String> model =new HashMap<>();
 		String json;
 		try {
-			json = objectMapper.writeValueAsString(result);;
+			json = objectMapper.writeValueAsString(result);
 			model.put("list",json);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();

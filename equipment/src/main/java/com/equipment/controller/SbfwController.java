@@ -1,6 +1,8 @@
 package com.equipment.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,30 +11,90 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.equipment.pojo.City;
+import com.equipment.pojo.District;
 import com.equipment.pojo.Province;
 import com.equipment.service.yhxt.sbfw.SbfwService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class SbfwController {
-	
+
 	@Autowired
 	@Qualifier("SbfwService")
 	private SbfwService sbfwservice;
-	
+
 	@Autowired
 	private HttpServletRequest request;
-	
-	@RequestMapping(value="sbfw/init")
-	public String sbfw(Model model){
+
+	@RequestMapping(value = "sbfw/init")
+	public String sbfw(Model model) {
 		System.out.println("这里是设备维修站点查询");
-		
+
 		List<Province> prolist = sbfwservice.getAllPro();
-		
+
 		request.setAttribute("prolist", prolist);
 		System.out.println(prolist);
-		
+
 		return "/pages/yhxt/sbfw/sbwxzdcx";
-		
+
 	}
+
+	/**
+	 * 通过省id获取城市信息
+	 * 
+	 * @return model
+	 */
+	@RequestMapping(value = "querycity")
+	public @ResponseBody Map<String, String> getcity(@RequestParam String proid) {
+		System.out.println("ajax查询城市");
+		List<City> list = sbfwservice.getCityByProId(proid);
+		System.out.println(list);
+
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String, String> model = new HashMap<String, String>();
+		String  json;
+		try {
+			json = objectmaper.writeValueAsString(list);
+			model.put("list", json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return model;
+	}
+	
+	/**
+	 * 根据城市id获取地区信息
+	 * disid 地区id
+	 * @return model
+	 */
+	@RequestMapping(value="querydistrict")
+	public @ResponseBody Map<String,String> getdistrict(@RequestParam String cityid){
+		System.out.println("ajax查询地区");
+		List<District> list  = sbfwservice.getDistinctByCityId(cityid);
+		System.out.println(list);
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String,String> result = new HashMap<String,String>();
+		String json;
+		
+		try {
+			json = objectmaper.writeValueAsString(list);
+			result.put("list", json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+	
+	
+	
 }

@@ -3,6 +3,10 @@ custom page
 ***/
 /* bg color */
 
+.table_fon{
+	font-family:华文中宋;
+	font-size:20px;
+}
 .select_css{
 	width:160px;
 	height: 25px;
@@ -30,7 +34,7 @@ custom page
 }
 
 .textareasty{
-	width:700px;
+	width:800px;
 	higth:250px;
 	background-color: white;
 	font-family: 华文中宋;
