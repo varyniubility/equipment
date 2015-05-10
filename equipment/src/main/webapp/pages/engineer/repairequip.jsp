@@ -183,7 +183,7 @@
 								</div>
 							</div>
 						</div>
-						 <div class="form-group">
+						<div class="form-group">
 							<div class="col-md-12">
 								<label for="sbxh" class="col-md-3 col-xs-12 control-label">设备型号：</label>
 								<div class="col-md-8">
