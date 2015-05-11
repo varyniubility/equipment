@@ -82,6 +82,9 @@
 												<option value="0">--请选择区--</option>
 											</select>
 										</div>
+										<div class="col-sm-2">
+						                	<button type="button" class="btn btn-primary" id="confirmbtn">确定</button>
+		            					</div>
 									</div>
 								</form>
 								<div id="map">

@@ -14,4 +14,12 @@
 		SELECT districtid,districtname,cityid FROM s_district WHERE cityid=#{cityid} ORDER BY districtid ASC
 	</select>
 
+	<select id="queryPoint" resultType="PointData" parameterType="QueryPoint">
+		SELECT zdmc,zddh,province,pv.provincename,city,cityname,district,districtname,xxdz,zdjd,zdwd
+		FROM wxzdcx wx
+		LEFT JOIN s_province pv ON wx.province=pv.provinceid
+		LEFT JOIN s_city sc ON wx.city=sc.cityid
+		LEFT JOIN s_district sd ON sd.districtid=wx.district
+		WHERE province=#{province} AND city=#{city} AND district=#{district}
+	</select>
 </mapper>

@@ -10,4 +10,29 @@
 	<select id="queryPassword" resultType="String" parameterType="String">
 		SELECT yhmm FROM users WHERE yhdm=#{userid}
 	</select>
+	<select id="queryProvince" resultType="SelectedData">
+		SELECT provinceid AS id,provincename AS name
+		FROM s_province
+	</select>
+	<select id="queryCity" resultType="SelectedData" parameterType="String">
+		SELECT cityid AS id,cityname AS name
+		FROM s_city
+		WHERE provinceid=#{provinceid}
+	</select>
+	<select id="queryDistrict" resultType="SelectedData" parameterType="String">
+		SELECT districtid AS id,districtname AS name
+		FROM s_district
+		WHERE cityid=#{cityid}
+	</select>
+	<update id="saveModify" parameterType="BaseInfo">
+		UPDATE userinfo SET yhxm=#{name},yhxb=#{sex},yhdh=#{phone},provinceid=#{province},cityid=#{city},districtid=#{district},xxdz=#{address}
+		WHERE yhdm=#{userid}
+	</update>
+	
+	<select id="queryInfo" resultType="BaseInfo" parameterType="String">
+		SELECT yhxm AS name,yhxb AS sex,yhdh AS phone,provinceid AS province,cityid AS city,districtid AS district,xxdz AS address
+		FROM userinfo
+		WHERE yhdm=#{userid}
+		LIMIT 1
+	</select>
 </mapper> 
