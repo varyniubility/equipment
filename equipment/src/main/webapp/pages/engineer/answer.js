@@ -1,18 +1,32 @@
 var datatable=null;
+var userid;
 $(document).ready( function () {
 	$("#answer").attr("class","start active");
 	$("#engineerMain").attr("class","start");
 	$("#repair").attr("class","start");
+	userid = $("#userid").val();
+	if(datatable == null){
+		createTable();
+	}else{
+		datatable.draw();
+	}
 })
 
 $("#searchbtn").click(function(){
-	console.log("asdas");
 	if(datatable == null){
 		createTable();
 	}else{
 		datatable.draw();
 	}
 });
+
+function createJdSelect(obj){
+	for(var i=0;i<obj.length;i++){
+		$("#modifyjd").append("<option value='Value'>Text</option>"); 
+		$('#modifyjd').get(0).options[i].value=obj[i].jddm;
+		$('#modifyjd').get(0).options[i].text = obj[i].jdmc;
+	}
+}
 
 function createTable(){
 	datatable = $('#serviceshow').DataTable({
@@ -33,6 +47,11 @@ function createTable(){
 			{ "bSortable": false},
 			{ "bSortable": false},
 			{ "bSortable": false},
+			{ "bSortable": false},
+			{ "bSortable": false},
+			{ "bSortable": false},
+			{ "bSortable": false},
+			{ "bSortable": false},
 			{ "bSortable": false}
 		],
 		"columnDefs": [{
@@ -40,10 +59,10 @@ function createTable(){
             "data": null,
             "defaultContent": "<button id='modifyrow' class='btn btn-primary' type='button'><i class='fa fa-edit'></i></button>"
 		},{
-    		"targets": -2,//进度代码
+    		"targets": -2,//问题编号
     		"visible":false
     	},{
-    		"targets": -3,//申请单编号
+    		"targets": -3,//进度代码
     		"visible":false
     	}],
         "aLengthMenu": [
@@ -69,19 +88,15 @@ function createTable(){
         	"sProcessing": "<img src='/equipment/assets/img/loading.gif'/>"
         	},
 	});
-	
-	$('#serviceshow tbody').on('dblclick','tr',function(){
-		var data = datatable.row($(this)).data();
-		$("#detailmodal").modal("show");//弹出框show
-	})
 
-	//更新进度按钮点击事件
+	//问题解答按钮点击事件
 	$('#serviceshow tbody').on('click', 'button#modifyrow', function () {
 		var data = datatable.row( $(this).parents('tr') ).data();
 		$("#sbmc").val(data[0]);
 		$("#sbxh").val(data[1]);
-		$("#jddm").val(data[6]);
-		$("#sqdbh").val(data[7]);
+		$("#sbwt").val(data[4]);
+		$("#jddm").val(data[11]);
+		$("#wtdm").val(data[12]);
 		var jddm = $("#jddm").val();
 		var params = jddm;  
 		$.ajax({
@@ -101,12 +116,13 @@ function createTable(){
 	    });
 		$("#modifymodal").modal("show");//弹出框show
 		$("#modifyconfirm").click(function(){
-			console.log($("#sqdbh").val());
-			var sqdbh = $("#sqdbh").val();
+			var wtdm = $("#wtdm").val();
 			var jddm = $("#modifyjd").val();
-			var params = '{"sqdbh":"'+ sqdbh + '","jddm":"'+ jddm + '"}';
+			var wtjd = $("#modifyques").val();
+			var gcszj = $("#gcszj").val();
+			var params = '{"wtdm":"'+ wtdm + '","jddm":"'+ jddm + '","wtjd":"'+ wtjd + '","gcszj":"'+ gcszj + '"}';
 			$.ajax({
-		        url : 'modifyjd',//这个就是请求地址对应sAjaxSource
+		        url : 'modifyques',//这个就是请求地址对应sAjaxSource
 		        data : params, //这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
 		        type : 'post',
 		        dataType: "json",  
@@ -115,6 +131,7 @@ function createTable(){
 		        success : function(result) {
 		        	var resList = result.list;
 		        	$("#modifymodal").modal("hide");//弹出框show
+		        	$('#modifyform')[0].reset();
 		        	datatable.draw();
 		        },
 		        error : function(msg) {
@@ -124,15 +141,6 @@ function createTable(){
 	})
 }
 
-
-
-function createJdSelect(obj){
-	for(var i=0;i<obj.length;i++){
-		$("#modifyjd").append("<option value='Value'>Text</option>"); 
-		$('#modifyjd').get(0).options[i].value=obj[i].jddm;
-		$('#modifyjd').get(0).options[i].text = obj[i].jdmc;
-	}
-}
 function retrieveData(sSource,aoData, fnCallback) {
 	var iDisplayStart;
 	var iDisplayLength;
@@ -148,7 +156,7 @@ function retrieveData(sSource,aoData, fnCallback) {
 			iDisplayLength = aoData[i].value;
 		}
 	}
-	var params = '{"iDisplayStart":"'+ iDisplayStart + '","iDisplayLength":"'+ iDisplayLength + '","sEcho":"'+ sEcho + '"}';  
+	var params = '{"userid":"'+ userid + '","iDisplayStart":"'+ iDisplayStart + '","iDisplayLength":"'+ iDisplayLength + '","sEcho":"'+ sEcho + '"}';  
 	$.ajax({
         url : sSource,//这个就是请求地址对应sAjaxSource
         data : params, //这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数

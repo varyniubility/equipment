@@ -74,6 +74,15 @@ function createTable(){
 	
 	$('#serviceshow tbody').on('dblclick','tr',function(){
 		var data = datatable.row($(this)).data();
+		$("#sqdsbmc").val(data[0]);
+		$("#sqdsbxh").val(data[1]);
+		$("#sqdsblx").val(data[3]);
+		$("#sqdfwlx").val(data[4]);
+		$("#sqdkhdz").val(data[0]);
+		$("#sqdzsly").val(data[0]);
+		$("#sqdgcs").val(data[0]);
+		$("#sqdgly").val(data[0]);
+		$("#sqdjd").val(data[5]);
 		$("#detailmodal").modal("show");//弹出框show
 	})
 

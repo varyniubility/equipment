@@ -42,8 +42,11 @@
 									<form role="form" class="form-horizontal" onsubmit="return false;">
 										<div class="form-group">					
 											<div class="col-md-4">
-												<button type="button" id="searchbtn" class="btn btn-success">搜索服务单</button>
+												<button type="button" id="searchbtn" class="btn btn-success">搜索疑难问题</button>
 											</div>
+										</div>
+										<div class="form-group">
+											<input type="text" id="userid" name="userid" style="display:none;" value=${userid}>
 										</div>
 									</form>
 									<div class="widget-body">
@@ -55,11 +58,16 @@
 												        <th>设备型号</th>
 												        <th>设备颜色</th>
 												        <th>设备类型</th>
-												        <th>服务类型</th>
+												        <th>设备问题</th>
+												        <th>设备问题答案</th>
+												        <th>知识领域1</th>
+												        <th>知识领域2</th>
+												        <th>知识领域3</th>
 												        <th>进度</th>
+												        <th>工程师建议</th>
 												        <th>进度代码</th>
-												        <th>申请单编号</th>
-												        <th>更新进度</th>
+												        <th>问题编号</th>
+												        <th>问题解答</th>
 													</tr>
 												</thead>
 												<tbody id="tbody"></tbody>
@@ -81,100 +89,17 @@
 			<%@ include file="../../pages/common/footer.jsp"%>
 		</div>
 		<!-- 底部版权栏结束 -->
-		
-		<!-- 添加对话框 -->
-		<div class="modal fade" id="detailmodal" tabindex="-1" role="dialog"
-		     aria-labelledby="modalLabel" aria-hidden="true">
-		    <div class="modal-dialog" style="width:70%;padding-top:4%;">
-		        <div class="modal-content" style="padding:2%;">
-		            <div class="modal-header">
-		               	<h4 class="modal-title" id="modalLabel">设备维修单</h4>
-		            </div>
-		            <form class="form-horizontal" style="padding:2%;" id = "addform" onsubmit="return false;">
-						<div class="form-group">
-							<div class="col-md-6">
-								<label for="sqdsbmc" class="col-md-3 col-xs-12 control-label">设备名称：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdsbmc" id="sqdsbmc"/>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label for="sqdsbxh" class="col-md-3 col-xs-12 control-label">设备型号：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdsbxh" id="sqdsbxh"/>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-md-6">
-								<label for="sqdsblx" class="col-md-3 col-xs-12 control-label">设备类型：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdsblx" id="sqdsblx"/>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label for="sqdfwlx" class="col-md-3 col-xs-12 control-label">服务类型：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdfwlx" id="sqdfwlx"/>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-md-6">
-								<label for="sqdkhdz" class="col-md-3 col-xs-12 control-label">客户地址：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdkhdz" id="sqdkhdz"/>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label for="sqdzsly" class="col-md-3 col-xs-12 control-label">知识领域：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdzsly" id="sqdzsly"/>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-md-6">
-								<label for="sqdgcs" class="col-md-3 col-xs-12 control-label">工程师：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdgcs" id="sqdgcs"/>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label for="sqdgly" class="col-md-3 col-xs-12 control-label">管理员：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdgly" id="sqdgly"/>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-md-6">
-								<label for="sqdjd" class="col-md-3 col-xs-12 control-label">维修进度：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdjd" id="sqdjd"/>
-								</div>
-							</div>
-						</div>
-		            </form>
-		            <div class="modal-footer">
-		                <button type="button" class="btn btn-default" id="modalClose" data-dismiss="modal">关闭</button>
-		                <button type="button" class="btn btn-primary" id="confirmbtn">确定</button>
-		            </div>
-		        </div><!-- /.modal-content -->
-		    </div><!-- /.modal -->
-		</div>
-		
 		<!-- 修改对话框 -->
 		<div class="modal fade" id="modifymodal" tabindex="-1" role="dialog"
 		     aria-labelledby="modalLabel" aria-hidden="true">
 		    <div class="modal-dialog" style="padding-top:4%;">
 		        <div class="modal-content" style="padding:2%;">
 		            <div class="modal-header">
-		               <h4 class="modal-title" id="modalLabel">更新进度</h4>
+		               <h4 class="modal-title" id="modalLabel">问题解答</h4>
 		            </div>
 		            <form class="form-horizontal" style="padding:2%;" id = "modifyform" onsubmit="return false;">
 		            	<div><input style="display:none;" id="jddm" name="jddm"></div>
-		            	<div><input style="display:none;" id="sqdbh" name="sqdbh"></div>
+		            	<div><input style="display:none;" id="wtdm" name="wtdm"></div>
 			            <div class="form-group">
 			            	<div class="col-md-12">
 								<label for="sbmc" class="col-md-3 col-xs-12 control-label">设备名称：</label>
@@ -188,6 +113,30 @@
 								<label for="sbxh" class="col-md-3 col-xs-12 control-label">设备型号：</label>
 								<div class="col-md-8">
 									<input type="text" readonly="true" class="form-control" name = "sbxh" id="sbxh"/>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label for="sbwt" class="col-md-3 col-xs-12 control-label">设备问题：</label>
+								<div class="col-md-8">
+									<input type="text" readonly="true" class="form-control" name = "sbwt" id="sbwt"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label for="modifyques" class="col-md-3 col-xs-12 control-label">问题解答：</label>
+								<div class="col-md-8">
+									<textarea type="text" class="form-control" name = "modifyques" id="modifyques"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label for="gcszj" class="col-md-3 col-xs-12 control-label">建议：</label>
+								<div class="col-md-8">
+									<textarea type="text" class="form-control" name = "gcszj" id="gcszj"></textarea>
 								</div>
 							</div>
 						</div>

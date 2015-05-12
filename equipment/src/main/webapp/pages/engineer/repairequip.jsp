@@ -95,13 +95,13 @@
 							<div class="col-md-6">
 								<label for="sqdsbmc" class="col-md-3 col-xs-12 control-label">设备名称：</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdsbmc" id="sqdsbmc"/>
+									<input type="text" readonly="true" class="form-control" name = "sqdsbmc" id="sqdsbmc"/>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<label for="sqdsbxh" class="col-md-3 col-xs-12 control-label">设备型号：</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdsbxh" id="sqdsbxh"/>
+									<input type="text" readonly="true" class="form-control" name = "sqdsbxh" id="sqdsbxh"/>
 								</div>
 							</div>
 						</div>
@@ -109,13 +109,13 @@
 							<div class="col-md-6">
 								<label for="sqdsblx" class="col-md-3 col-xs-12 control-label">设备类型：</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdsblx" id="sqdsblx"/>
+									<input type="text" readonly="true" class="form-control" name = "sqdsblx" id="sqdsblx"/>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<label for="sqdfwlx" class="col-md-3 col-xs-12 control-label">服务类型：</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdfwlx" id="sqdfwlx"/>
+									<input type="text" readonly="true" class="form-control" name = "sqdfwlx" id="sqdfwlx"/>
 								</div>
 							</div>
 						</div>
@@ -123,13 +123,13 @@
 							<div class="col-md-6">
 								<label for="sqdkhdz" class="col-md-3 col-xs-12 control-label">客户地址：</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdkhdz" id="sqdkhdz"/>
+									<input type="text" readonly="true" class="form-control" name = "sqdkhdz" id="sqdkhdz"/>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<label for="sqdzsly" class="col-md-3 col-xs-12 control-label">知识领域：</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdzsly" id="sqdzsly"/>
+									<input type="text" readonly="true" class="form-control" name = "sqdzsly" id="sqdzsly"/>
 								</div>
 							</div>
 						</div>
@@ -137,13 +137,13 @@
 							<div class="col-md-6">
 								<label for="sqdgcs" class="col-md-3 col-xs-12 control-label">工程师：</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdgcs" id="sqdgcs"/>
+									<input type="text" readonly="true" class="form-control" name = "sqdgcs" id="sqdgcs"/>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<label for="sqdgly" class="col-md-3 col-xs-12 control-label">管理员：</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdgly" id="sqdgly"/>
+									<input type="text" readonly="true" class="form-control" name = "sqdgly" id="sqdgly"/>
 								</div>
 							</div>
 						</div>
@@ -151,7 +151,7 @@
 							<div class="col-md-6">
 								<label for="sqdjd" class="col-md-3 col-xs-12 control-label">维修进度：</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdjd" id="sqdjd"/>
+									<input type="text" readonly="true" class="form-control" name = "sqdjd" id="sqdjd"/>
 								</div>
 							</div>
 						</div>
