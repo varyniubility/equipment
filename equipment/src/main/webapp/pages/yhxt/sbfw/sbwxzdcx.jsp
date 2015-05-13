@@ -14,6 +14,9 @@
 	 <style type="text/css">
         #map {width:100%;height:820px;overflow: hidden;padding-top:30%;font-family:"微软雅黑";}
     </style>
+    <style type="text/css">
+		body{font-size:14px;font-family:"微软雅黑";}
+	</style>
 	<script type="text/javascript" src="/equipment/assets/plugins/map/api?v=2.0&ak=2StkIHWGNTW8xE8w7ApZlofD"></script>
     <script type="text/javascript" src="/equipment/assets/plugins/map/CurveLine.min.js"></script>
     <script type="text/javascript" src="/equipment/assets/plugins/map/InfoBox_min.js"></script>

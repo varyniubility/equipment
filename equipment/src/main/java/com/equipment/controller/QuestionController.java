@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ServiceController {
+public class QuestionController {
 
-	@RequestMapping(value="service/initservice")
-	public @ResponseBody ModelAndView initService(){
+	@RequestMapping(value="question/initquestion")
+	public @ResponseBody ModelAndView initQuestion(){
 		System.out.println("asdfasf");
-		return new ModelAndView("/pages/admin/servicemanage");
+		return new ModelAndView("/pages/admin/quesmanage");
 	}
 }

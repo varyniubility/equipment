@@ -20,6 +20,9 @@
 	type="text/css" id="style_color" />
 
 <script src="sbjbxx.js" type="text/javascript"></script>
+<style type="text/css">
+	body{font-size:14px;font-family:"微软雅黑";}
+</style>
 <title>设备基本信息</title>
 </head>
 <body

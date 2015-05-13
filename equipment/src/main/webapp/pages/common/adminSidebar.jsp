@@ -16,8 +16,8 @@
 					<!-- 侧边栏收缩按钮 -->
 					<div class="sidebar-toggler"></div>
 				</li>
-				<li class="start active ">
-					<a href="/equipment/pages/main/adminMain.jsp">
+				<li class="start" id="adminmian">
+					<a href="/equipment/main/initAdmin">
 						<i class="fa fa-home"></i>
 						<span class="title">
 							管理员主界面
@@ -26,79 +26,21 @@
 						</span>
 					</a>
 				</li>
-				<li class="start">
-					<a href="javascript:;">
+				<li class="start" id="quesmanage">
+					<a href="/equipment/question/initquestion">
 						<i class="fa fa-file-word-o"></i>
-						<span class="title">维修业务管理</span>
+						<span class="title">设备问题管理</span>
 						<span class="selected"></span>
-						<span class="arrow "></span>
 					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="ecommerce_index.html">
-							<i class="icon-home"></i>
-							送修登记</a>
-						</li>
-						<li>
-							<a href="ecommerce_orders.html">
-							<i class="icon-basket"></i>
-							维修确认</a>
-						</li>
-						<li>
-							<a href="ecommerce_orders.html">
-							<i class="icon-basket"></i>
-							维修确认</a>
-						</li>
-					</ul>
 				</li>
-				<li class="start">
-					<a href="javascript:;">
+				<li class="start" id="servicemanage">
+					<a href="/equipment/service/initservice">
 						<i class="fa fa-file-word-o"></i>
-						<span class="title">维修备件管理</span>
-						<span class="selected"></span>
-						<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="ecommerce_index.html">
-							<i class="icon-home"></i>
-							备件入库</a>
-						</li>
-						<li>
-							<a href="ecommerce_orders.html">
-							<i class="icon-basket"></i>
-							维修确认</a>
-						</li>
-						<li>
-							<a href="ecommerce_orders.html">
-							<i class="icon-basket"></i>
-							维修确认</a>
-						</li>
-					</ul>
-				</li>
-				<li class="start">
-					<a href="javascript:;">
-						<i class="fa fa-cog"></i>
-						<span class="title">客户交流</span>
-						<span class="selected"></span>
-						<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="ecommerce_index.html">
-							<i class="icon-home"></i>
-							问题解答</a>
-						</li>
-					</ul>
-				</li>
-				<li class="start">
-					<a href="javascript:;">
-						<i class="fa fa-file-word-o"></i>
-						<span class="title">维修点管理</span>
+						<span class="title">设备服务管理</span>
 						<span class="selected"></span>
 					</a>
 				</li>
-				<li class="start">
+				<li class="start" id="sysmanage">
 					<a href="javascript:;">
 						<i class="fa fa-cog"></i>
 						<span class="title">系统管理</span>
@@ -106,18 +48,23 @@
 						<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-						<li>
-							<a href="ecommerce_index.html">
+						<li id="usermanage">
+							<a href="/equipment/user/inituser">
 							<i class="icon-home"></i>
 							用户管理</a>
 						</li>
-						<li>
-							<a href="ecommerce_index.html">
+						<li id="modifyinfo">
+							<a href="/equipment/admininfo/initmodifyinfo">
+							<i class="icon-home"></i>
+							修改信息</a>
+						</li>
+						<li id="modifypwd">
+							<a href="/equipment/admininfo/initmodifypwd">
 							<i class="icon-home"></i>
 							修改密码</a>
 						</li>
 						<li>
-							<a href="ecommerce_index.html">
+							<a href="/equipment/admininfo/inituser">
 							<i class="icon-home"></i>
 							退出系统</a>
 						</li>

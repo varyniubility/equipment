@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<jsp:include page="../../pages/common/import.jsp"/>
-		<script src="/equipment/pages/engineer/modifyinfo.js" type="text/javascript"></script>
+		<script src="/equipment/pages/admin/modifyinfo.js" type="text/javascript"></script>
 		<style type="text/css">
 			body{font-size:14px;font-family:"微软雅黑";}
 		</style>
@@ -19,7 +19,7 @@
 
 		<!-- 页面容器开始 -->
 		<div class="page-container">
-			<%@ include file="../../pages/common/engineerSidebar.jsp"%>
+			<%@ include file="../../pages/common/adminSidebar.jsp"%>
 			<!-- 页面内容开始 -->
 			<div class="page-content-wrapper">
 				<div class="page-content">

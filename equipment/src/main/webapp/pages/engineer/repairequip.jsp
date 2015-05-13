@@ -5,6 +5,9 @@
 	<head>
 		<jsp:include page="../../pages/common/import.jsp"/>
 		<script src="/equipment/pages/engineer/repairequip.js" type="text/javascript"></script>
+		<style type="text/css">
+			body{font-size:14px;font-family:"微软雅黑";}
+		</style>
 		<title>设备售后服务系统--工程师</title>
 	</head>
 	<body class="page-header-fixed page-sidebar-closed-hide-logo">

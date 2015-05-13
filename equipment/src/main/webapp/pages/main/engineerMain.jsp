@@ -5,6 +5,9 @@
 	<head>
 		<meta charset="utf-8"/>
 		<jsp:include page="../../pages/common/import.jsp"/>
+		<style type="text/css">
+			body{font-size:14px;font-family:"微软雅黑";}
+		</style>
 		<title>设备售后服务系统--工程师</title>
 	</head>
 	<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
