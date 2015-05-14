@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.equipment.pojo.City;
 import com.equipment.pojo.District;
@@ -34,16 +36,19 @@ public class SbfwController {
 	@Autowired
 	private HttpServletRequest request;
 
+	@Autowired
+	HttpSession session;
+	
 	@RequestMapping(value = "sbfw/init")
 	public String sbfw(Model model) {
-		System.out.println("这里是设备维修站点查询");
-
 		List<Province> prolist = sbfwservice.getAllPro();
-
 		request.setAttribute("prolist", prolist);
-		System.out.println(prolist);
-
-		return "/pages/yhxt/sbfw/sbwxzdcx";
+		String seiralNo = (String) session.getAttribute("seiralno");
+		if(seiralNo==null){
+			return "redirect:/pages/login/login.jsp";
+		}else{
+			return "/pages/yhxt/sbfw/sbwxzdcx";
+		}
 
 	}
 

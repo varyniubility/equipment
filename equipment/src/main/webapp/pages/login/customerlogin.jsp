@@ -5,7 +5,8 @@
 	<head>
 		<meta charset="utf-8"/>
 		<link href="/equipment/assets/css/custom.css" rel="stylesheet" type="text/css"/>
-		
+		<link href="/equipment/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="/equipment/assets/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
 		<script src="customerlogin.js" type="text/javascript"></script>
 		<style type="text/css">
 			body{font-size:14px;font-family:"微软雅黑";}
@@ -30,12 +31,12 @@
 	<div class="content">
 		<!-- BEGIN custom FORM -->
 		<form class="custom-form" action="custom" method="post">
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">设备序列号(S/N)：</label>
+			<div class="form-group col-md-12">
+				<label class="control-label">设备序列号(S/N)：</label>
 				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="S/N" id="number" name="number"/>
 			</div>
 			<div class="form-actions">
-				<button type="submit" onclick="customerlogin();" class="btn btn-primary btn-default">登录</button>
+				<button type="submit" onclick="customerlogin();" class="btn btn-primary">登录</button>
 			</div>
 		</form>
 	</div>

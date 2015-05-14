@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.equipment.pojo.Sbjbxx;
 import com.equipment.service.yhxt.sbjbxx.SbjbxxService;
@@ -23,6 +25,7 @@ public class SbjbxxController {
 	
 	@Autowired
 	HttpSession session;
+	
 	@RequestMapping(value ="/sbjbxx")
 	public String sbjbxx(String sbxlh, Model model) {
 		System.out.println("执行了"+sbxlh);
@@ -46,6 +49,11 @@ public class SbjbxxController {
 		// String vie = "/equipment/pages/yhxt/sbjbxx/sbjbxx.jsp";
 		// return new ModelAndView(new RedirectView(vie),(Map<String, ?>)
 		// model);
-		return "pages/yhxt/sbjbxx/sbjbxx";
+		String seiralNo = (String) session.getAttribute("seiralno");
+		if(seiralNo==null){
+			return "redirect:/pages/login/login.jsp";
+		}else{
+			return "/pages/yhxt/sbjbxx/sbjbxx";
+		}
 	}
 }

@@ -4,12 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.equipment.pojo.DatatableParams;
 import com.equipment.pojo.DropDownJd;
@@ -28,9 +31,18 @@ public class RepairController {
 	@Qualifier("repair")
 	public RepairService repairService;
 	
+	@Autowired
+	HttpSession session;
+	
 	@RequestMapping(value="repair/init")
 	public String initRepair(){
-		return "/pages/engineer/repairequip";	
+		String userid = (String) session.getAttribute("userid");
+		String username = (String) session.getAttribute("username");
+		if(userid==null && username==null){
+			return "redirect:/pages/login/login.jsp";
+		}else{
+			return "/pages/engineer/repairequip";	
+		}
 	}
 	
 	@RequestMapping(value="repair/query")

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -27,9 +29,18 @@ public class BaseInfoController {
     @Qualifier("baseinfo")
 	public BaseInfoService baseInfoService;
 	
+	@Autowired
+	HttpSession session;
+	
 	@RequestMapping(value="baseinfo/modifyinfo")
-	public @ResponseBody ModelAndView initModifyInfo(){
-		return new ModelAndView("/pages/engineer/modifyinfo");
+	public String initModifyInfo(){
+		String userid = (String) session.getAttribute("userid");
+		String username = (String) session.getAttribute("username");
+		if(userid==null && username==null){
+			return "redirect:/pages/login/login.jsp";
+		}else{
+			return "/pages/engineer/modifyinfo";
+		}
 	}
 	
 	@RequestMapping(value="baseinfo/queryInfo")
@@ -49,7 +60,13 @@ public class BaseInfoController {
 	}
 	@RequestMapping(value="baseinfo/modifypassword")
 	public String initmodifypassword(){
-		return "/pages/engineer/modifypwd";
+		String userid = (String) session.getAttribute("userid");
+		String username = (String) session.getAttribute("username");
+		if(userid==null && username==null){
+			return "redirect:/pages/login/login.jsp";
+		}else{
+			return "/pages/engineer/modifypwd";
+		}
 	}
 	
 	@RequestMapping(value="baseinfo/queryprovince")

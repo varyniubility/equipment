@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -27,14 +29,29 @@ public class AdminInfoController {
     @Qualifier("admininfo")
 	public AdminInfoService adminInfoService;
 	
+	@Autowired
+	HttpSession session;
+	
 	@RequestMapping(value="admininfo/initmodifyinfo")
-	public @ResponseBody ModelAndView initModifyInfo(){
-		return new ModelAndView("/pages/admin/modifyinfo");
+	public String initModifyInfo(){
+		String userid = (String) session.getAttribute("userid");
+		String username = (String) session.getAttribute("username");
+		if(userid==null && username==null){
+			return "/pages/login/login";
+		}else{
+			return "/pages/admin/modifyinfo";
+		}
 	}
 	
 	@RequestMapping(value="admininfo/initmodifypwd")
-	public @ResponseBody ModelAndView initModifyPwd(){
-		return new ModelAndView("/pages/admin/modifypwd");
+	public String initModifyPwd(){
+		String userid = (String) session.getAttribute("userid");
+		String username = (String) session.getAttribute("username");
+		if(userid==null && username==null){
+			return "redirect:/pages/login/login.jsp";
+		}else{
+			return "/pages/admin/modifypwd";
+		}
 	}
 	
 	@RequestMapping(value="admininfo/queryInfo")
@@ -51,10 +68,6 @@ public class AdminInfoController {
 			e.printStackTrace();
 		}
 		return resMap;
-	}
-	@RequestMapping(value="admininfo/modifypassword")
-	public String initmodifypassword(){
-		return "/pages/engineer/modifypwd";
 	}
 	
 	@RequestMapping(value="admininfo/queryprovince")

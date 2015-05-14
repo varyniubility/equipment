@@ -5,7 +5,7 @@
 	}
 }*/
  function customerlogin(){
-	alert("1111");
+	
 }
 
 /*var Login = function() {

@@ -49,7 +49,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li id="usermanage">
-							<a href="/equipment/user/inituser">
+							<a href="/equipment/admininfo/inituser">
 							<i class="icon-home"></i>
 							用户管理</a>
 						</li>

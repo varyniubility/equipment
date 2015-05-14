@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -21,30 +23,43 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	public ILoginDao loginDao;
 
+	@Autowired
+	HttpSession session;
+	
 	@Override
 	public Map<String,String> login(String username, String password) {
 		List<Login> pwdList = loginDao.login(username);
 		Map<String,String> userMap = new HashMap<>();
 		MD5 md5 = new MD5();
 		String md5Password = md5.GetMD5Code(password);
-		String resultStr = "pages/login/login";
-		for (Login login : pwdList) {
-			if (md5Password.equals(login.getYhmm()) && login.getYhmm() != null) {
-				if (login.getYhlb().equals("0") && login.getYhlb() != null) {
-					userMap.put("userid", login.getYhdm());
-					userMap.put("view", "pages/main/adminMain");
-				} else if (login.getYhlb().equals("1")
-						&& login.getYhlb() != null) {
-					userMap.put("userid", login.getYhdm());
-					userMap.put("view", "pages/main/engineerMain");
-				} else {
-					userMap.put("userid", "");
-					userMap.put("view", "pages/login/login");
+		System.out.println(pwdList);
+		if(pwdList !=null && !pwdList.isEmpty()){
+			for (Login login : pwdList) {
+				if(md5Password!=null && login!=null){
+					if (md5Password.equals(login.getYhmm()) && login.getYhmm() != null) {
+						if (login.getYhlb().equals("0") && login.getYhlb() != null) {
+							session.setAttribute("userid", login.getYhdm());
+							session.setAttribute("username", login.getYhm());
+							userMap.put("userid", login.getYhdm());
+							userMap.put("view", "redirect:/main/initAdmin");
+						} else if (login.getYhlb().equals("1")
+								&& login.getYhlb() != null) {
+							session.setAttribute("userid", login.getYhdm());
+							session.setAttribute("username", login.getYhm());
+							userMap.put("userid", login.getYhdm());
+							userMap.put("view", "redirect:/main/initEngineer");
+						} else {
+							userMap.put("view", "redirect:/pages/login/login.jsp");
+						}
+					} else {
+						userMap.put("view", "redirect:/pages/login/login.jsp");
+					}
+				}else{
+					userMap.put("view", "redirect:/pages/login/login.jsp");
 				}
-			} else {
-				userMap.put("userid", "");
-				userMap.put("view", "pages/login/login");
 			}
+		}else{
+			userMap.put("view", "redirect:/pages/login/login.jsp");
 		}
 		return userMap;
 	}

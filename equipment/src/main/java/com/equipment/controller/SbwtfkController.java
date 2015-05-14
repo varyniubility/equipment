@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.equipment.pojo.DmZsly;
 import com.equipment.pojo.Sbwtfk;
@@ -27,6 +29,7 @@ public class SbwtfkController {
 	
 	@Autowired
 	HttpSession session;
+	
 	@RequestMapping(value ="/sbwtfk")
 	public String sbwtfk(String sbxlh, Model model) {
 		System.out.println("执行了设备问题反馈");
@@ -38,10 +41,12 @@ public class SbwtfkController {
 		
 		request.setAttribute("zslylist", zslylist);
 		request.setAttribute("sbwtlist", sbwtlist);
-		
-		
-		
-		return "pages/yhxt/sbwtfk/sbwtfk";
+		String seiralNo = (String) session.getAttribute("seiralno");
+		if(seiralNo==null){
+			return "redirect:/pages/login/login.jsp";
+		}else{
+			return "/pages/yhxt/sbwtfk/sbwtfk";
+		}
 	}
 	
 	

@@ -58,11 +58,11 @@
 		<form class="login-form" action="login" method="post">
 			<div class="form-group" style="font-size:16px;font-family:'微软雅黑'">
 				<label class="control-label visible-ie8 visible-ie9">用户名</label>
-				<input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" id="username" name="username"/>
+				<input class="form-control" style="height: 43px;" type="text" autocomplete="off" placeholder="用户名" id="username" name="username"/>
 			</div>
 			<div class="form-group" style="font-size:16px;font-family:'微软雅黑'">
 				<label class="control-label visible-ie8 visible-ie9">密码</label>
-				<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" id="password" name="password"/>
+				<input class="form-control" style="height: 43px;" type="password" autocomplete="off" placeholder="密码" id="password" name="password"/>
 			</div>
 			<div class="form-actions" style="font-size:16px;font-family:'微软雅黑'">
 				<button type="submit" class="btn btn-primary btn-block uppercase">登录</button>
@@ -70,7 +70,7 @@
 			<div class="form-actions">
 				<div class="pull-left">
 					<label class="rememberme check">
-					<input type="checkbox" name="remember" value="1"/>记住我 </label>
+					<input type="checkbox" name="remember" style="height: 43px;" value="1"/>记住我 </label>
 				</div>
 			</div>
 		</form>

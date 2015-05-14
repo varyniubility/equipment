@@ -38,7 +38,6 @@ public class LoginController {
 	public String login(@RequestParam(value="username",required=false)String username,
 			@RequestParam(value="password",required=false)String password){
 		Map<String,String> result = loginService.login(username,password);
-		session.setAttribute("userid", result.get("userid"));
 		return result.get("view");
 	}
 	
@@ -47,7 +46,7 @@ public class LoginController {
 		Sbjbxx result=loginService.customlogin(number);
 		session.setAttribute("sbxlh", number);
 		
-//		System.out.println(session.getAttribute("sbxlh"));
+		System.out.println(result);
 		if(result!=null){
 //			model.addAllAttributes((Map<String,?>) result)model;
 			model.addAttribute("sbxlh",result.getSbxlh());
@@ -60,9 +59,10 @@ public class LoginController {
 //			System.out.println(model.toString());
 			session.setAttribute("sblx",result.getSblx());
 			request.setAttribute("style", "1");
-			return "pages/main/customerMain";
+			session.setAttribute("seiralno", result.getSbxlh());
+			return "redirect:/sbjbxx";
 		}else{
-			return "pages/login/customerlogin";
+			return "redirect:/pages/login/customerlogin.jsp";
 		}
 		
 	}

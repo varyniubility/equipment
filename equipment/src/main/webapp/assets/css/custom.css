@@ -4,40 +4,40 @@ custom page
 /* bg color */
 
 .table_fon{
-	font-family:华文中宋;
+	font-family:微软雅黑;
 	font-size:20px;
 }
 .select_css{
 	width:160px;
 	height: 25px;
-	font-family:华文中宋;
+	font-family:微软雅黑;
 	font-size: 15px;
 }
 
 .spanwt{
-	font-family:华文中宋;
+	font-family:微软雅黑;
 	color:red;
 	font-size:18px;
 }
 .spanwtjd{
-	font-family:华文中宋;
+	font-family:微软雅黑;
 	font-size:13px;
 }
 .spanzs{
-	font-family:华文中宋;
+	font-family:微软雅黑;
 	color:red;
 	font-size:11px;
 }
 .spanzsly{
-	font-family:华文中宋;
+	font-family:微软雅黑;
 	font-size:16px;
 }
 
 .textareasty{
-	width:800px;
+	width:700px;
 	higth:250px;
 	background-color: white;
-	font-family: 华文中宋;
+	font-family: 微软雅黑;
 	font-size: 12;
 }
 
@@ -59,7 +59,7 @@ custom page
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
   border-radius: 7px;
-  width: 50%;
+  width: 40%;
   margin: 1% auto 10px auto;
   padding: 1%;
   padding-top: 2%;
@@ -122,6 +122,67 @@ custom page
   color: #6c7a8d;
   background-color: #ffffff;
   border: none;
+}
+
+.btn {
+  border-width: 0;
+  padding: 7px 14px;
+  font-size: 14px;
+  outline: none !important;
+  background-image: none !important;
+  filter: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.btn.dropdown-toggle, .btn-group .btn.dropdown-toggle, .btn:hover, .btn:disabled, .btn[disabled], .btn:focus, .btn:active, .btn.active {
+  outline: none !important;
+  background-image: none !important;
+  filter: none;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn + .btn {
+  margin-left: 5px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+  color: #fff;
+  background-color: #3379b5;
+  border-color: #2a6496;
+}
+.open .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #3379b5;
+  border-color: #2a6496;
+}
+.btn-primary:active, .btn-primary.active {
+  background-image: none;
+  background-color: #2d6ca2;
+}
+.btn-primary:active:hover, .btn-primary.active:hover {
+  background-color: #3071a9;
+}
+.open .btn-primary.dropdown-toggle {
+  background-image: none;
+}
+.btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active {
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.btn-primary .badge {
+  color: #428bca;
+  background-color: #fff;
 }
 
 .custom .content .form-actions .btn-success {

@@ -4,7 +4,12 @@
 <mapper namespace="com.equipment.dao.yhxt.sbcjwt.ISbcjwtDao">
 	<select id="getSbcjwt" parameterType="String"
 		resultType="com.equipment.pojo.Sbcjwt">
-		SELECT * FROM sbcjwt where sblx=#{sblx}
+		SELECT * FROM sbcjwt 
+		<where>
+			<if test="sblx != null and sblx != ''">
+				sblx=#{sblx}
+			</if>
+		</where>
+		
 	</select>
-
 </mapper>

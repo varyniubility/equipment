@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.equipment.pojo.Sbcjwt;
 import com.equipment.service.yhxt.sbcjwt.SbcjwtService;
@@ -31,9 +33,9 @@ public class SbcjwtController {
 	
 	
 	@RequestMapping(value="/sbcjwt")
-	public String  sbcjwt(@RequestParam(value="sblx")String sblx,Model model){
+	public String sbcjwt(@RequestParam(value="sblx")String sblx,Model model){
 		if(sblx.equals("0")){
-			sblx=session.getAttribute("sblx").toString();
+			sblx=(String) session.getAttribute("sblx");
 		}
 		List<Sbcjwt> sbcjwtlist = sbcjwtservice.getsbcjwt(sblx);
 //		System.out.println("sbcjwtlist的大小："+sbcjwtlist.size());
@@ -46,6 +48,12 @@ public class SbcjwtController {
 		request.setAttribute("wtlist", sbcjwtlist);
 //		sbcjwtlist = (List<Sbcjwt>) model.asMap().get("sbcjwlist");
 //		System.out.println(modellist);
-		return "pages/yhxt/sbcjwt/sbcjwt";
+		
+		String seiralNo = (String) session.getAttribute("seiralno");
+		if(seiralNo==null){
+			return "redirect:/pages/login/login.jsp";
+		}else{
+			return "/pages/yhxt/sbcjwt/sbcjwt";
+		}
 	}
 }

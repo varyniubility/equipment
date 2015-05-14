@@ -7,14 +7,12 @@
 		获取用户: 输出直接映射到对象, login_name列要"as loginName"以方便映射 ,team_id as "team.id"创建team对象并赋值
 	-->
 	<select id="login" resultType="Login" parameterType="String">  
-		SELECT yhdm,yhmm,yhlb FROM users
+		SELECT yhm,yhdm,yhmm,yhlb FROM users
 		WHERE yhm = #{username}
 	</select> 
-	<select id="customlogin" parameterType="String"
-		resultType="com.equipment.pojo.Sbjbxx">
+	<select id="customlogin" parameterType="String" resultType="com.equipment.pojo.Sbjbxx">
 		SELECT sbxlh,sbmc,sbxh,sbys,sbmz,sblx,DATE_FORMAT(t.sjsj,'%Y-%c-%d
 		%h:%i:%s') sjsj 
 		FROM sbjbxx t WHERE t.sbxlh=#{sbxlh}
-
 	</select>
 </mapper> 

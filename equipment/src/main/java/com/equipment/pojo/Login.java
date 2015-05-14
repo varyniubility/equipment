@@ -5,6 +5,14 @@ public class Login {
 	private String yhdm;
 	private String yhmm;
 	private String yhlb;
+	private String yhm;
+	
+	public String getYhm() {
+		return yhm;
+	}
+	public void setYhm(String yhm) {
+		this.yhm = yhm;
+	}
 	public String getYhmm() {
 		return yhmm;
 	}
