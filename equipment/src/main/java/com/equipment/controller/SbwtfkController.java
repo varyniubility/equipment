@@ -54,7 +54,7 @@ public class SbwtfkController {
 	public String addsbwt(Sbwtfk sbwtfk,Model model){
 		
 		Date date = new Date();
-		sbwtfk.setJddm("01");
+		sbwtfk.setJddm("1");
 		sbwtfk.setWtbh(Long.toString(date.getTime()));
 		sbwtfk.setSbxlh(session.getAttribute("sbxlh").toString());
 		System.out.println(date.getTime());

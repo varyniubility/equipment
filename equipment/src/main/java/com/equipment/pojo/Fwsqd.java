@@ -13,13 +13,61 @@ public class Fwsqd {
 	String zslydm2;
 	String zslydm3;
 	String gcsdm;
+	String gcsmc;
+	String jdmc;
 	String glydm;
 	String jddm;
+	String khdh;
+	String khxm;
+	String gcsdh;
+	String yhpj;
+	public String getKhdh() {
+		return khdh;
+	}
+	public void setKhdh(String khdh) {
+		this.khdh = khdh;
+	}
+	public String getYhpj() {
+		return yhpj;
+	}
+	public void setYhpj(String yhpj) {
+		this.yhpj = yhpj;
+	}
+	public String getGcsdh() {
+		return gcsdh;
+	}
+	public void setGcsdh(String gcsdh) {
+		this.gcsdh = gcsdh;
+	}
+	public String getGcsmc() {
+		return gcsmc;
+	}
+	public void setGcsmc(String gcsmc) {
+		this.gcsmc = gcsmc;
+	}
+	public String getJdmc() {
+		return jdmc;
+	}
+	public void setJdmc(String jdmc) {
+		this.jdmc = jdmc;
+	}
 	public String getSqdbh() {
 		return sqdbh;
 	}
 	public void setSqdbh(String sqdbh) {
 		this.sqdbh = sqdbh;
+	}
+	public String getKhhm() {
+		return khdh;
+	}
+	public void setKhhm(String khdh) {
+		this.khdh = khdh;
+	}
+	public String getKhxm() {
+		return khxm;
+	}
+	public void setKhxm(String khxm) {
+		this.khxm = khxm;
 	}
 	public String getSbxlh() {
 		return sbxlh;
@@ -105,8 +153,10 @@ public class Fwsqd {
 				+ ", khsfid=" + khsfid + ", khsid=" + khsid + ", khqid="
 				+ khqid + ", khxxdz=" + khxxdz + ", sbwtms=" + sbwtms
 				+ ", zslydm1=" + zslydm1 + ", zslydm2=" + zslydm2
-				+ ", zslydm3=" + zslydm3 + ", gcsdm=" + gcsdm + ", glydm="
-				+ glydm + ", jddm=" + jddm + "]";
+				+ ", zslydm3=" + zslydm3 + ", gcsdm=" + gcsdm + ", gcsmc="
+				+ gcsmc + ", jdmc=" + jdmc + ", glydm=" + glydm + ", jddm="
+				+ jddm + ", khdh=" + khdh + ", khxm=" + khxm + ", gcsdh="
+				+ gcsdh + ", yhpj=" + yhpj + "]";
 	}
 
 }

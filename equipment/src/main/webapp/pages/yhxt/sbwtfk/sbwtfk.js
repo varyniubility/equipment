@@ -34,6 +34,9 @@ var submitok = function() {
 	if (xzcd > 3) {
 		alert("请最多选择三个涉及领域！")
 		return 0;
+	}else if(xzcd==0){
+		alert("请选择涉及领域!");
+		return 0;
 	}
 	xzcd = 1;
 	for (i = 0; i < zsly.length; i++) {

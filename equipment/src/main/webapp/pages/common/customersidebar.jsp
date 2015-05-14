@@ -62,15 +62,10 @@
 							<i class="icon-home"></i>
 							维修站点查询</a>
 						</li>
-						<li id="sbkdwxsqMain">
-							<a href="ecommerce_index.html">
+						<li id="sbwxfwsqMain">
+							<a href="/equipment/sbwxfw/init">
 							<i class="icon-home"></i>
-							快递维修申请</a>
-						</li>
-						<li id="sbsmwxsqMain">
-							<a href="ecommerce_index.html">
-							<i class="icon-home"></i>
-							上门维修申请</a>
+							设备维修申请</a>
 						</li>
 					</ul>
 				</li>

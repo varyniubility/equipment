@@ -45,8 +45,7 @@ public class LoginController {
 	public String customlogin(@RequestParam(value="number",required=false)String number,Model model){
 		Sbjbxx result=loginService.customlogin(number);
 		session.setAttribute("sbxlh", number);
-		
-		System.out.println(result);
+
 		if(result!=null){
 //			model.addAllAttributes((Map<String,?>) result)model;
 			model.addAttribute("sbxlh",result.getSbxlh());
