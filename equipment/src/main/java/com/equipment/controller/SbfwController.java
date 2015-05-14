@@ -1,10 +1,12 @@
 package com.equipment.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.equipment.pojo.City;
 import com.equipment.pojo.District;
+import com.equipment.pojo.DmZsly;
+import com.equipment.pojo.Fwsqd;
 import com.equipment.pojo.Province;
 import com.equipment.service.yhxt.sbfw.SbfwService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -30,6 +34,8 @@ public class SbfwController {
 
 	@Autowired
 	private HttpServletRequest request;
+	@Autowired
+	private HttpSession session;
 
 	@RequestMapping(value = "sbfw/init")
 	public String sbfw(Model model) {
@@ -43,7 +49,71 @@ public class SbfwController {
 		return "/pages/yhxt/sbfw/sbwxzdcx";
 
 	}
-
+	
+	@RequestMapping(value="sbwxfw/init")
+	public String sbfwsq(Model model){
+		List<Province> prolist = sbfwservice.getAllPro();
+		List<DmZsly> zslylist = sbfwservice.getAllZsly();
+		System.out.println(zslylist);
+		System.out.println(session.getAttribute("sbxlh"));
+		List<Fwsqd> fwsqdlist = sbfwservice.getAllFwsqd((String)session.getAttribute("sbxlh"));
+		System.out.println(fwsqdlist);
+		request.setAttribute("fwsqdlist", fwsqdlist);
+		request.setAttribute("prolist", prolist);
+		request.setAttribute("zslylist", zslylist);
+		return "/pages/yhxt/sbfw/sbwxfwsq";
+	}
+	
+	@RequestMapping(value="sbwxfw/shwxfwsqadd")
+	public String sbfwsqadd(Fwsqd fwsqd){
+		Date da = new Date();
+		String sqdbh = Long.toString(da.getTime());
+		String sbxlh = (String)session.getAttribute("sbxlh");
+		fwsqd.setSqdbh(sqdbh);
+		fwsqd.setSbxlh(sbxlh);
+		System.out.println(fwsqd);
+		fwsqd.setJddm("1");
+		sbfwservice.addFwsqd(fwsqd);
+		List<Province> prolist = sbfwservice.getAllPro();
+		List<DmZsly> zslylist = sbfwservice.getAllZsly();
+		System.out.println(zslylist);
+		System.out.println(session.getAttribute("sbxlh"));
+		List<Fwsqd> fwsqdlist = sbfwservice.getAllFwsqd(sbxlh);
+		System.out.println(fwsqdlist);
+		request.setAttribute("fwsqdlist", fwsqdlist);
+		request.setAttribute("prolist", prolist);
+		request.setAttribute("zslylist", zslylist);
+		return "/pages/yhxt/sbfw/sbwxfwsq";
+	}
+	
+	@RequestMapping(value="getsqdmx")
+	public @ResponseBody Map<String,String> getsqdmx(@RequestParam String sqdbh){
+		List<Fwsqd> fwsqdmx = sbfwservice.getSqdmx(sqdbh);
+		System.out.println(fwsqdmx);
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String, String> model = new HashMap<String, String>();
+		String  json;
+		try {
+			json = objectmaper.writeValueAsString(fwsqdmx);
+			model.put("list", json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return model;
+	}
+	
+	@RequestMapping(value="addyhpj")
+	public @ResponseBody String addyhpj(@RequestParam String sqdbh,@RequestParam String yhpj){
+		System.out.println(sqdbh);
+		System.out.println(yhpj);
+		Fwsqd fwsqd = new Fwsqd();
+		fwsqd.setSqdbh(sqdbh);
+		fwsqd.setYhpj(yhpj);
+		sbfwservice.updateFwsqd(fwsqd);
+		return "OK";
+	}
 	/**
 	 * 通过省id获取城市信息
 	 * 
@@ -53,8 +123,6 @@ public class SbfwController {
 	public @ResponseBody Map<String, String> getcity(@RequestParam String proid) {
 		System.out.println("ajax查询城市");
 		List<City> list = sbfwservice.getCityByProId(proid);
-		System.out.println(list);
-
 		ObjectMapper objectmaper = new ObjectMapper();
 		Map<String, String> model = new HashMap<String, String>();
 		String  json;

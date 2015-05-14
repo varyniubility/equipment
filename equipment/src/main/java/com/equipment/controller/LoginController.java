@@ -47,7 +47,7 @@ public class LoginController {
 		Sbjbxx result=loginService.customlogin(number);
 		session.setAttribute("sbxlh", number);
 		
-//		System.out.println(session.getAttribute("sbxlh"));
+		System.out.println(session.getAttribute("sbxlh"));
 		if(result!=null){
 //			model.addAllAttributes((Map<String,?>) result)model;
 			model.addAttribute("sbxlh",result.getSbxlh());
@@ -59,7 +59,6 @@ public class LoginController {
 			model.addAttribute("sblx", result.getSblx());
 //			System.out.println(model.toString());
 			session.setAttribute("sblx",result.getSblx());
-			request.setAttribute("style", "1");
 			return "pages/main/customerMain";
 		}else{
 			return "pages/login/customerlogin";

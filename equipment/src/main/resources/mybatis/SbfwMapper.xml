@@ -13,5 +13,44 @@
 	<select id="getDistinctByCityId" parameterType="String" resultType="com.equipment.pojo.District">
 		SELECT districtid,districtname,cityid FROM s_district WHERE cityid=#{cityid} ORDER BY districtid ASC
 	</select>
+	<select id="getAllZsly" resultType="com.equipment.pojo.DmZsly">
+		SELECT * FROM dm_zsly
+	</select>
+	<select id="getAllFwsqd" parameterType="String" resultType="com.equipment.pojo.Fwsqd">
+		SELECT sqdbh,sbxlh,sbwtms,yhdh gcsdh,yhxm gcsmc,jdmc,yhpj FROM fwsqd t 
+		LEFT JOIN dm_fwjd t1 ON t.jddm=t1.jddm 
+		LEFT JOIN userinfo t3 ON t3.yhdm=t.gcsdm
+		WHERE t.sbxlh=#{sbxlh} ORDER BY sqdbh DESC
+	</select>
+	<select id="getSqdmx" parameterType="String" resultType="com.equipment.pojo.Fwsqd">
+		SELECT sqdbh,sbxlh,sbwtms,yhdh gcsdh,yhxm gcsmc,jdmc,yhpj FROM fwsqd t 
+		LEFT JOIN dm_fwjd t1 ON t.jddm=t1.jddm 
+		LEFT JOIN userinfo t3 ON t3.yhdm=t.gcsdm
+		WHERE t.sqdbh=#{sqdbh}
+	</select>
+	
+	<insert id="addFwsqd"  parameterType="com.equipment.pojo.Fwsqd">
+		INSERT INTO fwsqd(sqdbh,
+		sbxlh,khsfid,khsid,khqid,khxxdz,sbwtms,
+		zslydm1,zslydm2,zslydm3,jddm,khdh,khxm) 
+		VALUES(#{sqdbh},
+		#{sbxlh},
+		#{khsfid},
+		#{khsid},
+		#{khqid},
+		#{khxxdz},
+		#{sbwtms},
+		#{zslydm1},
+		#{zslydm2},
+		#{zslydm3},
+		#{jddm},
+		#{khdh},
+		#{khxm}
+		)
+	</insert>
+	
+	<update id="updateFwsqd" parameterType="com.equipment.pojo.Fwsqd">
+		UPDATE fwsqd SET yhpj=#{yhpj} WHERE sqdbh=#{sqdbh}
+	</update>
 
 </mapper>

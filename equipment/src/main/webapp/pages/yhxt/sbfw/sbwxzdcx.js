@@ -4,8 +4,7 @@ $(document).ready(function(){
 	$("#sbwtfkMain").attr("class","start");
 	$("#sbfwMain").attr("class","active open")
 	$("#sbwxzdcxMain").attr("class","active");
-	$("#sbkdwxsqMain").attr("class","start");
-	$("#sbsmwxsqMain").attr("class","start");
+	$("#sbwxfwsqMain").attr("class","start");
 	
 	$("#select_province").change(function(){
 		var val = this.value;
