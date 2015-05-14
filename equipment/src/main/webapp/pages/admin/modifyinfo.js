@@ -1,8 +1,8 @@
 $(document).ready( function () {
-	$("#answer").attr("class","start");
-	$("#engineerMain").attr("class","start");
-	$("#repair").attr("class","start");
-	$("#baseinfo").attr("class","active open");
+	$("#quesmanage").attr("class","start");
+	$("#adminmian").attr("class","start");
+	$("#servicemanage").attr("class","start");
+	$("#sysmanage").attr("class","active open");
 	$("#modifyinfo").attr("class","active");
 	var userid = $("#userid").val();
 	queryInfo(userid);

@@ -12,15 +12,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.equipment.pojo.City;
 import com.equipment.pojo.District;
+<<<<<<< HEAD
 import com.equipment.pojo.DmZsly;
 import com.equipment.pojo.Fwsqd;
+=======
+import com.equipment.pojo.PointData;
+>>>>>>> master
 import com.equipment.pojo.Province;
+import com.equipment.pojo.QueryPoint;
 import com.equipment.service.yhxt.sbfw.SbfwService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -163,6 +169,22 @@ public class SbfwController {
 		return result;
 	}
 	
-	
+	@RequestMapping(value="sbfw/querypoint")
+	public @ResponseBody Map<String,String> queryPoint(@RequestBody QueryPoint queryPoint){
+		System.out.println(queryPoint);
+		List<PointData> list  = sbfwservice.queryPoint(queryPoint);
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String,String> result = new HashMap<String,String>();
+		String json;
+		
+		try {
+			json = objectmaper.writeValueAsString(list);
+			result.put("list", json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 }

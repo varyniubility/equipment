@@ -25,7 +25,7 @@
 			</li>
 			<li class="dropdown-user">
 				<a href="login.html" >
-					<i class="icon-key"></i> 退出 </a>
+					<i class="fa fa-paper-plane"></i> 退出 </a>
 			</li>
 		</ul>
 	</div>

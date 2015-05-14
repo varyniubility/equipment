@@ -2,10 +2,11 @@ package com.equipment.service;
 
 import java.util.List;
 
+import com.equipment.pojo.AdminInfo;
 import com.equipment.pojo.BaseInfo;
 import com.equipment.pojo.SelectedData;
 
-public interface BaseInfoService {
+public interface AdminInfoService {
 
 	public String modifyPassword(String oldpassword,String newpassword,String confirmpwd,String userid);
 
@@ -15,7 +16,7 @@ public interface BaseInfoService {
 
 	public List<SelectedData> queryDistrict(String cityid);
 
-	public List<BaseInfo> saveModify(BaseInfo baseInfo);
+	public List<AdminInfo> saveModify(AdminInfo baseInfo);
 
-	public BaseInfo queryInfo(String userid);
+	public AdminInfo queryInfo(String userid);
 }

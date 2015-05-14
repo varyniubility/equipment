@@ -12,6 +12,9 @@
 <jsp:include page="../../../pages/common/import.jsp"/>
 <link href="/equipment/assets/css/custom.css" rel="stylesheet"type="text/css" id="style_color" />
 <script src="/equipment/pages/yhxt/sbcjwt/sbcjwt.js" type="text/javascript"></script>
+<style type="text/css">
+	body{font-size:14px;font-family:"微软雅黑";}
+</style>
 <title>设备常见问题</title>
 </head>
 <body

@@ -2,12 +2,13 @@ package com.equipment.dao;
 
 import java.util.List;
 
+import com.equipment.pojo.AdminInfo;
 import com.equipment.pojo.BaseInfo;
 import com.equipment.pojo.SelectedData;
 import com.equipment.utils.MyBatisRepository;
 
 @MyBatisRepository
-public interface IBaseInfoDao {
+public interface IAdminInfoDao {
 
 	public String queryPassword(String userid);
 
@@ -19,7 +20,7 @@ public interface IBaseInfoDao {
 	
 	public List<SelectedData> queryDistrict(String cityid);
 	
-	public List<BaseInfo> saveModify(BaseInfo baseInfo);
+	public List<AdminInfo> saveModify(AdminInfo adminInfo);
 	
-	public BaseInfo queryInfo(String userid);
+	public AdminInfo queryInfo(String userid);
 }

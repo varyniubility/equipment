@@ -9,7 +9,7 @@
 				<div class="sidebar-toggler"></div>
 			</li>
 			<li id="engineerMain" class="start active ">
-				<a href="/equipment/main/init">
+				<a href="/equipment/main/initEngineer">
 					<i class="fa fa-home"></i>
 					<span class="title">
 						工程师主界面

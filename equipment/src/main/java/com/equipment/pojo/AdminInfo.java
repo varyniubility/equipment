@@ -1,6 +1,6 @@
 package com.equipment.pojo;
 
-public class BaseInfo {
+public class AdminInfo {
 
 	private String userid;
 	private String name;

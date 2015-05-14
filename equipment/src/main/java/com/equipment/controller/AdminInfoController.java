@@ -13,29 +13,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.equipment.pojo.BaseInfo;
+import com.equipment.pojo.AdminInfo;
 import com.equipment.pojo.ModifyPassword;
 import com.equipment.pojo.SelectedData;
-import com.equipment.service.BaseInfoService;
+import com.equipment.service.AdminInfoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
-public class BaseInfoController {
+public class AdminInfoController {
 
 	@Autowired
-    @Qualifier("baseinfo")
-	public BaseInfoService baseInfoService;
+    @Qualifier("admininfo")
+	public AdminInfoService adminInfoService;
 	
-	@RequestMapping(value="baseinfo/modifyinfo")
+	@RequestMapping(value="admininfo/initmodifyinfo")
 	public @ResponseBody ModelAndView initModifyInfo(){
-		return new ModelAndView("/pages/engineer/modifyinfo");
+		return new ModelAndView("/pages/admin/modifyinfo");
 	}
 	
-	@RequestMapping(value="baseinfo/queryInfo")
+	@RequestMapping(value="admininfo/initmodifypwd")
+	public @ResponseBody ModelAndView initModifyPwd(){
+		return new ModelAndView("/pages/admin/modifypwd");
+	}
+	
+	@RequestMapping(value="admininfo/queryInfo")
 	public @ResponseBody Map<String,Object> queryInfo(@RequestBody String userid){
 		System.out.println(userid);
-		BaseInfo info = baseInfoService.queryInfo(userid);
+		AdminInfo info = adminInfoService.queryInfo(userid);
 		ObjectMapper objectMapper =  new ObjectMapper(); 
 		Map<String,Object> resMap = new HashMap<>();
 		String infojson;
@@ -47,14 +52,14 @@ public class BaseInfoController {
 		}
 		return resMap;
 	}
-	@RequestMapping(value="baseinfo/modifypassword")
+	@RequestMapping(value="admininfo/modifypassword")
 	public String initmodifypassword(){
 		return "/pages/engineer/modifypwd";
 	}
 	
-	@RequestMapping(value="baseinfo/queryprovince")
+	@RequestMapping(value="admininfo/queryprovince")
 	public @ResponseBody Map<String,String> queryProvince(){
-		List<SelectedData> result = baseInfoService.queryProvince();
+		List<SelectedData> result = adminInfoService.queryProvince();
 		ObjectMapper objectmaper = new ObjectMapper();
 		Map<String, String> resMap = new HashMap<String, String>();
 		String  json;
@@ -69,9 +74,9 @@ public class BaseInfoController {
 		return resMap;
 	}
 	
-	@RequestMapping(value="baseinfo/querycity")
+	@RequestMapping(value="admininfo/querycity")
 	public @ResponseBody Map<String,String> queryCity(@RequestBody String provinceid){
-		List<SelectedData> result = baseInfoService.queryCity(provinceid);
+		List<SelectedData> result = adminInfoService.queryCity(provinceid);
 		ObjectMapper objectmaper = new ObjectMapper();
 		Map<String, String> resMap = new HashMap<String, String>();
 		String  json;
@@ -86,9 +91,9 @@ public class BaseInfoController {
 		return resMap;
 	}
 	
-	@RequestMapping(value="baseinfo/querydistrict")
+	@RequestMapping(value="admininfo/querydistrict")
 	public @ResponseBody Map<String,String> queryDistrict(@RequestBody String cityid){
-		List<SelectedData> result = baseInfoService.queryDistrict(cityid);
+		List<SelectedData> result = adminInfoService.queryDistrict(cityid);
 		ObjectMapper objectmaper = new ObjectMapper();
 		Map<String, String> resMap = new HashMap<String, String>();
 		String  json;
@@ -103,9 +108,9 @@ public class BaseInfoController {
 		return resMap;
 	}
 	
-	@RequestMapping(value="baseinfo/savemodify")
-	public @ResponseBody Map<String,String> saveModify(@RequestBody BaseInfo baseInfo){
-		List<BaseInfo> result = baseInfoService.saveModify(baseInfo);
+	@RequestMapping(value="admininfo/savemodify")
+	public @ResponseBody Map<String,String> saveModify(@RequestBody AdminInfo adminInfo){
+		List<AdminInfo> result = adminInfoService.saveModify(adminInfo);
 		ObjectMapper objectmaper = new ObjectMapper();
 		Map<String, String> resMap = new HashMap<String, String>();
 		String  json;
@@ -119,14 +124,14 @@ public class BaseInfoController {
 		return resMap;
 	}
 	
-	@RequestMapping(value="baseinfo/password")
+	@RequestMapping(value="admininfo/password")
 	@ResponseBody
 	public String modifyPassword(@RequestBody ModifyPassword modifyPassword){
 		String userid = modifyPassword.getUserid();
 		String oldpassword = modifyPassword.getOldpassword();
 		String newpassword = modifyPassword.getNewpassword();
 		String confirmpwd = modifyPassword.getConfirmpwd();
-		String s = baseInfoService.modifyPassword(oldpassword, newpassword, confirmpwd, userid);
+		String s = adminInfoService.modifyPassword(oldpassword, newpassword, confirmpwd, userid);
 		return null;
 	}
 }

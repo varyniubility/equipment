@@ -1,15 +1,10 @@
 var datatable=null;
 var userid;
 $(document).ready( function () {
-	$("#answer").attr("class","start active");
-	$("#engineerMain").attr("class","start");
-	$("#repair").attr("class","start");
+	$("#quesmanage").attr("class","start active");
+	$("#adminmian").attr("class","start");
+	$("#servicemanage").attr("class","start");
 	userid = $("#userid").val();
-	if(datatable == null){
-		createTable();
-	}else{
-		datatable.draw();
-	}
 })
 
 $("#searchbtn").click(function(){

@@ -8,9 +8,14 @@ import org.springframework.stereotype.Service;
 import com.equipment.dao.yhxt.sbfw.ISbfwDao;
 import com.equipment.pojo.City;
 import com.equipment.pojo.District;
+<<<<<<< HEAD
 import com.equipment.pojo.DmZsly;
 import com.equipment.pojo.Fwsqd;
+=======
+import com.equipment.pojo.PointData;
+>>>>>>> master
 import com.equipment.pojo.Province;
+import com.equipment.pojo.QueryPoint;
 import com.equipment.service.yhxt.sbfw.SbfwService;
 
 @Service("SbfwService")
@@ -34,6 +39,7 @@ public class SbfwServiceImpl implements SbfwService{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<DmZsly> getAllZsly() {
 		// TODO Auto-generated method stub
 		return sbfwdao.getAllZsly();
@@ -64,4 +70,11 @@ public class SbfwServiceImpl implements SbfwService{
 	}
 
 
+=======
+	public List<PointData> queryPoint(QueryPoint queryPoint) {
+		// TODO Auto-generated method stub
+		return sbfwdao.queryPoint(queryPoint);
+	}
+
+>>>>>>> master
 }

@@ -1,3 +1,4 @@
+var map;
 $(document).ready(function(){
 	$("#sbcjwtMain").attr("class","start");
 	$("#sbjbxxMain").attr("class","start");
@@ -27,81 +28,46 @@ $(document).ready(function(){
 		}
 	});
 	
-	var map = new BMap.Map("map");
+	map = new BMap.Map("map");
 	map.centerAndZoom(new BMap.Point(114.066, 22.616), 12);
 	map.enableScrollWheelZoom();
-	 var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
-     '<img src="assets/img/search.jpg" alt="" style="float:right;zoom:1;overflow:hidden;width:120px;height:100px;margin-left:3px;"/>' +
-     '地址：北京市海淀区上地十街10号<br/>电话：(010)59928888<br/>简介：百度大厦位于北京市海淀区西二旗地铁站附近，为百度公司综合研发及办公总部。' +
-     '</div>';
-
-		//创建检索信息窗口对象
-		var searchInfoWindow = null;
-		searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
-		   title  : "百度大厦",
-		   width  : 290,
-		   height : 105,
-		   panel  : "panel",
-		   enableAutoPan : true,
-		   searchTypes   :[
-		       BMAPLIB_TAB_SEARCH,
-		       BMAPLIB_TAB_TO_HERE, 
-		       BMAPLIB_TAB_FROM_HERE 
-		   ]
-		});
-		
-	   var points =[
-	       new BMap.Point(114.066,22.616),
-	       new BMap.Point(114.05,22.55),
-         new BMap.Point(114.12,22.55),
-         new BMap.Point(114.05,22.53),
-         new BMap.Point(113.92,22.52),
-         new BMap.Point(113.9,22.57),
-         new BMap.Point(114.27,22.73),
-         new BMap.Point(114.22,22.55)]; 
 	
-	   function addMarker(point){
-	       var marker = new BMap.Marker(point);
-	       marker.enableDragging();
-         marker.addEventListener("click", function(e){
-             searchInfoWindow.open(marker);
-         })
-	       map.addOverlay(marker);
-	   }
-	   for (var i = 0; i < points.length; i ++) {
-	       var point = points[i];
-	       addMarker(points[i]);
-	   }
-	   var curve = new BMapLib.CurveLine(points, {strokeColor:"blue", strokeWeight:3, strokeOpacity:0});
-	   curve.addEventListener("mouseover",function(){
-	       console.log(curve);
-	      curve = new BMapLib.CurveLine(points, {strokeColor:"blue", strokeWeight:4, strokeOpacity:0.5});
-	       map.addOverlay(curve);
-	   });
-	   curve.addEventListener("mouseout",function(){
-	       curve.remove();
-	       curve = new BMapLib.CurveLine(points, {strokeColor:"blue", strokeWeight:1, strokeOpacity:0.5});
-	       map.addOverlay(curve);
-	   });
-	   map.addOverlay(curve);
-	   curve.enableEditing();
-	   map.enableScrollWheelZoom(true);
+	$("#confirmbtn").click(function(){
+		var province = $("#select_province").val();
+		var city = $("#select_city").val();
+		var district = $("#select_district").val();
+		
+		var params = '{"province":"'+ province + '","city":"'+ city + '","district":"'+ district +'"}';
+		$.ajax({
+	        url : 'querypoint',//这个就是请求地址对应sAjaxSource
+	        data : params, //这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
+	        type : 'post',
+	        dataType: "json",  
+	 		contentType: "application/json", 
+	        success : function(result) {
+	        	var resList = result.list;
+	        	var obj = eval('(' + resList + ')');
+	        	createmap(obj);
+	        },
+	        error : function(msg) {
+	        }
+	    });
+	});
+	
+	
 
 })
-
-
 
 function getcitydate(proid){
 	$.ajax({
 		url:"../querycity?proid="+proid,
 		type:"post",
 		dataType:"json",
-		async:false,
 		success:function(result){
 			creatcityselect(result.list);
 		},
 		error:function(msg){
-			alert("出错");
+			
 		}
 		
 	});
@@ -113,16 +79,42 @@ function getdistrictdata(cityid){
 		url:"../querydistrict?cityid="+cityid,//url地址
 		type:"post",
 		dataType:"json",
-		async:false,
 		success:function(result){
 			creatdistrictselect(result.list);
 		},
 		error:function(msg){
-			alert("出错");
+			
 		}
 		
 	});
 	
+}
+
+function createmap(list){
+	map = new BMap.Map("map");
+	for (var i = 0; i < list.length; i ++) {
+		var content = list[i];
+		var sContent = '<div style="margin:0;line-height:20px;padding:2px;"><h4 style="margin:0 0 5px 0;padding:0.2em 0">'+content.zdmc+'</h4>'+
+		  	'地址：'+content.provincename+content.cityname+content.districtname+content.xxdz+'<br/>电话：'+content.zddh+'<br/>'+
+		    	'</div>';
+		var infoWindow = new BMap.InfoWindow(sContent);
+		var point = new BMap.Point(content.zdjd,content.zdwd);
+		console.log(point);
+		addMarker(point,infoWindow);
+	}
+	var length = list.length;
+	var lastpoint = list[length-1];
+	map.centerAndZoom(new BMap.Point(lastpoint.zdjd, lastpoint.zdwd), 12);
+	map.enableScrollWheelZoom(true);
+}
+
+function addMarker(point,infoWindow){
+    var marker = new BMap.Marker(point);
+    marker.enableDragging();
+    marker.addEventListener("click", function(e){
+    	 this.openInfoWindow(infoWindow);
+  })
+    map.addOverlay(marker);
 }
 
 function creatdistrictselect(list){

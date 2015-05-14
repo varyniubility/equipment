@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<jsp:include page="../../pages/common/import.jsp"/>
-		<script src="/equipment/pages/engineer/modifyinfo.js" type="text/javascript"></script>
+		<script src="/equipment/pages/admin/modifypwd.js" type="text/javascript"></script>
 		<style type="text/css">
 			body{font-size:14px;font-family:"微软雅黑";}
 		</style>
@@ -19,7 +19,7 @@
 
 		<!-- 页面容器开始 -->
 		<div class="page-container">
-			<%@ include file="../../pages/common/engineerSidebar.jsp"%>
+			<%@ include file="../../pages/common/adminSidebar.jsp"%>
 			<!-- 页面内容开始 -->
 			<div class="page-content-wrapper">
 				<div class="page-content">
@@ -28,7 +28,7 @@
 							<div class="portlet box purple">
 								<div class="portlet-title">
 									<div class="caption">
-										<i class="fa fa-gift"></i>修改基本信息
+										<i class="fa fa-gift"></i>修改密码
 									</div>
 									<div class="tools">
 										<a href="" class="collapse">
@@ -43,14 +43,14 @@
 								</div>
 								
 								<div class="portlet-body">
-									<form role="form" class="form-horizontal">
+									<form role="form" class="form-horizontal" onsubmit="return false;">
 										<div class="form-body">
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="name" class="col-md-3 control-label">用户姓名：</label>
-													<div class="col-md-9">
-														<input type="text" id="name" class="form-control" placeholder="姓名">
+													<label for="oldpassword" class="col-md-5 control-label">原始密码：</label>
+													<div class="col-md-7">
+														<input type="password" class="form-control" placeholder="原始密码" id="oldpassword" name="oldpassword">
 													</div>
 												</div>
 												<div class="col-md-4"></div>
@@ -58,12 +58,9 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="sex" class="col-md-3 control-label">性别：</label>
-													<div class="col-md-9">
-														<select type="text" class="form-control" name = "sex" id="sex">
-															<option value="0">男</option>
-															<option value="1">女</option>
-														</select>
+													<label for="newpassword" class="col-md-5 control-label">新密码：</label>
+													<div class="col-md-7">
+														<input type="password" class="form-control" placeholder="新密码" id="newpassword" name="newpassword">
 													</div>
 												</div>
 												<div class="col-md-4"></div>
@@ -71,35 +68,9 @@
 											<div class="form-group">
 												<div class="col-md-2"></div>
 												<div class="col-md-6">
-													<label for="phone" class="col-md-3 control-label">电话：</label>
-													<div class="col-md-9">
-														<input type="text" id="phone" class="form-control" placeholder="电话">
-													</div>
-												</div>
-												<div class="col-md-4"></div>
-											</div>
-											<div class="form-group">
-												<div class="col-md-2"></div>
-												<div class="col-md-6">
-													<label for="area" class="col-md-3 control-label">所在地：</label>
-													<div class="col-md-3">
-														<select type="text" class="form-control" name = "province" id="province"></select>
-													</div>
-													<div class="col-md-3">
-														<select type="text" class="form-control" name = "city" id="city"></select>
-													</div>
-													<div class="col-md-3">
-														<select type="text" class="form-control" name = "district" id="district"></select>
-													</div>
-												</div>
-												<div class="col-md-4"></div>
-											</div>
-											<div class="form-group">
-												<div class="col-md-2"></div>
-												<div class="col-md-6">
-													<label for="address" class="col-md-3 control-label">详细地址：</label>
-													<div class="col-md-9">
-														<textarea type="text" id="address" class="form-control"></textarea>
+													<label for="confirmpwd" class="col-md-5 control-label">确认新密码：</label>
+													<div class="col-md-7">
+														<input type="password" class="form-control" placeholder="确认新密码" id="confirmpwd" name="confirmpwd">
 													</div>
 												</div>
 												<div class="col-md-4"></div>
@@ -108,11 +79,12 @@
 												<input type="text" id="userid" name="userid" style="display:none;" value=${userid}>
 											</div>
 											<div class="form-group">
-												<div class="col-md-6"></div>
+												<div class="col-md-4"></div>
+												<div class="col-md-4"></div>
 												<div class="col-md-4">
 													<button type="button" id="submitbtn" class="btn btn-success">确认</button>
+													<button type="button" id="cancel" class="btn btn-success">取消</button>
 												</div>
-												<div class="col-md-2"></div>
 											</div>
 										</div>
 									</form>
