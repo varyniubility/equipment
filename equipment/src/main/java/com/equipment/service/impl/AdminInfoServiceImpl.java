@@ -30,15 +30,21 @@ public class AdminInfoServiceImpl implements AdminInfoService {
 		String md5NewPawssword = md5.GetMD5Code(newpassword);
 		String md5ConfirmPwd = md5.GetMD5Code(confirmpwd);
 		String resultStr = null;
-		if(password.equals(md5OldPassword)){
-			if(md5NewPawssword.equals(md5ConfirmPwd)){
-				resultStr="密码修改成功！";
-				adminInfoDao.modifyPassword(md5NewPawssword,userid);
-			}else{
-				resultStr="两次输入密码不同！";
-			}
+		if(oldpassword == null || oldpassword.equals("")){
+			resultStr="原始密码为空值！";
+		}else if(newpassword == null || newpassword.equals("")){
+			resultStr="请输入新密码！";
 		}else{
-			resultStr="原始密码不正确！";
+			if(password.equals(md5OldPassword)){
+				if(md5NewPawssword.equals(md5ConfirmPwd)){
+					resultStr="密码修改成功！";
+					adminInfoDao.modifyPassword(md5NewPawssword,userid);
+				}else{
+					resultStr="两次输入密码不同！";
+				}
+			}else{
+				resultStr="原始密码不正确！";
+			}
 		}
 		return resultStr;
 	}
@@ -62,13 +68,18 @@ public class AdminInfoServiceImpl implements AdminInfoService {
 	}
 
 	@Override
-	public List<AdminInfo> saveModify(AdminInfo adminInfo) {
-		List<AdminInfo> result = adminInfoDao.saveModify(adminInfo);
-		return result;
+	public String saveModify(AdminInfo adminInfo) {
+		Integer num = adminInfoDao.saveModify(adminInfo);
+		if(num > 0){
+			return "success";
+		}else{
+			return "fail";
+		}
 	}
 
 	@Override
 	public AdminInfo queryInfo(String userid) {
+		System.out.println(userid);
 		AdminInfo result = adminInfoDao.queryInfo(userid);
 		return result;
 	}

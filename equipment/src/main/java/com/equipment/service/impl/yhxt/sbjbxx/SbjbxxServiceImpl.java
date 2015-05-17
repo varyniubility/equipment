@@ -1,12 +1,14 @@
 package com.equipment.service.impl.yhxt.sbjbxx;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.equipment.dao.yhxt.sbjbxx.ISbjbxxDao;
 import com.equipment.pojo.Sbjbxx;
 import com.equipment.service.yhxt.sbjbxx.SbjbxxService;
 
+@Component
 @Service("SbjbxxService")
 public class SbjbxxServiceImpl implements SbjbxxService{
 	

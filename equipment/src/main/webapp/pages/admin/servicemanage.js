@@ -6,14 +6,17 @@ $(document).ready( function () {
 	$("#servicemanage").attr("class","start active");
 	$("#sysmanage").attr("class","start");
 	userid = $("#userid").val();
-})
-
-$("#searchbtn").click(function(){
-	if(datatable == null){
-		createTable();
-	}else{
-		datatable.draw();
-	}
+	$("#searchbtn").click(function(){
+		if(datatable == null){
+			createTable();
+		}else{
+			datatable.draw();
+		}
+	});
+	
+	$("#sqdbtn").click(function(){
+		$("#addmodal").modal("show");//弹出框show
+	})
 });
 
 function createJdSelect(obj){
@@ -30,7 +33,7 @@ function createTable(){
 		"bAutoWidth":false,
     	"bProcessing": true, // 是否显示取数据时的那个等待提示
         "bServerSide": true,//这个用来指明是通过服务端来取数据
-        "sAjaxSource": "query",//这个是请求的地址
+        "sAjaxSource": "querysqd",//这个是请求的地址
         "fnServerData": retrieveData, // 获取数据的处理函数
         'sClass': "text-center",
         "bLengthChange": false,
@@ -47,18 +50,13 @@ function createTable(){
 			{ "bSortable": false},
 			{ "bSortable": false},
 			{ "bSortable": false},
-			{ "bSortable": false},
 			{ "bSortable": false}
 		],
 		"columnDefs": [{
-            "targets": -1,//编辑
-            "data": null,
-            "defaultContent": "<button id='modifyrow' class='btn btn-primary' type='button'><i class='fa fa-edit'></i></button>"
-		},{
-    		"targets": -2,//问题编号
+    		"targets": -1,//问题编号
     		"visible":false
     	},{
-    		"targets": -3,//进度代码
+    		"targets": -1,//进度代码
     		"visible":false
     	}],
         "aLengthMenu": [
@@ -84,57 +82,6 @@ function createTable(){
         	"sProcessing": "<img src='/equipment/assets/img/loading.gif'/>"
         	},
 	});
-
-	//问题解答按钮点击事件
-	$('#serviceshow tbody').on('click', 'button#modifyrow', function () {
-		var data = datatable.row( $(this).parents('tr') ).data();
-		$("#sbmc").val(data[0]);
-		$("#sbxh").val(data[1]);
-		$("#sbwt").val(data[4]);
-		$("#jddm").val(data[11]);
-		$("#wtdm").val(data[12]);
-		var jddm = $("#jddm").val();
-		var params = jddm;  
-		$.ajax({
-	        url : 'queryjd',//这个就是请求地址对应sAjaxSource
-	        data : params, //这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
-	        type : 'post',
-	        dataType: "json",  
-	 		contentType: "application/json", 
-	        async : true,
-	        success : function(result) {
-	        	var resList = result.list;
-	        	var obj = eval('(' + resList + ')');
-	        	createJdSelect(obj);
-	        },
-	        error : function(msg) {
-	        }
-	    });
-		$("#modifymodal").modal("show");//弹出框show
-		$("#modifyconfirm").click(function(){
-			var wtdm = $("#wtdm").val();
-			var jddm = $("#modifyjd").val();
-			var wtjd = $("#modifyques").val();
-			var gcszj = $("#gcszj").val();
-			var params = '{"wtdm":"'+ wtdm + '","jddm":"'+ jddm + '","wtjd":"'+ wtjd + '","gcszj":"'+ gcszj + '"}';
-			$.ajax({
-		        url : 'modifyques',//这个就是请求地址对应sAjaxSource
-		        data : params, //这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
-		        type : 'post',
-		        dataType: "json",  
-		 		contentType: "application/json", 
-		        async : true,
-		        success : function(result) {
-		        	var resList = result.list;
-		        	$("#modifymodal").modal("hide");//弹出框show
-		        	$('#modifyform')[0].reset();
-		        	datatable.draw();
-		        },
-		        error : function(msg) {
-		        }
-		    });
-		})
-	})
 }
 
 function retrieveData(sSource,aoData, fnCallback) {

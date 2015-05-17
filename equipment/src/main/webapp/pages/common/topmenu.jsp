@@ -20,11 +20,11 @@
 			<li class="dropdown-user">
 				<a href="javascript:;" class="dropdown-toggle">
 					<img alt="" class="img-circle" src="/equipment/assets/img/avatar3_small.jpg"/>
-					<span class="username username-hide-on-mobile">${userid}</span>
+					<span class="username username-hide-on-mobile">${username}</span>
 				</a>
 			</li>
 			<li class="dropdown-user">
-				<a href="login.html" >
+				<a href="/equipment/sys/logout" >
 					<i class="fa fa-paper-plane"></i> 退出 </a>
 			</li>
 		</ul>

@@ -110,7 +110,9 @@
 											<div class="form-group">
 												<div class="col-md-6"></div>
 												<div class="col-md-4">
-													<button type="button" id="submitbtn" class="btn btn-success">确认</button>
+													<button type="button" id="submitbtn" class="btn btn-success popover-show" title="提示"  
+											      		data-container="body" data-toggle="popover" data-placement="top" 
+											      		data-content="保存成功！" data-trigger="manual" data-animation=true">确认</button>">确认</button>
 												</div>
 												<div class="col-md-2"></div>
 											</div>

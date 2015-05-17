@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.equipment.dao.IUserDao">
+	<select id="queryUser" resultType="UserInfo" parameterType="DatatableParams">
+		SELECT ui.yhdm,yhxm,yhxb,yhdh,CONCAT(pi.provincename,ci.cityname,di.districtname,xxdz) AS yhdz,pi.provinceid AS provinceid,ci.cityid AS cityid,di.districtid AS districtid,yhm,xxdz,yhlb
+		FROM userinfo ui
+		LEFT JOIN users u ON ui.yhdm=u.yhdm
+		LEFT JOIN s_province pi ON pi.provinceid=ui.provinceid
+		LEFT JOIN s_city ci ON ci.cityid=ui.cityid
+		LEFT JOIN s_district di ON di.districtid=ui.districtid
+		<where>  
+	        <if test="yhxm!=null and yhxm!=''">  
+	            yhxm  LIKE CONCAT('%', #{yhxm},'%')   
+	        </if> 
+	        <if test="yhlb!= null and yhlb!=''">  
+	            AND yhlb = #{yhlb}  
+	        </if>     
+    	</where>
+	</select>
+	<select id="queryProvince" resultType="SelectedData">
+		SELECT provinceid AS id,provincename AS name
+		FROM s_province
+	</select>
+	<select id="queryCity" resultType="SelectedData" parameterType="String">
+		SELECT cityid AS id,cityname AS name
+		FROM s_city
+		WHERE provinceid=#{provinceid}
+	</select>
+	<select id="queryDistrict" resultType="SelectedData" parameterType="String">
+		SELECT districtid AS id,districtname AS name
+		FROM s_district
+		WHERE cityid=#{cityid}
+	</select>
+	<insert id="addUserInfo" parameterType="UserInfo">
+		INSERT INTO userinfo (yhdm,yhxm,yhxb,yhdh,provinceid,cityid,districtid,xxdz)
+		VALUES (#{yhdm},#{yhxm},#{yhxb},#{yhdh},#{provinceid},#{cityid},#{districtid},#{xxdz})
+	</insert>
+	<insert id="addUser" parameterType="UserInfo">
+		INSERT INTO users (yhdm,yhm,yhmm,yhlb)
+		VALUES (#{yhdm},#{yhm},#{password},#{yhlb})
+	</insert>
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM users
+		WHERE yhdm=#{userid}
+	</delete>
+	<delete id="deleteUserInfo" parameterType="String">
+		DELETE FROM userinfo
+		WHERE yhdm=#{userid}
+	</delete>
+	<select id="queryMaxId" resultType="String">
+		SELECT MAX(cast(yhdm as unsigned int)) AS maxid
+		FROM userinfo
+	</select>
+	<update id="modifyUser" parameterType="UserInfo">
+		UPDATE users
+		<set>
+			<if test="yhm != null and yhm != ''">yhm = #{yhm},</if>
+			<if test="yhlb != null and yhlb != ''">yhlb = #{yhlb},</if>
+		</set>
+		WHERE yhdm=#{yhdm}
+	</update>
+	<update id="modifyUserInfo" parameterType="UserInfo">
+		UPDATE userinfo
+		<set>
+			<if test="yhxm != null and yhxm != ''">yhxm = #{yhxm},</if>
+			<if test="yhxb != null and yhxb != ''">yhxb = #{yhxb},</if>
+			<if test="yhdh != null and yhdh != ''">yhdh = #{yhdh},</if>
+			<if test="provinceid != null and provinceid != ''">provinceid = #{provinceid},</if>
+			<if test="cityid != null and cityid != ''">cityid = #{cityid},</if>
+			<if test="districtid != null and districtid != ''">districtid = #{districtid},</if>
+			<if test="xxdz != null and xxdz != ''">xxdz = #{xxdz},</if>
+		</set>
+		WHERE yhdm=#{yhdm}
+	</update>
+</mapper> 

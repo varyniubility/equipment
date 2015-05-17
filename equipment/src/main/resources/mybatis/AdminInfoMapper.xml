@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="com.equipment.dao.IBaseInfoDao">
+<mapper namespace="com.equipment.dao.IAdminInfoDao">
 	<update id="modifyPassword" parameterType="String">
 		UPDATE users SET yhmm=#{0}
 		WHERE yhdm=#{1}
@@ -24,12 +24,12 @@
 		FROM s_district
 		WHERE cityid=#{cityid}
 	</select>
-	<update id="saveModify" parameterType="BaseInfo">
+	<update id="saveModify" parameterType="AdminInfo">
 		UPDATE userinfo SET yhxm=#{name},yhxb=#{sex},yhdh=#{phone},provinceid=#{province},cityid=#{city},districtid=#{district},xxdz=#{address}
 		WHERE yhdm=#{userid}
 	</update>
 	
-	<select id="queryInfo" resultType="BaseInfo" parameterType="String">
+	<select id="queryInfo" resultType="AdminInfo" parameterType="String">
 		SELECT yhxm AS name,yhxb AS sex,yhdh AS phone,provinceid AS province,cityid AS city,districtid AS district,xxdz AS address
 		FROM userinfo
 		WHERE yhdm=#{userid}

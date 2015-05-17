@@ -58,6 +58,7 @@ public class BaseInfoController {
 		}
 		return resMap;
 	}
+	
 	@RequestMapping(value="baseinfo/modifypassword")
 	public String initmodifypassword(){
 		String userid = (String) session.getAttribute("userid");
@@ -122,7 +123,7 @@ public class BaseInfoController {
 	
 	@RequestMapping(value="baseinfo/savemodify")
 	public @ResponseBody Map<String,String> saveModify(@RequestBody BaseInfo baseInfo){
-		List<BaseInfo> result = baseInfoService.saveModify(baseInfo);
+		String result = baseInfoService.saveModify(baseInfo);
 		ObjectMapper objectmaper = new ObjectMapper();
 		Map<String, String> resMap = new HashMap<String, String>();
 		String  json;
@@ -138,12 +139,21 @@ public class BaseInfoController {
 	
 	@RequestMapping(value="baseinfo/password")
 	@ResponseBody
-	public String modifyPassword(@RequestBody ModifyPassword modifyPassword){
+	public Map<String, String> modifyPassword(@RequestBody ModifyPassword modifyPassword){
 		String userid = modifyPassword.getUserid();
 		String oldpassword = modifyPassword.getOldpassword();
 		String newpassword = modifyPassword.getNewpassword();
 		String confirmpwd = modifyPassword.getConfirmpwd();
-		String s = baseInfoService.modifyPassword(oldpassword, newpassword, confirmpwd, userid);
-		return null;
+		String result = baseInfoService.modifyPassword(oldpassword, newpassword, confirmpwd, userid);
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String, String> resMap = new HashMap<String, String>();
+		String  json;
+		try {
+			json = objectmaper.writeValueAsString(result);
+			resMap.put("result", json);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return resMap;
 	}
 }

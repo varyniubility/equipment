@@ -20,12 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.equipment.pojo.City;
 import com.equipment.pojo.District;
-<<<<<<< HEAD
 import com.equipment.pojo.DmZsly;
 import com.equipment.pojo.Fwsqd;
-=======
 import com.equipment.pojo.PointData;
->>>>>>> master
 import com.equipment.pojo.Province;
 import com.equipment.pojo.QueryPoint;
 import com.equipment.service.yhxt.sbfw.SbfwService;
@@ -44,9 +41,6 @@ public class SbfwController {
 	@Autowired
 	private HttpSession session;
 
-	@Autowired
-	HttpSession session;
-	
 	@RequestMapping(value = "sbfw/init")
 	public String sbfw(Model model) {
 		List<Province> prolist = sbfwservice.getAllPro();

@@ -41,6 +41,14 @@ public class LoginController {
 		return result.get("view");
 	}
 	
+	@RequestMapping("sys/logout")
+	public String logout(){
+		session.removeAttribute("userid");
+		session.removeAttribute("username");
+		session.invalidate();
+		return "redirect:/pages/login/login.jsp";
+	}
+	
 	@RequestMapping(value={"/custom","/pages/login/custom"})
 	public String customlogin(@RequestParam(value="number",required=false)String number,Model model){
 		Sbjbxx result=loginService.customlogin(number);

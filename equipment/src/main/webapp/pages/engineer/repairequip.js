@@ -8,7 +8,6 @@ $(document).ready( function () {
 })
 
 $("#searchbtn").click(function(){
-	console.log("asdas");
 	if(datatable == null){
 		createTable();
 	}else{

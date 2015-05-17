@@ -3,21 +3,20 @@ package com.equipment.service.impl.yhxt.sbfw;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.equipment.dao.yhxt.sbfw.ISbfwDao;
 import com.equipment.pojo.City;
 import com.equipment.pojo.District;
-<<<<<<< HEAD
 import com.equipment.pojo.DmZsly;
 import com.equipment.pojo.Fwsqd;
-=======
 import com.equipment.pojo.PointData;
->>>>>>> master
 import com.equipment.pojo.Province;
 import com.equipment.pojo.QueryPoint;
 import com.equipment.service.yhxt.sbfw.SbfwService;
 
+@Component
 @Service("SbfwService")
 public class SbfwServiceImpl implements SbfwService{
 	
@@ -39,7 +38,6 @@ public class SbfwServiceImpl implements SbfwService{
 	}
 
 	@Override
-<<<<<<< HEAD
 	public List<DmZsly> getAllZsly() {
 		// TODO Auto-generated method stub
 		return sbfwdao.getAllZsly();
@@ -69,12 +67,9 @@ public class SbfwServiceImpl implements SbfwService{
 		return sbfwdao.updateFwsqd(fwsqd);
 	}
 
-
-=======
 	public List<PointData> queryPoint(QueryPoint queryPoint) {
 		// TODO Auto-generated method stub
 		return sbfwdao.queryPoint(queryPoint);
 	}
 
->>>>>>> master
 }

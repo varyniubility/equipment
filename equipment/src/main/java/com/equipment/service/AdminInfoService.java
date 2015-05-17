@@ -16,7 +16,7 @@ public interface AdminInfoService {
 
 	public List<SelectedData> queryDistrict(String cityid);
 
-	public List<AdminInfo> saveModify(AdminInfo baseInfo);
+	public String saveModify(AdminInfo baseInfo);
 
 	public AdminInfo queryInfo(String userid);
 }

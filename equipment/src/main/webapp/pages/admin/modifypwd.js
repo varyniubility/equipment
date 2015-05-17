@@ -18,12 +18,19 @@ $(document).ready( function () {
 		   type:"post", 
 		   dataType: "json",  
 		   contentType: "application/json", 
-		   success:function(data){
-		    	
-		   },
-		   error: function(data) {
-		        
-		   }
+		   success : function(data) {
+	        	var resList = data.result;
+	        	var obj = eval('(' + resList + ')');
+	        	$("#submitbtn").attr("data-content",obj);
+	        	$("#submitbtn").popover('show');
+	        	$('#element')[0].reset();
+		        setTimeout(function(){
+		        	$("#submitbtn").popover('hide');
+		        },3000);
+	        },
+	        error : function(msg) {
+	        	$("#submitbtn").attr("data-content","保存失败！");
+	        }
 		});
 	})
 })

@@ -58,6 +58,7 @@ public class AdminInfoController {
 	public @ResponseBody Map<String,Object> queryInfo(@RequestBody String userid){
 		System.out.println(userid);
 		AdminInfo info = adminInfoService.queryInfo(userid);
+		System.out.println(userid);
 		ObjectMapper objectMapper =  new ObjectMapper(); 
 		Map<String,Object> resMap = new HashMap<>();
 		String infojson;
@@ -123,15 +124,14 @@ public class AdminInfoController {
 	
 	@RequestMapping(value="admininfo/savemodify")
 	public @ResponseBody Map<String,String> saveModify(@RequestBody AdminInfo adminInfo){
-		List<AdminInfo> result = adminInfoService.saveModify(adminInfo);
+		String result = adminInfoService.saveModify(adminInfo);
 		ObjectMapper objectmaper = new ObjectMapper();
 		Map<String, String> resMap = new HashMap<String, String>();
 		String  json;
 		try {
 			json = objectmaper.writeValueAsString(result);
-			resMap.put("list", json);
+			resMap.put("result", json);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return resMap;
@@ -139,12 +139,21 @@ public class AdminInfoController {
 	
 	@RequestMapping(value="admininfo/password")
 	@ResponseBody
-	public String modifyPassword(@RequestBody ModifyPassword modifyPassword){
+	public Map<String, String> modifyPassword(@RequestBody ModifyPassword modifyPassword){
 		String userid = modifyPassword.getUserid();
 		String oldpassword = modifyPassword.getOldpassword();
 		String newpassword = modifyPassword.getNewpassword();
 		String confirmpwd = modifyPassword.getConfirmpwd();
-		String s = adminInfoService.modifyPassword(oldpassword, newpassword, confirmpwd, userid);
-		return null;
+		String result = adminInfoService.modifyPassword(oldpassword, newpassword, confirmpwd, userid);
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String, String> resMap = new HashMap<String, String>();
+		String  json;
+		try {
+			json = objectmaper.writeValueAsString(result);
+			resMap.put("result", json);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return resMap;
 	}
 }

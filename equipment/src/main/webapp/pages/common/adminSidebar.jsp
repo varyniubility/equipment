@@ -49,7 +49,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li id="usermanage">
-							<a href="/equipment/admininfo/inituser">
+							<a href="/equipment/user/inituser">
 							<i class="icon-home"></i>
 							用户管理</a>
 						</li>
@@ -64,7 +64,7 @@
 							修改密码</a>
 						</li>
 						<li>
-							<a href="/equipment/admininfo/inituser">
+							<a href="/equipment/sys/logout">
 							<i class="icon-home"></i>
 							退出系统</a>
 						</li>

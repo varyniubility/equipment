@@ -20,7 +20,7 @@ public interface IAdminInfoDao {
 	
 	public List<SelectedData> queryDistrict(String cityid);
 	
-	public List<AdminInfo> saveModify(AdminInfo adminInfo);
+	public Integer saveModify(AdminInfo adminInfo);
 	
 	public AdminInfo queryInfo(String userid);
 }

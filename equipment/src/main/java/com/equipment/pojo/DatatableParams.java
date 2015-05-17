@@ -5,6 +5,35 @@ public class DatatableParams {
 	int sEcho;
 	int iDisplayStart;
 	int iDisplayLength;
+	String yhxm;
+	String yhlb;
+	String start;
+	String end;
+	
+	public String getStart() {
+		return start;
+	}
+	public void setStart(String start) {
+		this.start = start;
+	}
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
+	}
+	public String getYhxm() {
+		return yhxm;
+	}
+	public void setYhxm(String yhxm) {
+		this.yhxm = yhxm;
+	}
+	public String getYhlb() {
+		return yhlb;
+	}
+	public void setYhlb(String yhlb) {
+		this.yhlb = yhlb;
+	}
 	public int getsEcho() {
 		return sEcho;
 	}
@@ -26,8 +55,8 @@ public class DatatableParams {
 	@Override
 	public String toString() {
 		return "DatatableParams [sEcho=" + sEcho + ", iDisplayStart="
-				+ iDisplayStart + ", iDisplayLength=" + iDisplayLength + "]";
+				+ iDisplayStart + ", iDisplayLength=" + iDisplayLength
+				+ ", yhxm=" + yhxm + ", yhlb=" + yhlb + "]";
 	}
-	
 	
 }

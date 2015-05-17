@@ -5,16 +5,15 @@ $(document).ready( function () {
 	$("#sysmanage").attr("class","active open");
 	$("#modifyinfo").attr("class","active");
 	var userid = $("#userid").val();
-	queryInfo(userid);
 	queryprovince();
-	querycity();
-	querydistrict();
+	queryInfo(userid);
 	$("#province").change(function(){
-		querycity();
+		querycity($("#province").val());
+		querydistrict($("#city").val());
 	});
 	
 	$("#city").change(function(){
-		querydistrict();
+		querydistrict($("#city").val());
 	});
 	
 	$("#submitbtn").click(function(){
@@ -28,7 +27,7 @@ function queryprovince(){
         type : 'post',
         dataType: "json",  
  		contentType: "application/json", 
-        async : true,
+        async : false,
         success : function(result) {
         	var resList = result.list;
         	var obj = eval('(' + resList + ')');
@@ -47,7 +46,7 @@ function queryInfo(userid){
         type : 'post',
         dataType: "json",  
  		contentType: "application/json", 
-        async : true,
+        async : false,
         success : function(result) {
         	var resList = result.info;
         	var obj = eval('(' + resList + ')');
@@ -55,7 +54,9 @@ function queryInfo(userid){
         	$("#sex").val(obj.sex);
         	$("#phone").val(obj.phone);
         	$("#province").val(obj.province);
+        	querycity(obj.province);
         	$("#city").val(obj.city);
+        	querydistrict(obj.city);
         	$("#district").val(obj.district);
         	$("#address").val(obj.address);
         },
@@ -63,15 +64,14 @@ function queryInfo(userid){
         }
     });
 }
-function querycity(){
-	var provinceid = $("#province").val();
+function querycity(provinceid){
 	$.ajax({
         url : 'querycity',
         type : 'post',
         data:provinceid,
         dataType: "json",  
  		contentType: "application/json", 
-        async : true,
+        async : false,
         success : function(result) {
         	var resList = result.list;
         	var obj = eval('(' + resList + ')');
@@ -83,15 +83,14 @@ function querycity(){
     });
 }
 
-function querydistrict(){
-	var cityid = $("#city").val();
+function querydistrict(cityid){
 	$.ajax({
         url : 'querydistrict',
         data:cityid,
         type : 'post',
         dataType: "json",  
  		contentType: "application/json", 
-        async : true,
+        async : false,
         success : function(result) {
         	var resList = result.list;
         	var obj = eval('(' + resList + ')');
@@ -104,6 +103,7 @@ function querydistrict(){
 }
 
 function createSelect(obj1,obj2){
+	obj2.empty();
 	for(var i=0;i<obj1.length;i++){
 		obj2.append("<option value='Value'>Text</option>"); 
 		obj2.get(0).options[i].value=obj1[i].id;
@@ -130,9 +130,20 @@ function saveModify(){
         dataType: "json",  
  		contentType: "application/json", 
         async : true,
-        success : function(result) {
+        success : function(data) {
+        	var resList = data.result;
+        	var obj = eval('(' + resList + ')');
+        	if(obj == "success"){
+        		$("#submitbtn").popover('show');
+	        	setTimeout(function(){
+	        		$("#submitbtn").popover('hide');
+	        	},3000);
+        	}else{
+        		$("#submitbtn").attr("data-content","保存失败！");
+        	}
         },
         error : function(msg) {
+        	$("#submitbtn").attr("data-content","保存失败！");
         }
     });
 }

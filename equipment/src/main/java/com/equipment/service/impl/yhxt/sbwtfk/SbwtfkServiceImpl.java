@@ -3,6 +3,7 @@ package com.equipment.service.impl.yhxt.sbwtfk;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.equipment.dao.yhxt.sbwtfk.ISbwtfkDao;
@@ -10,6 +11,7 @@ import com.equipment.pojo.DmZsly;
 import com.equipment.pojo.Sbwtfk;
 import com.equipment.service.yhxt.sbwtfk.SbwtfkService;
 
+@Component
 @Service("SbwtfkService")
 public class SbwtfkServiceImpl implements SbwtfkService{
 	

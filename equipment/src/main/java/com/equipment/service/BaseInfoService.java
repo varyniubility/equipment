@@ -15,7 +15,7 @@ public interface BaseInfoService {
 
 	public List<SelectedData> queryDistrict(String cityid);
 
-	public List<BaseInfo> saveModify(BaseInfo baseInfo);
+	public String saveModify(BaseInfo baseInfo);
 
 	public BaseInfo queryInfo(String userid);
 }
