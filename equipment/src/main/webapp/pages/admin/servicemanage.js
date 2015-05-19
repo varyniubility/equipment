@@ -6,6 +6,14 @@ $(document).ready( function () {
 	$("#servicemanage").attr("class","start active");
 	$("#sysmanage").attr("class","start");
 	userid = $("#userid").val();
+	queryjd();
+	queryadmin();
+	queryengineer();
+	queryprovince();
+	var provinceid=$("#province").val();
+	querycity(provinceid);
+	var cityid=$("#city").val();
+	querydistrict(cityid);
 	$("#searchbtn").click(function(){
 		if(datatable == null){
 			createTable();
@@ -13,17 +21,171 @@ $(document).ready( function () {
 			datatable.draw();
 		}
 	});
+	$("#province").change(function(){
+		querycity($("#province").val());
+		querydistrict($("#city").val());
+	});
 	
+	$("#city").change(function(){
+		querydistrict($("#city").val());
+	});
+	
+	$("#submitbtn").click(function(){
+		saveModify();
+	})
 	$("#sqdbtn").click(function(){
 		$("#addmodal").modal("show");//弹出框show
+	});
+	
+	$("#confirmbtn").click(function(){
+		var sqdsbmc = $("#sqdsbmc").val();
+		var sqdsbxh = $("#sqdsbxh").val();
+		var sqdsblx = $("#sqdsblx").val();
+		var sqdfwlx = $("#sqdfwlx").val();
+		var province = $("#province").val();
+		var city = $("#city").val();
+		var district = $("#district").val();
+		var sqdxxdz = $("#sqdxxdz").val();
+		var sqdgcs = $("#sqdgcs").val();
+		var sqdjd = $("#sqdjd").val();
+		var sqdwt = $("#sqdwt").val();
+		var sqdgly = $("#sqdgly").val();
+		var sqdsbxlh = $("#sqdsbxlh").val();
+		var params = '{"sqdsbxlh":"'+ sqdsbxlh + '","sqdsbmc":"'+ sqdsbmc + '","sqdsbxh":"'
+			+ sqdsbxh + '","sqdsblx":"'+ sqdsblx + '","sqdfwlx":"'+ sqdfwlx + '","province":"'+ province + '","city":"'
+			+ city + '","district":"'+ district + '","sqdxxdz":"'+ sqdxxdz +'","sqdgcs":"'+ sqdgcs + '","sqdjd":"'
+			+ sqdjd + '","sqdwt":"'+ sqdwt + '","sqdgly":"'+ sqdgly +'"}';
+		$.ajax({
+	        url : 'savesqd',
+	        type : 'post',
+	        data:params,
+	        dataType: "json",  
+	 		contentType: "application/json", 
+	        async : false,
+	        success : function(result) {
+	        },
+	        error : function(msg) {
+	        }
+	    });
 	})
 });
 
-function createJdSelect(obj){
-	for(var i=0;i<obj.length;i++){
-		$("#modifyjd").append("<option value='Value'>Text</option>"); 
-		$('#modifyjd').get(0).options[i].value=obj[i].jddm;
-		$('#modifyjd').get(0).options[i].text = obj[i].jdmc;
+function queryprovince(){
+	$.ajax({
+        url : 'queryprovince',
+        type : 'post',
+        dataType: "json",  
+ 		contentType: "application/json", 
+        async : false,
+        success : function(result) {
+        	var resList = result.list;
+        	var obj = eval('(' + resList + ')');
+        	var obj2 = $("#province");
+        	createSelect(obj,obj2);
+        },
+        error : function(msg) {
+        }
+    });
+}
+
+function queryjd(){
+	$.ajax({
+        url:'queryjd',
+        type : 'post',
+        dataType: "json",  
+ 		contentType: "application/json", 
+        async : false,
+        success : function(result) {
+        	var resList = result.list;
+        	var obj = eval('(' + resList + ')');
+        	var obj2 = $("#sqdjd");
+        	createSelect(obj,obj2);
+        },
+        error : function(msg) {
+        }
+    });
+}
+
+function queryengineer(){
+	$.ajax({
+        url : 'queryengineer',
+        type : 'post',
+        dataType: "json",  
+ 		contentType: "application/json", 
+        async : false,
+        success : function(result) {
+        	var resList = result.list;
+        	var obj = eval('(' + resList + ')');
+        	var obj2 = $("#sqdgcs");
+        	createSelect(obj,obj2);
+        },
+        error : function(msg) {
+        }
+    });
+}
+
+function queryadmin(){
+	$.ajax({
+        url : 'queryadmin',
+        type : 'post',
+        dataType: "json",  
+ 		contentType: "application/json", 
+        async : false,
+        success : function(result) {
+        	var resList = result.list;
+        	var obj = eval('(' + resList + ')');
+        	var obj2 = $("#sqdgly");
+        	createSelect(obj,obj2);
+        },
+        error : function(msg) {
+        }
+    });
+}
+
+function querycity(provinceid){
+	$.ajax({
+        url : 'querycity',
+        type : 'post',
+        data:provinceid,
+        dataType: "json",  
+ 		contentType: "application/json", 
+        async : false,
+        success : function(result) {
+        	var resList = result.list;
+        	var obj = eval('(' + resList + ')');
+        	var obj2 = $("#city");
+        	createSelect(obj,obj2);
+        },
+        error : function(msg) {
+        }
+    });
+}
+
+function querydistrict(cityid){
+	$.ajax({
+        url : 'querydistrict',
+        data:cityid,
+        type : 'post',
+        dataType: "json",  
+ 		contentType: "application/json", 
+        async : false,
+        success : function(result) {
+        	var resList = result.list;
+        	var obj = eval('(' + resList + ')');
+        	var obj2 = $("#district")
+        	createSelect(obj,obj2);
+        },
+        error : function(msg) {
+        }
+    });
+}
+
+function createSelect(obj1,obj2){
+	obj2.empty();
+	for(var i=0;i<obj1.length;i++){
+		obj2.append("<option value='Value'>Text</option>"); 
+		obj2.get(0).options[i].value=obj1[i].id;
+		obj2.get(0).options[i].text = obj1[i].name;
 	}
 }
 

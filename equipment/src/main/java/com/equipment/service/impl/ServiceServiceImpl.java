@@ -8,11 +8,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.equipment.dao.IServiceDao;
+import com.equipment.pojo.ApplyOrder;
 import com.equipment.pojo.DatatableParams;
 import com.equipment.pojo.Fwsqd;
 import com.equipment.pojo.ResultPojo;
+import com.equipment.pojo.SelectedData;
 import com.equipment.pojo.ServiceForm;
 import com.equipment.pojo.UserInfo;
+import com.equipment.pojo.UserSelect;
 import com.equipment.service.ServiceService;
 
 @Component
@@ -88,5 +91,63 @@ public class ServiceServiceImpl implements ServiceService {
         	subList = list.subList(startNum, endNum);
         }
 		return subList;
+	}
+
+	@Override
+	public List<SelectedData> queryProvince() {
+		List<SelectedData> result = serviceDao.queryProvince();
+		return result;
+	}
+
+	@Override
+	public List<SelectedData> queryCity(String provinceid) {
+		List<SelectedData> result = serviceDao.queryCity(provinceid);
+		return result;
+	}
+
+	@Override
+	public List<SelectedData> queryDistrict(String cityid) {
+		List<SelectedData> result = serviceDao.queryDistrict(cityid);
+		return result;
+	}
+
+	@Override
+	public List<SelectedData> queryEngineer() {
+		List<SelectedData> result = serviceDao.queryEngineer();
+		return result;
+	}
+
+	@Override
+	public List<SelectedData> queryAdmin() {
+		List<SelectedData> result = serviceDao.queryAdmin();
+		return result;
+	}
+
+	@Override
+	public String saveOrder(ApplyOrder applyOrder) {
+		String maxid = queryMaxId();
+		applyOrder.setSqdbh(maxid);
+		serviceDao.saveOrder(applyOrder);
+		return null;
+	}
+
+	@Override
+	public String queryMaxId() {
+		String maxid = serviceDao.queryMaxId();
+		String result;
+		if(maxid==null || maxid.equals("")){
+			result="1";
+		}else{
+			Integer id = Integer.parseInt(maxid);
+			Integer maxsid = id+1;
+			result = maxsid.toString();
+		}
+		return result;
+	}
+
+	@Override
+	public List<SelectedData> queryJd() {
+		List<SelectedData> result = serviceDao.queryJd();
+		return result;
 	}
 }

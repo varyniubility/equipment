@@ -19,13 +19,42 @@
 		LEFT JOIN userinfo adui ON adui.yhdm = fs.glydm
 		WHERE fs.jddm IN ("1") AND time BETWEEN #{start} AND #{end}
 	</select> 
-	<select id="queryjd" parameterType="String" resultType="DropDownJd">
-		SELECT jddm,jdmc
-		FROM dm_fwjd
-		WHERE jddm > #{jddm}
-	</select>
 	<update id="modifyjd" parameterType="ModifyJd">
 		UPDATE fwsqd SET jddm=#{jddm}
 		WHERE sqdbh=#{sqdbh}
 	</update>
+	<select id="queryProvince" resultType="SelectedData">
+		SELECT provinceid AS id,provincename AS name
+		FROM s_province
+	</select>
+	<select id="queryCity" resultType="SelectedData" parameterType="String">
+		SELECT cityid AS id,cityname AS name
+		FROM s_city
+		WHERE provinceid=#{provinceid}
+	</select>
+	<select id="queryDistrict" resultType="SelectedData" parameterType="String">
+		SELECT districtid AS id,districtname AS name
+		FROM s_district
+		WHERE cityid=#{cityid}
+	</select>
+	<select id="queryEngineer" resultType="SelectedData">
+		SELECT ui.yhdm,yhxm
+		FROM userinfo ui
+		LEFT JOIN users u ON u.yhdm=ui.yhdm
+		WHERE u.yhlb="1"
+	</select>
+	<select id="queryAdmin" resultType="SelectedData">
+		SELECT ui.yhdm AS id,yhxm AS name
+		FROM userinfo ui
+		LEFT JOIN users u ON u.yhdm=ui.yhdm
+		WHERE u.yhlb="0"
+	</select>
+	<insert id="saveOrder" parameterType="ApplyOrder">
+		INSERT INTO fwsqd(sqdbh,sbxlh,fwlx,khhsfid,khsid,khqid,khxxdz,sbwtms,gcsdm,glydm,jddm,time,zslydm1,zslydm2,zslydm3,yhpj)
+		VALUES(#{sqdbh},#{sqdsbxlh},#{sqdfwlx},#{province},#{city},#{district},#{sqdxxdz},#{sqdwt},#{sqdgcs},#{sqdgly},#{sqdjd},now(),"1","1","1","")
+	</insert>
+	<select id="queryJd" resultType="SelectedData">
+		SELECT jddm AS id,jdmc AS name
+		FROM dm_fwjd
+	</select>
 </mapper> 

@@ -88,7 +88,7 @@
 		<!-- 添加对话框 -->
 		<div class="modal fade" id="addmodal" tabindex="-1" role="dialog"
 		     aria-labelledby="modalLabel" aria-hidden="true">
-		    <div class="modal-dialog" style="width:70%;padding-top:4%;">
+		    <div class="modal-dialog" style="width:60%;padding-top:4%;">
 		        <div class="modal-content" style="padding:2%;">
 		            <div class="modal-header">
 		               	<h4 class="modal-title" id="modalLabel">填写设备维修单</h4>
@@ -96,65 +96,85 @@
 		            <form class="form-horizontal" style="padding:2%;" id = "addform" onsubmit="return false;">
 						<div class="form-group">
 							<div class="col-md-6">
-								<label for="sqdsbmc" class="col-md-3 col-xs-12 control-label">设备名称：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdsbmc" id="sqdsbmc"/>
+								<label for="sqdsbxlh" class="col-md-3 col-xs-12 control-label">设备S/N：</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name = "sqdsbxlh" id="sqdsbxlh"/>
 								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="sqdsbxh" class="col-md-3 col-xs-12 control-label">设备型号：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdsbxh" id="sqdsbxh"/>
+								<label for="sqdsbmc" class="col-md-3 col-xs-12 control-label">设备名称：</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name = "sqdsbmc" id="sqdsbmc"/>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-md-6">
-								<label for="sqdsblx" class="col-md-3 col-xs-12 control-label">设备类型：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdsblx" id="sqdsblx"/>
+								<label for="sqdsbxh" class="col-md-3 col-xs-12 control-label">设备型号：</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name = "sqdsbxh" id="sqdsbxh"/>
 								</div>
 							</div>
 							<div class="col-md-6">
+								<label for="sqdsblx" class="col-md-3 col-xs-12 control-label">设备类型：</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name = "sqdsblx" id="sqdsblx"/>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-6">
 								<label for="sqdfwlx" class="col-md-3 col-xs-12 control-label">服务类型：</label>
-								<div class="col-md-8">
+								<div class="col-md-9">
 									<input type="text" class="form-control" name = "sqdfwlx" id="sqdfwlx"/>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label for="sqdjd" class="col-md-3 col-xs-12 control-label">维修进度：</label>
+								<div class="col-md-9">
+									<select type="text" class="form-control" name = "sqdjd" id="sqdjd"></select>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-md-6">
 								<label for="sqdkhdz" class="col-md-3 col-xs-12 control-label">客户地址：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdkhdz" id="sqdkhdz"/>
+								<div class="col-md-3">
+									<select type="text" class="form-control" name = "province" id="province"></select>
+								</div>
+								<div class="col-md-3">
+									<select type="text" class="form-control" name = "city" id="city"></select>
+								</div>
+								<div class="col-md-3">
+									<select type="text" class="form-control" name = "district" id="district"></select>
 								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="sqdzsly" class="col-md-3 col-xs-12 control-label">知识领域：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdzsly" id="sqdzsly"/>
+								<label for="sqdxxdz" class="col-md-3 col-xs-12 control-label">详细地址：</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name = "sqdxxdz" id="sqdxxdz"/>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-md-6">
 								<label for="sqdgcs" class="col-md-3 col-xs-12 control-label">工程师：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdgcs" id="sqdgcs"/>
+								<div class="col-md-9">
+									<select type="text" class="form-control" name = "sqdgcs" id="sqdgcs"></select>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<label for="sqdgly" class="col-md-3 col-xs-12 control-label">管理员：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdgly" id="sqdgly"/>
+								<div class="col-md-9">
+									<select type="text" class="form-control" name = "sqdgly" id="sqdgly"></select>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-md-6">
-								<label for="sqdjd" class="col-md-3 col-xs-12 control-label">维修进度：</label>
-								<div class="col-md-8">
-									<input type="text" class="form-control" name = "sqdjd" id="sqdjd"/>
+								<label for="sqdwt" class="col-md-3 col-xs-12 control-label">设备问题：</label>
+								<div class="col-md-9">
+									<textarea class="form-control" name = "sqdwt" id="sqdwt"></textarea>
 								</div>
 							</div>
 						</div>
