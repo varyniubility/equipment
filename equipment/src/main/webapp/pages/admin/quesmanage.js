@@ -5,26 +5,30 @@ $(document).ready( function () {
 	$("#adminmian").attr("class","start");
 	$("#servicemanage").attr("class","start");
 	userid = $("#userid").val();
-})
-
-$("#searchbtn").click(function(){
 	if(datatable == null){
 		createTable();
 	}else{
 		datatable.draw();
 	}
-});
+	$("#searchbtn").click(function(){
+		if(datatable == null){
+			createTable();
+		}else{
+			datatable.draw();
+		}
+	});
+})
 
 function createJdSelect(obj){
 	for(var i=0;i<obj.length;i++){
-		$("#modifyjd").append("<option value='Value'>Text</option>"); 
-		$('#modifyjd').get(0).options[i].value=obj[i].jddm;
-		$('#modifyjd').get(0).options[i].text = obj[i].jdmc;
+		$("#gcs").append("<option value='Value'>Text</option>"); 
+		$("#gcs").get(0).options[i].value=obj[i].id;
+		$("#gcs").get(0).options[i].text = obj[i].name;
 	}
 }
 
 function createTable(){
-	datatable = $('#serviceshow').DataTable({
+	datatable = $('#questionshow').DataTable({
 		"bDestory":true,
 		"bAutoWidth":false,
     	"bProcessing": true, // 是否显示取数据时的那个等待提示
@@ -34,8 +38,7 @@ function createTable(){
         'sClass': "text-center",
         "bLengthChange": false,
         "aoColumns": [
-			{ "bSortable": false},
-			{ "bSortable": false},
+			{ "bSortable": false,"sWidth":"5%"},
 			{ "bSortable": false},
 			{ "bSortable": false},
 			{ "bSortable": false},
@@ -50,14 +53,17 @@ function createTable(){
 			{ "bSortable": false}
 		],
 		"columnDefs": [{
-            "targets": -1,//编辑
+            "targets": 0,//编辑
             "data": null,
             "defaultContent": "<button id='modifyrow' class='btn btn-primary' type='button'><i class='fa fa-edit'></i></button>"
 		},{
+    		"targets": -1,//问题编号
+    		"visible":false
+		},{
     		"targets": -2,//问题编号
     		"visible":false
-    	},{
-    		"targets": -3,//进度代码
+		},{
+    		"targets": -3,//问题编号
     		"visible":false
     	}],
         "aLengthMenu": [
@@ -85,18 +91,16 @@ function createTable(){
 	});
 
 	//问题解答按钮点击事件
-	$('#serviceshow tbody').on('click', 'button#modifyrow', function () {
+	$('#questionshow tbody').on('click', 'button#modifyrow', function () {
+		console.log("safaf");
 		var data = datatable.row( $(this).parents('tr') ).data();
-		$("#sbmc").val(data[0]);
-		$("#sbxh").val(data[1]);
+		$("#sbmc").val(data[1]);
+		$("#sbxh").val(data[2]);
 		$("#sbwt").val(data[4]);
-		$("#jddm").val(data[11]);
+		$("#fwjd").val(data[9]);
 		$("#wtdm").val(data[12]);
-		var jddm = $("#jddm").val();
-		var params = jddm;  
 		$.ajax({
-	        url : 'queryjd',//这个就是请求地址对应sAjaxSource
-	        data : params, //这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
+	        url : 'querygcs',//这个就是请求地址对应sAjaxSource
 	        type : 'post',
 	        dataType: "json",  
 	 		contentType: "application/json", 
@@ -109,13 +113,12 @@ function createTable(){
 	        error : function(msg) {
 	        }
 	    });
-		$("#modifymodal").modal("show");//弹出框show
-		$("#modifyconfirm").click(function(){
+		$("#detailmodal").modal("show");//弹出框show
+		$("#confirmbtn").click(function(){
+			var glydm = $("#userid").val();
+			var gcsdm = $("#gcs").val();
 			var wtdm = $("#wtdm").val();
-			var jddm = $("#modifyjd").val();
-			var wtjd = $("#modifyques").val();
-			var gcszj = $("#gcszj").val();
-			var params = '{"wtdm":"'+ wtdm + '","jddm":"'+ jddm + '","wtjd":"'+ wtjd + '","gcszj":"'+ gcszj + '"}';
+			var params = '{"wtdm":"'+ wtdm + '","glydm":"'+ glydm + '","gcsdm":"'+ gcsdm + '"}';
 			$.ajax({
 		        url : 'modifyques',//这个就是请求地址对应sAjaxSource
 		        data : params, //这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
@@ -125,7 +128,7 @@ function createTable(){
 		        async : true,
 		        success : function(result) {
 		        	var resList = result.list;
-		        	$("#modifymodal").modal("hide");//弹出框show
+		        	$("#detailmodal").modal("hide");//弹出框show
 		        	$('#modifyform')[0].reset();
 		        	datatable.draw();
 		        },

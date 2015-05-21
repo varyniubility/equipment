@@ -103,7 +103,8 @@ public class ApplyOrder {
 	}
 	@Override
 	public String toString() {
-		return "ApplyOrder [sqdsbmc=" + sqdsbmc + ", sqdsbxh=" + sqdsbxh
+		return "ApplyOrder [sqdbh=" + sqdbh + ", sqdsbxlh=" + sqdsbxlh
+				+ ", sqdsbmc=" + sqdsbmc + ", sqdsbxh=" + sqdsbxh
 				+ ", sqdsblx=" + sqdsblx + ", sqdfwlx=" + sqdfwlx
 				+ ", province=" + province + ", city=" + city + ", district="
 				+ district + ", sqdxxdz=" + sqdxxdz + ", sqdgcs=" + sqdgcs

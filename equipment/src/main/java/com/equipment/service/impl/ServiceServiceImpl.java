@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.equipment.dao.IServiceDao;
+import com.equipment.pojo.AddService;
 import com.equipment.pojo.ApplyOrder;
 import com.equipment.pojo.DatatableParams;
 import com.equipment.pojo.Fwsqd;
@@ -127,6 +128,7 @@ public class ServiceServiceImpl implements ServiceService {
 	public String saveOrder(ApplyOrder applyOrder) {
 		String maxid = queryMaxId();
 		applyOrder.setSqdbh(maxid);
+		System.out.println(applyOrder);
 		serviceDao.saveOrder(applyOrder);
 		return null;
 	}
@@ -150,4 +152,5 @@ public class ServiceServiceImpl implements ServiceService {
 		List<SelectedData> result = serviceDao.queryJd();
 		return result;
 	}
+
 }

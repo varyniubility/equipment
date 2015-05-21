@@ -40,6 +40,13 @@
 						<span class="selected"></span>
 					</a>
 				</li>
+				<li class="start" id="repairmanage">
+					<a href="/equipment/repair/initrepairmanage">
+						<i class="fa fa-file-word-o"></i>
+						<span class="title">维修点管理</span>
+						<span class="selected"></span>
+					</a>
+				</li>
 				<li class="start" id="sysmanage">
 					<a href="javascript:;">
 						<i class="fa fa-cog"></i>

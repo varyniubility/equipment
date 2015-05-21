@@ -2,57 +2,60 @@ package com.equipment.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.equipment.pojo.DropDownJd;
-import com.equipment.dao.IRepairDao;
+import com.equipment.dao.IQuestionDao;
 import com.equipment.pojo.DatatableParams;
-import com.equipment.pojo.ModifyJd;
+import com.equipment.pojo.ModifyQuestion;
+import com.equipment.pojo.Question;
+import com.equipment.pojo.QuestionResult;
 import com.equipment.pojo.ResultPojo;
 import com.equipment.pojo.SelectedData;
 import com.equipment.pojo.ServiceForm;
-import com.equipment.service.RepairService;
+import com.equipment.service.QuestionService;
 
 @Component
-@Service("repair")
-public class RepairServiceImpl implements RepairService {
+@Service("question")
+public class QuestionServiceImpl implements QuestionService {
 
 	@Autowired
-	public IRepairDao repairDao;
+	IQuestionDao questionDao;
 	
 	@Override
-	public ResultPojo queryService(DatatableParams dtparam) {
-		// TODO Auto-generated method stub
+	public ResultPojo queryQuestion(DatatableParams dtparam) {
+		List<QuestionResult> result = questionDao.queryQuestion(dtparam);
 		int count = 0;
 		int sEcho = dtparam.getsEcho();
 		int iDisplayStart = dtparam.getiDisplayStart();
 		int iDisplayLength = dtparam.getiDisplayLength();
-		List<ServiceForm> resultList = repairDao.queryService();
-		List<ServiceForm> subList = getSubList(resultList,iDisplayStart,iDisplayLength);
-		String obj1[][] = new String[subList.size()][8];
-	    for(ServiceForm w:subList){
-	    	obj1[count][0] = w.getSbmc();
-	    	obj1[count][1] = w.getSbxh();
-	    	obj1[count][2] = w.getSbys();
-	    	obj1[count][3] = w.getSblx();
-	    	obj1[count][4] = w.getFwlx();
-	    	obj1[count][5] = w.getJdmc();
-	    	obj1[count][6] = w.getJddm();
-	    	obj1[count][7] = w.getSqdbh();
+		List<QuestionResult> subList = getSubList(result,iDisplayStart,iDisplayLength);
+		String obj1[][] = new String[subList.size()][13];
+	    for(QuestionResult w:subList){
+	    	obj1[count][0] = "";
+	    	obj1[count][1] = w.getSbmc();
+	    	obj1[count][2] = w.getSbxh();
+	    	obj1[count][3] = w.getSbys();
+	    	obj1[count][4] = w.getSbwt();
+	    	obj1[count][5] = w.getGlyxm();
+	    	obj1[count][6] = w.getGcsxm();
+	    	obj1[count][7] = w.getYhpj();
+	    	obj1[count][8] = w.getGcszj();
+	    	obj1[count][9] = w.getWxjd();
+	    	obj1[count][10] = w.getGlydm();
+	    	obj1[count][11] = w.getGcsdm();
+	    	obj1[count][12] = w.getWtbh();
 			count++;
 	    }
 		ResultPojo res = new ResultPojo();
 		res.setAaData(obj1);
-		res.setiTotalDisplayRecords(resultList.size());
-		res.setiTotalRecords(resultList.size());
+		res.setiTotalDisplayRecords(result.size());
+		res.setiTotalRecords(result.size());
 		res.setsEcho(sEcho);
 		return res;
 	}
-
 	
 	/**
 	 * 用于分页获取当前页面需要展示的列表
@@ -61,7 +64,7 @@ public class RepairServiceImpl implements RepairService {
 	 * @param iDisplayLength 页面展示数据长度
 	 * @return List<String>
 	 */
-	private List<ServiceForm> getSubList(List<ServiceForm> list,int iDisplayStart,int iDisplayLength){
+	private List<QuestionResult> getSubList(List<QuestionResult> list,int iDisplayStart,int iDisplayLength){
 		long total = 0;
 		int pageCount = 0;
 		int remainder = 0;
@@ -87,44 +90,25 @@ public class RepairServiceImpl implements RepairService {
         }else {  
             endNum = startNum+iDisplayLength;  
         }
-        List<ServiceForm> subList = new ArrayList<>();
+        List<QuestionResult> subList = new ArrayList<>();
         if(list.size() != 0){
         	subList = list.subList(startNum, endNum);
         }
 		return subList;
 	}
 
-
 	@Override
-	public List<DropDownJd> queryjd(String jddm) {
-		// TODO Auto-generated method stub
-		List<DropDownJd> result = repairDao.queryjd(jddm);
+	public List<SelectedData> queryGcs() {
+		List<SelectedData> result = questionDao.queryGcs();
 		return result;
 	}
 
-
 	@Override
-	public String modifyjd(ModifyJd modifyjd) {
-		Integer num = repairDao.modifyjd(modifyjd);
+	public String modifyQues(ModifyQuestion mq) {
+		System.out.println(mq);
+		Integer result = questionDao.modifyQues(mq);
 		return null;
 	}
 
 
-	@Override
-	public List<SelectedData> queryProvince() {
-		List<SelectedData> result = repairDao.queryProvince();
-		return result;
-	}
-
-	@Override
-	public List<SelectedData> queryCity(String provinceid) {
-		List<SelectedData> result = repairDao.queryCity(provinceid);
-		return result;
-	}
-
-	@Override
-	public List<SelectedData> queryDistrict(String cityid) {
-		List<SelectedData> result = repairDao.queryDistrict(cityid);
-		return result;
-	}
 }

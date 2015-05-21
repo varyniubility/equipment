@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.equipment.dao.IQuestionDao">
+	<!--
+		获取用户: 输出直接映射到对象, login_name列要"as loginName"以方便映射 ,team_id as "team.id"创建team对象并赋值
+	-->
+	<select id="queryQuestion" parameterType="Question" resultType="QuestionResult">  
+		SELECT wtbh,sbmc,sbxh,sbys,sbwt,glydm,ui.yhxm AS glyxm,gcsdm,ui0.yhxm AS gcsxm,yhpj,gcszj,df.jdmc AS wxjd,sk.jddm
+		FROM sbwtfk sk
+		LEFT JOIN sbjbxx sx ON sx.sbxlh= sk.sbxlh
+		LEFT JOIN userinfo ui ON ui.yhdm=sk.glydm
+		LEFT JOIN userinfo ui0 ON ui0.yhdm=sk.gcsdm
+		LEFT JOIN dm_fwjd df ON df.jddm=sk.jddm
+	</select> 
+	<select id="queryGcs" resultType="SelectedData">
+		SELECT ui.yhdm AS id,yhxm AS name
+		FROM userinfo ui
+		LEFT JOIN users u ON ui.yhdm=u.yhdm
+		WHERE u.yhlb="1"
+	</select>
+	<update id="modifyQues" parameterType="ModifyQuestion">
+		UPDATE sbwtfk 
+		<set>
+			<if test="glydm != null and glydm != ''">glydm=#{glydm},</if>
+			<if test="gcsdm != null and gcsdm != ''">gcsdm=#{gcsdm}</if>
+		</set>
+		WHERE wtbh=#{wtdm}
+	</update>
+</mapper> 

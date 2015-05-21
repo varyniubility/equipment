@@ -126,7 +126,8 @@
 							<div class="col-md-6">
 								<label for="sqdfwlx" class="col-md-3 col-xs-12 control-label">服务类型：</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" name = "sqdfwlx" id="sqdfwlx"/>
+									<input type="text" class="form-control" style="display:none" name = "fwlx" id="fwlx">
+									<input type="text" class="form-control" readonly name = "sqdfwlx" id="sqdfwlx" value="到店维修">
 								</div>
 							</div>
 							<div class="col-md-6">

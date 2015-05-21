@@ -17,7 +17,7 @@
 		LEFT JOIN dm_zsly dz3 ON dz3.zslydm=fs.zslydm3
 		LEFT JOIN userinfo gcui ON gcui.yhdm = fs.gcsdm
 		LEFT JOIN userinfo adui ON adui.yhdm = fs.glydm
-		WHERE fs.jddm IN ("1") AND time BETWEEN #{start} AND #{end}
+		WHERE fs.jddm IN ("1")
 	</select> 
 	<update id="modifyjd" parameterType="ModifyJd">
 		UPDATE fwsqd SET jddm=#{jddm}
@@ -38,7 +38,7 @@
 		WHERE cityid=#{cityid}
 	</select>
 	<select id="queryEngineer" resultType="SelectedData">
-		SELECT ui.yhdm,yhxm
+		SELECT ui.yhdm AS id,yhxm AS name
 		FROM userinfo ui
 		LEFT JOIN users u ON u.yhdm=ui.yhdm
 		WHERE u.yhlb="1"
@@ -50,9 +50,13 @@
 		WHERE u.yhlb="0"
 	</select>
 	<insert id="saveOrder" parameterType="ApplyOrder">
-		INSERT INTO fwsqd(sqdbh,sbxlh,fwlx,khhsfid,khsid,khqid,khxxdz,sbwtms,gcsdm,glydm,jddm,time,zslydm1,zslydm2,zslydm3,yhpj)
+		INSERT INTO fwsqd(sqdbh,sbxlh,fwlx,khsfid,khsid,khqid,khxxdz,sbwtms,gcsdm,glydm,jddm,time,zslydm1,zslydm2,zslydm3,yhpj)
 		VALUES(#{sqdbh},#{sqdsbxlh},#{sqdfwlx},#{province},#{city},#{district},#{sqdxxdz},#{sqdwt},#{sqdgcs},#{sqdgly},#{sqdjd},now(),"1","1","1","")
 	</insert>
+	<select id="queryMaxId" resultType="String">
+		SELECT MAX(cast(sqdbh as unsigned int)) AS maxid 
+		FROM fwsqd
+	</select>
 	<select id="queryJd" resultType="SelectedData">
 		SELECT jddm AS id,jdmc AS name
 		FROM dm_fwjd

@@ -18,6 +18,7 @@ import com.equipment.pojo.DatatableParams;
 import com.equipment.pojo.DropDownJd;
 import com.equipment.pojo.ModifyJd;
 import com.equipment.pojo.ResultPojo;
+import com.equipment.pojo.SelectedData;
 import com.equipment.pojo.ServiceForm;
 import com.equipment.service.RepairService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -42,6 +43,17 @@ public class RepairController {
 			return "redirect:/pages/login/login.jsp";
 		}else{
 			return "/pages/engineer/repairequip";	
+		}
+	}
+	
+	@RequestMapping(value="repair/initrepairmanage")
+	public String initRepairManage(){
+		String userid = (String) session.getAttribute("userid");
+		String username = (String) session.getAttribute("username");
+		if(userid==null && username==null){
+			return "redirect:/pages/login/login.jsp";
+		}else{
+			return "/pages/admin/repairmanage";	
 		}
 	}
 	
@@ -89,5 +101,56 @@ public class RepairController {
 			e.printStackTrace();
 		}
 		return model;
+	}
+	
+	@RequestMapping(value="repair/queryprovince")
+	public @ResponseBody Map<String,String> queryProvince(){
+		List<SelectedData> result = repairService.queryProvince();
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String, String> resMap = new HashMap<String, String>();
+		String  json;
+		try {
+			json = objectmaper.writeValueAsString(result);
+			resMap.put("list", json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(resMap);
+		return resMap;
+	}
+	
+	@RequestMapping(value="repair/querycity")
+	public @ResponseBody Map<String,String> queryCity(@RequestBody String provinceid){
+		List<SelectedData> result = repairService.queryCity(provinceid);
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String, String> resMap = new HashMap<String, String>();
+		String  json;
+		try {
+			json = objectmaper.writeValueAsString(result);
+			resMap.put("list", json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(resMap);
+		return resMap;
+	}
+	
+	@RequestMapping(value="repair/querydistrict")
+	public @ResponseBody Map<String,String> queryDistrict(@RequestBody String cityid){
+		List<SelectedData> result = repairService.queryDistrict(cityid);
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String, String> resMap = new HashMap<String, String>();
+		String  json;
+		try {
+			json = objectmaper.writeValueAsString(result);
+			resMap.put("list", json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(resMap);
+		return resMap;
 	}
 }

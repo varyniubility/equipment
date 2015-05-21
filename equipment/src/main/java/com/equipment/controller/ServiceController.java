@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.equipment.pojo.AddService;
 import com.equipment.pojo.ApplyOrder;
 import com.equipment.pojo.DatatableParams;
 import com.equipment.pojo.Fwsqd;
+import com.equipment.pojo.ModifyQuestion;
 import com.equipment.pojo.ResultPojo;
 import com.equipment.pojo.SelectedData;
 import com.equipment.pojo.UserSelect;
@@ -160,7 +162,6 @@ public class ServiceController {
 	
 	@RequestMapping(value = "service/savesqd")
 	public @ResponseBody Map<String, String> saveOrder(@RequestBody ApplyOrder applyOrder) {
-		System.out.println(applyOrder);
 		String result = serviceService.saveOrder(applyOrder);
 		ObjectMapper objectmaper = new ObjectMapper();
 		Map<String, String> resMap = new HashMap<String, String>();
@@ -174,6 +175,4 @@ public class ServiceController {
 		}
 		return resMap;
 	}
-	
-	
 }

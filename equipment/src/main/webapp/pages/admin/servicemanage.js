@@ -14,6 +14,7 @@ $(document).ready( function () {
 	querycity(provinceid);
 	var cityid=$("#city").val();
 	querydistrict(cityid);
+	createTable();
 	$("#searchbtn").click(function(){
 		if(datatable == null){
 			createTable();
@@ -41,7 +42,7 @@ $(document).ready( function () {
 		var sqdsbmc = $("#sqdsbmc").val();
 		var sqdsbxh = $("#sqdsbxh").val();
 		var sqdsblx = $("#sqdsblx").val();
-		var sqdfwlx = $("#sqdfwlx").val();
+		var sqdfwlx = $("#fwlx").val();
 		var province = $("#province").val();
 		var city = $("#city").val();
 		var district = $("#district").val();
@@ -63,6 +64,8 @@ $(document).ready( function () {
 	 		contentType: "application/json", 
 	        async : false,
 	        success : function(result) {
+	        	$("#addmodal").modal("hide");//弹出框show
+	        	$('#addform')[0].reset();
 	        },
 	        error : function(msg) {
 	        }
@@ -114,6 +117,7 @@ function queryengineer(){
  		contentType: "application/json", 
         async : false,
         success : function(result) {
+        	console.log(result);
         	var resList = result.list;
         	var obj = eval('(' + resList + ')');
         	var obj2 = $("#sqdgcs");
@@ -207,18 +211,13 @@ function createTable(){
 			{ "bSortable": false},
 			{ "bSortable": false},
 			{ "bSortable": false},
-			{ "bSortable": false},
-			{ "bSortable": false},
-			{ "bSortable": false},
-			{ "bSortable": false},
-			{ "bSortable": false},
 			{ "bSortable": false}
 		],
 		"columnDefs": [{
     		"targets": -1,//问题编号
     		"visible":false
     	},{
-    		"targets": -1,//进度代码
+    		"targets": -2,//进度代码
     		"visible":false
     	}],
         "aLengthMenu": [

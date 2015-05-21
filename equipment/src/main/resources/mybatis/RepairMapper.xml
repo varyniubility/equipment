@@ -28,4 +28,18 @@
 		UPDATE fwsqd SET jddm=#{jddm}
 		WHERE sqdbh=#{sqdbh}
 	</update>
+	<select id="queryProvince" resultType="SelectedData">
+		SELECT provinceid AS id,provincename AS name
+		FROM s_province
+	</select>
+	<select id="queryCity" resultType="SelectedData" parameterType="String">
+		SELECT cityid AS id,cityname AS name
+		FROM s_city
+		WHERE provinceid=#{provinceid}
+	</select>
+	<select id="queryDistrict" resultType="SelectedData" parameterType="String">
+		SELECT districtid AS id,districtname AS name
+		FROM s_district
+		WHERE cityid=#{cityid}
+	</select>
 </mapper> 
