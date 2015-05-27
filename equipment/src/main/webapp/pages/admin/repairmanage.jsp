@@ -85,9 +85,7 @@
 											<div class="form-group">
 												<div class="col-md-6"></div>
 												<div class="col-md-4">
-													<button type="button" id="submitbtn" class="btn btn-success popover-show" title="提示"  
-											      		data-container="body" data-toggle="popover" data-placement="top" 
-											      		data-content="保存成功！" data-trigger="manual" data-animation=true">查询</button>
+													<button type="button" id="submitbtn" class="btn btn-success popover-show" >查询</button>
 												</div>
 												<div class="col-md-2"></div>
 											</div>
@@ -121,20 +119,13 @@
 		               <h4 class="modal-title" id="modalLabel">添加维修点</h4>
 		            </div>
 		             <form class="form-horizontal" style="padding:2%;" id = "modifyform" onsubmit="return false;">
-		             	<input type="text" class="form-control" style="display:none;" name = "modifyyhdm" id="modifyyhdm"/>
+		             	<input type="text" class="form-control" style="display:none;" name = "zdjd" id="zdjd"/>
+		             	<input type="text" class="form-control" style="display:none;" name = "zdwd" id="zdwd"/>
 						<div class="form-group">
 							<div class="col-md-9">
 								<label for="addname" class="col-md-5 col-xs-12 control-label">维修点名称：</label>
 								<div class="col-md-7">
 									<input type="text" class="form-control" name = "addname" id="addname"/>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-md-9">
-								<label for="addaddress" class="col-md-5 col-xs-12 control-label">维修点地址：</label>
-								<div class="col-md-7">
-									<input type="text" class="form-control" name = "addaddress" id="addaddress"/>
 								</div>
 							</div>
 						</div>

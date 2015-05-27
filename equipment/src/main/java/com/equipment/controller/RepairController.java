@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.equipment.pojo.DatatableParams;
 import com.equipment.pojo.DropDownJd;
 import com.equipment.pojo.ModifyJd;
+import com.equipment.pojo.Point;
 import com.equipment.pojo.ResultPojo;
 import com.equipment.pojo.SelectedData;
 import com.equipment.pojo.ServiceForm;
@@ -153,4 +154,21 @@ public class RepairController {
 		System.out.println(resMap);
 		return resMap;
 	}
+	
+	@RequestMapping(value="repair/savepoint")
+	public @ResponseBody Map<String,String> savePoint(@RequestBody Point point){
+		String result = repairService.savePoint(point);
+		ObjectMapper objectmaper = new ObjectMapper();
+		Map<String, String> resMap = new HashMap<String, String>();
+		String  json;
+		try {
+			json = objectmaper.writeValueAsString(result);
+			resMap.put("list", json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resMap;
+	}
+	
 }

@@ -3,6 +3,7 @@ package com.equipment.dao;
 import java.util.List;
 
 import com.equipment.pojo.ModifyJd;
+import com.equipment.pojo.Point;
 import com.equipment.pojo.SelectedData;
 import com.equipment.pojo.ServiceForm;
 import com.equipment.pojo.DropDownJd;
@@ -22,4 +23,8 @@ public interface IRepairDao {
 	public List<SelectedData> queryCity(String provinceid);
 
 	public List<SelectedData> queryDistrict(String cityid);
+
+	public Integer queryMaxId();
+
+	public Integer savePoint(Point point);
 }

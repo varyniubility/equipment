@@ -17,7 +17,6 @@
 		LEFT JOIN dm_zsly dz3 ON dz3.zslydm=fs.zslydm3
 		LEFT JOIN userinfo gcui ON gcui.yhdm = fs.gcsdm
 		LEFT JOIN userinfo adui ON adui.yhdm = fs.glydm
-		WHERE fs.jddm IN ("1")
 	</select> 
 	<update id="modifyjd" parameterType="ModifyJd">
 		UPDATE fwsqd SET jddm=#{jddm}

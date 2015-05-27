@@ -12,6 +12,7 @@ import com.equipment.pojo.DropDownJd;
 import com.equipment.dao.IRepairDao;
 import com.equipment.pojo.DatatableParams;
 import com.equipment.pojo.ModifyJd;
+import com.equipment.pojo.Point;
 import com.equipment.pojo.ResultPojo;
 import com.equipment.pojo.SelectedData;
 import com.equipment.pojo.ServiceForm;
@@ -126,5 +127,32 @@ public class RepairServiceImpl implements RepairService {
 	public List<SelectedData> queryDistrict(String cityid) {
 		List<SelectedData> result = repairDao.queryDistrict(cityid);
 		return result;
+	}
+
+
+	@Override
+	public String savePoint(Point point) {
+		System.out.println(point);
+		String maxid = queryMaxId();
+		point.setId(maxid);
+		Integer num = repairDao.savePoint(point);
+		if(num > 0){
+			return "success";
+		}else{
+			return "failure";
+		}
+	}
+	
+	@Override
+	public String queryMaxId(){
+		Integer maxid = 0;
+		Integer result = repairDao.queryMaxId();
+		if(result == null){
+			maxid = 1;
+		}else{
+			maxid = result+1;
+		}
+		return maxid.toString();
+		
 	}
 }

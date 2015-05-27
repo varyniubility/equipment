@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.equipment.pojo.DatatableParams;
 import com.equipment.pojo.ModifyJd;
+import com.equipment.pojo.Point;
 import com.equipment.pojo.ResultPojo;
 import com.equipment.pojo.DropDownJd;
 import com.equipment.pojo.SelectedData;
@@ -20,4 +21,8 @@ public interface RepairService {
 	public List<SelectedData> queryProvince();
 
 	public List<SelectedData> queryDistrict(String cityid);
+
+	public String savePoint(Point point);
+	
+	public String queryMaxId();
 }

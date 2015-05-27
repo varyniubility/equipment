@@ -9,13 +9,18 @@ $(document).ready( function () {
 	map.centerAndZoom(new BMap.Point(114.066, 22.616), 12);
 	map.enableScrollWheelZoom();
 	$("#submitbtn").click(function(){
+		var province = $("#province").find("option:selected").text(); 
+		var city = $("#city").find("option:selected").text(); 
+		var district = $("#district").find("option:selected").text(); 
+		var address = $("#address").val();
+		var addressStr = province+city+district+address;
 		//访问百度地图地址解析API
 		//百度地图Geocoding API服务地址:http://api.map.baidu.com/geocoder/v2/
 		//ak参数，用户申请注册的key
 		//callback:回调函数
 		//output:返回值类型json或者xml
 		//address:用户输入的地址，格式：省+市+县/区+某条路n号
-		var url = "http://api.map.baidu.com/geocoder/v2/?ak=2StkIHWGNTW8xE8w7ApZlofD&callback=renderOption&output=json&address=山东省济南市历城区山大路124号"
+		var url = "http://api.map.baidu.com/geocoder/v2/?ak=2StkIHWGNTW8xE8w7ApZlofD&callback=renderOption&output=json&address="+addressStr
 		$.ajax({
 			type: "post",
 			url: url,
@@ -41,9 +46,33 @@ $(document).ready( function () {
 	$("#city").change(function(){
 		querydistrict($("#city").val());
 	});
-	
-	$("#submitbtn").click(function(){
-		saveModify();
+
+	$("#addbtn").click(function(){
+		var province = $("#province").val(); 
+		var city = $("#city").val(); 
+		var district = $("#district").val(); 
+		var address = $("#address").val();
+		var name = $("#addname").val();
+		var telphone = $("#addtelphone").val();
+		var zdjd = $("#zdjd").val();
+		var zdwd = $("#zdwd").val();
+		var params = '{"province":"'+ province + '","city":"'
+		+ city + '","district":"'+ district + '","address":"'+ address + '","name":"'+ name + '","telphone":"'
+		+ telphone + '","zdjd":"'+ zdjd + '","zdwd":"'+ zdwd +'"}';
+		$.ajax({
+	        url : 'savepoint',
+	        type : 'post',
+	        data : params,
+	        dataType: "json",  
+	 		contentType: "application/json", 
+	        async : false,
+	        success : function(result) {
+	        	$("#addmodal").modal("hide");   //点击标注弹出模态框
+	        },
+	        error : function(msg) {
+	        }
+	    });
+		
 	})
 });
 
@@ -66,7 +95,9 @@ function createmap(location){
 	var marker = new BMap.Marker(point); 
 	marker.enableDragging();
 	map.addOverlay(marker);
-	marker.addEventListener("click", function(){          
+	marker.addEventListener("click", function(){    
+		$("#zdjd").val(location.lng);
+		$("#zdwd").val(location.lat);
 		$("#addmodal").modal("show");   //点击标注弹出模态框
 	});
 	map.centerAndZoom(point, 12);                  // 将标注添加到地图中

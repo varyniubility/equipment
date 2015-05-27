@@ -17,7 +17,6 @@
 		LEFT JOIN dm_zsly dz3 ON dz3.zslydm=fs.zslydm3
 		LEFT JOIN userinfo gcui ON gcui.yhdm = fs.gcsdm
 		LEFT JOIN userinfo adui ON adui.yhdm = fs.glydm
-		WHERE fs.jddm IN ("1","2","3")
 	</select> 
 	<select id="queryjd" parameterType="String" resultType="DropDownJd">
 		SELECT jddm,jdmc
@@ -42,4 +41,14 @@
 		FROM s_district
 		WHERE cityid=#{cityid}
 	</select>
+	
+	<select id="queryMaxId" resultType="Integer">
+		SELECT MAX(cast(wxzdbh as unsigned int)) AS maxid 
+		FROM wxzdcx
+	</select>
+	
+	<insert id="savePoint">
+		INSERT INTO wxzdcx (wxzdbh,zdmc,zddh,province,city,district,xxdz,zdjd,zdwd)
+		VALUES(#{id},#{name},#{telphone},#{province},#{city},#{district},#{address},#{zdjd},#{zdwd})
+	</insert>
 </mapper> 

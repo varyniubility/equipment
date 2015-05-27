@@ -11,12 +11,11 @@
 		LEFT JOIN dm_zsly dz2 ON dz2.zslydm=sk.zslydm2
 		LEFT JOIN dm_zsly dz3 ON dz3.zslydm=sk.zslydm3
 		LEFT JOIN dm_fwjd df ON df.jddm=sk.jddm
-		WHERE gcsdm=#{userid} AND sk.jddm IN ("1","2")
+		WHERE gcsdm=#{userid}
 	</select>
 	<select id="queryjd" parameterType="String" resultType="DropDownJd">
 		SELECT jddm,jdmc
 		FROM dm_fwjd
-		WHERE jddm > #{jddm}
 	</select>
 	<update id="modifyQues" parameterType="QuestionUpdate">
 		UPDATE sbwtfk SET jddm=#{jddm},sbwtjd=#{wtjd},gcszj=#{gcszj}
